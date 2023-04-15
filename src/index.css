@@ -8,21 +8,24 @@ body,
 html,
 .main {
     height: 100%;
+    color: #eee;
 }
 
 .main {
-    display: grid;
-    grid-template-rows: 1fr 20%;
+    overflow: auto;
 }
 
 .content {
-    background-color: blue;
-    overflow: auto;
-    border: solid 3px red;
+    background-color: #3c2d64;
+    padding-bottom: 15rem;
 }
 
 .hub {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0);
+    height: 15rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 
 #hub {

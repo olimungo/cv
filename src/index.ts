@@ -18,14 +18,12 @@ let hubAngle = 0;
 const hub = new Hub(setupProps, anchor);
 const missionEvents = new MissionEvents(setupProps, anchor);
 
-const content = document.getElementById('content');
+const main = document.getElementById('main');
 
-if (content) {
-    content.onscroll = () => {
+if (main) {
+    main.onscroll = () => {
         const completion =
-            (content.scrollTop /
-                (content.scrollHeight - content.clientHeight)) *
-            100;
+            (main.scrollTop / (main.scrollHeight - main.clientHeight)) * 100;
 
         hubAngle = -((missionEvents.getMaxAngle() - 270) / 100) * completion;
     };

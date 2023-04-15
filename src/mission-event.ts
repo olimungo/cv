@@ -127,13 +127,13 @@ export class MissionEvent {
     }
 
     move() {
-        if (this.angle !== this.targetAngle) {
-            const distance = this.targetAngle - this.angle;
+        const distance = this.targetAngle - this.angle;
 
-            if (Math.abs(distance) < 0.02) {
+        if (Math.abs(distance) > 0.01) {
+            if (Math.abs(distance) < 0.05) {
                 this.velocity = 0.01;
             } else {
-                this.velocity = distance / 20;
+                this.velocity = distance / 30;
             }
         } else {
             this.velocity = 0;

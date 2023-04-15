@@ -19,6 +19,36 @@ export class Hub {
 
         ctx.save();
 
+        // back grey lightly transparent
+        ctx.beginPath();
+
+        ctx.arc(
+            anchor.x,
+            anchor.y,
+            setupProps.height + setupProps.centerX + 45,
+            0,
+            2 * Math.PI
+        );
+
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.lineWidth = 2;
+        ctx.fill();
+
+        // bottom dark
+        ctx.beginPath();
+
+        ctx.arc(
+            anchor.x,
+            anchor.y,
+            setupProps.height + setupProps.centerX - 45,
+            0,
+            2 * Math.PI
+        );
+
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.lineWidth = 2;
+        ctx.fill();
+
         // main line
         ctx.beginPath();
 
