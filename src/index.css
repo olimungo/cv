@@ -9,6 +9,8 @@ html,
 .main {
     height: 100%;
     color: #eee;
+    font-family: 'Exo 2', sans-serif;
+    background-color: #3c2d64;
 }
 
 .main {

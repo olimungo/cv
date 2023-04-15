@@ -25,7 +25,8 @@ if (main) {
         const completion =
             (main.scrollTop / (main.scrollHeight - main.clientHeight)) * 100;
 
-        hubAngle = -((missionEvents.getMaxAngle() - 270) / 100) * completion;
+        hubAngle =
+            -((missionEvents.getMaxAngle() + 0.01 - 270) / 100) * completion;
     };
 }
 
@@ -43,8 +44,37 @@ function renderLoop(timestamp) {
         elapsed = 0;
 
         // Updates
-        hub.update();
+        const prevMissionEventsState = missionEvents.missionEventsState;
+        const prevMecoCompleted = missionEvents.mecoCompleted;
+        const prevSecoCompleted = missionEvents.secoCompleted;
+
         missionEvents.update(hubAngle);
+
+        if (missionEvents.missionEventsState !== prevMissionEventsState) {
+            if (missionEvents.missionEventsState === 'contract') {
+                hub.resetTimer();
+            } else {
+                hub.startTimer();
+            }
+        }
+
+        if (missionEvents.mecoCompleted !== prevMecoCompleted) {
+            if (missionEvents.mecoCompleted) {
+                hub.displayStage2();
+            } else {
+                hub.hideStage2();
+            }
+        }
+
+        if (missionEvents.secoCompleted !== prevSecoCompleted) {
+            if (missionEvents.secoCompleted) {
+                hub.hideStage1();
+            } else {
+                hub.displayStage1();
+            }
+        }
+
+        hub.update(missionEvents.telemetry);
 
         // Draws
         setupProps.ctx.save();

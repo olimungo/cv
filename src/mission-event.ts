@@ -1,4 +1,8 @@
-import { MissionEventLabel, MissionEventLabelPosition } from './mission-events';
+import {
+    MissionEventLabel,
+    MissionEventLabelPosition,
+    TelemetryData,
+} from './mission-events';
 import { SetupProps } from './setup-props';
 import { Vector } from './vector';
 
@@ -10,8 +14,9 @@ export class MissionEvent {
     radius: number;
     label: MissionEventLabel;
     labelPosition: MissionEventLabelPosition;
-    completed = false;
+    telemetry: TelemetryData;
 
+    completed = false;
     angle: number;
     targetAngle: number;
     velocity = 0;
@@ -23,7 +28,8 @@ export class MissionEvent {
         anchor: Vector,
         radius: number,
         label: MissionEventLabel,
-        labelPosition: MissionEventLabelPosition
+        labelPosition: MissionEventLabelPosition,
+        telemetry: TelemetryData
     ) {
         this.setupProps = setupProps;
         this.fromAngle = fromAngle;
@@ -32,6 +38,7 @@ export class MissionEvent {
         this.radius = radius;
         this.label = label;
         this.labelPosition = labelPosition;
+        this.telemetry = telemetry;
 
         this.angle = fromAngle;
         this.targetAngle = fromAngle;
@@ -62,7 +69,7 @@ export class MissionEvent {
         ctx.rotate(angle + Vector.toRadian(90));
 
         ctx.beginPath();
-        ctx.fillStyle = '#000';
+        ctx.fillStyle = '#222';
         ctx.arc(0, 0, 6, 0, 2 * Math.PI);
         ctx.fill();
 
@@ -99,6 +106,8 @@ export class MissionEvent {
         ctx.translate(0, textY);
 
         ctx.textAlign = 'center';
+        ctx.font = '11px "Exo 2"';
+
         textY = 0;
         let decY = 0;
         let splitlabel = this.label.split('\n');

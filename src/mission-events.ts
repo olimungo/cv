@@ -1,4 +1,5 @@
 import { MissionEvent } from './mission-event';
+import { defaultTelemetryData, missionEventsData } from './mission-events-data';
 import { SetupProps } from './setup-props';
 import { Vector } from './vector';
 
@@ -12,35 +13,23 @@ export type MissionEventLabel =
     | 'FAIRING'
     | 'ENTRY'
     | 'LANDING'
-    | 'SECO-1';
+    | 'SECO'
+    | 'DEPLOY';
 
 export type MissionEventLabelPosition = 'up' | 'down';
 
-type MissionEventState = 'contract' | 'expand';
+export type MissionEventState = 'contract' | 'expand';
 
-const samples: Record<
-    MissionEventLabel,
-    {
-        labelPosition: MissionEventLabelPosition;
-        fromAngle: number;
-        toAngle: number;
-    }
-> = {
-    'ENGINE CHILL': { labelPosition: 'down', fromAngle: 270, toAngle: 260 },
-    'STRONGBACK\nRETRACT': {
-        labelPosition: 'up',
-        fromAngle: 275,
-        toAngle: 265,
-    },
-    STARTUP: { labelPosition: 'down', fromAngle: 282, toAngle: 278 },
-    LIFTOFF: { labelPosition: 'up', fromAngle: 284, toAngle: 284 },
-    'MAX-Q': { labelPosition: 'down', fromAngle: 287, toAngle: 290 },
-    MECO: { labelPosition: 'up', fromAngle: 291, toAngle: 297 },
-    FAIRING: { labelPosition: 'down', fromAngle: 292, toAngle: 300 },
-    ENTRY: { labelPosition: 'up', fromAngle: 300, toAngle: 318 },
-    LANDING: { labelPosition: 'down', fromAngle: 303, toAngle: 323 },
-    'SECO-1': { labelPosition: 'up', fromAngle: 304.4, toAngle: 328 },
-};
+export interface TelemetryData {
+    stage1Speed: number;
+    stage1Altitude: number;
+    stage1SpeedGauge: number;
+    stage1AltitudeGauge: number;
+    stage2Speed: number;
+    stage2Altitude: number;
+    stage2SpeedGauge: number;
+    stage2AltitudeGauge: number;
+}
 
 export class MissionEvents {
     setupProps: SetupProps;
@@ -48,12 +37,15 @@ export class MissionEvents {
     angle: number;
     missionEvents: MissionEvent[] = [];
     missionEventsState: MissionEventState = 'contract';
+    mecoCompleted: boolean = false;
+    secoCompleted: boolean = false;
+    telemetry = defaultTelemetryData;
 
     constructor(setupProps: SetupProps, anchor: Vector) {
         this.setupProps = setupProps;
         this.anchor = anchor;
 
-        for (const [key, value] of Object.entries(samples)) {
+        for (const [key, value] of Object.entries(missionEventsData)) {
             this.missionEvents.push(
                 new MissionEvent(
                     setupProps,
@@ -62,7 +54,8 @@ export class MissionEvents {
                     anchor,
                     setupProps.height + setupProps.centerX,
                     key as MissionEventLabel,
-                    value.labelPosition
+                    value.labelPosition,
+                    value.telemetry
                 )
             );
         }
@@ -72,6 +65,7 @@ export class MissionEvents {
         this.angle = angle;
 
         const missionEventsState = this.missionEventsState;
+        let telemetry: TelemetryData = defaultTelemetryData;
 
         for (const missionEvent of this.missionEvents) {
             missionEvent.update(angle);
@@ -90,6 +84,18 @@ export class MissionEvents {
                 ) {
                     this.missionEventsState = 'contract';
                 }
+            }
+
+            if (missionEvent.label === 'MECO') {
+                this.mecoCompleted = missionEvent.completed;
+            }
+
+            if (missionEvent.label === 'SECO') {
+                this.secoCompleted = missionEvent.completed;
+            }
+
+            if (missionEvent.completed) {
+                this.telemetry = missionEvent.telemetry;
             }
         }
 
