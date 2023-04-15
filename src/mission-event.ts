@@ -1,62 +1,57 @@
-import { EventLabel } from '.';
+import {
+    MissionEventLabel,
+    MissionEventLabelPosition,
+    TelemetryData,
+} from './mission-events';
 import { SetupProps } from './setup-props';
 import { Vector } from './vector';
 
-export type LabelPosition = 'up' | 'down';
-
-export class EventTag {
-    position = new Vector();
-    velocity = new Vector(0.5, 0.5);
-    initAngle: number;
-    angle: number;
+export class MissionEvent {
+    setupProps: SetupProps;
+    fromAngle: number;
+    toAngle: number;
     anchor: Vector;
     radius: number;
-    setupProps: SetupProps;
-    moveToAngle: number;
-    moveToVelocity = 0;
-    label: EventLabel;
-    labelPosition: LabelPosition;
+    label: MissionEventLabel;
+    labelPosition: MissionEventLabelPosition;
+    telemetry: TelemetryData;
+
     completed = false;
-    callbackCompleted: Function;
+    angle: number;
+    targetAngle: number;
+    velocity = 0;
 
     constructor(
         setupProps: SetupProps,
-        angle: number,
+        fromAngle: number,
+        toAngle: number,
         anchor: Vector,
         radius: number,
-        label: EventLabel,
-        labelPosition: LabelPosition,
-        moveToAngle: number,
-        callbackCompleted: Function
+        label: MissionEventLabel,
+        labelPosition: MissionEventLabelPosition,
+        telemetry: TelemetryData
     ) {
         this.setupProps = setupProps;
-        this.initAngle = this.angle = angle;
+        this.fromAngle = fromAngle;
+        this.toAngle = toAngle;
         this.anchor = anchor;
         this.radius = radius;
         this.label = label;
         this.labelPosition = labelPosition;
-        this.moveToAngle = moveToAngle;
-        this.callbackCompleted = callbackCompleted;
+        this.telemetry = telemetry;
+
+        this.angle = fromAngle;
+        this.targetAngle = fromAngle;
     }
 
     update(hubAngle: number) {
-        this.position.add(this.velocity);
+        this.move();
 
-        this.angle += this.moveToVelocity;
-
-        this.checkMoveTo();
+        this.angle += this.velocity;
 
         if (this.angle + hubAngle <= 270) {
-            if (!this.completed) {
-                this.callbackCompleted(this.label, true);
-            }
-
             this.completed = true;
         } else {
-            if (this.completed) {
-                this.callbackCompleted(this.label, false);
-            }
-
             this.completed = false;
         }
     }
@@ -74,7 +69,7 @@ export class EventTag {
         ctx.rotate(angle + Vector.toRadian(90));
 
         ctx.beginPath();
-        ctx.fillStyle = '#000';
+        ctx.fillStyle = '#222';
         ctx.arc(0, 0, 6, 0, 2 * Math.PI);
         ctx.fill();
 
@@ -111,6 +106,8 @@ export class EventTag {
         ctx.translate(0, textY);
 
         ctx.textAlign = 'center';
+        ctx.font = '11px "Exo 2"';
+
         textY = 0;
         let decY = 0;
         let splitlabel = this.label.split('\n');
@@ -130,41 +127,25 @@ export class EventTag {
         ctx.restore();
     }
 
-    moveTo(expand: boolean) {
-        if (expand) {
-            this.moveToVelocity = this.moveToAngle > this.angle ? 0.1 : -0.1;
-        } else {
-            this.moveToVelocity = this.moveToAngle > this.angle ? -0.1 : 0.1;
-        }
+    expand() {
+        this.targetAngle = this.toAngle;
     }
 
-    private checkMoveTo() {
-        if (this.moveToVelocity) {
-            if (this.moveToVelocity > 0) {
-                const distance = this.moveToAngle - this.angle;
+    contract() {
+        this.targetAngle = this.fromAngle;
+    }
 
-                if (distance < 0.02) {
-                    this.moveToVelocity = 0.01;
-                } else {
-                    this.moveToVelocity = distance / 50;
-                }
+    move() {
+        const distance = this.targetAngle - this.angle;
 
-                if (this.angle > this.moveToAngle) {
-                    this.moveToVelocity = 0;
-                }
+        if (Math.abs(distance) > 0.01) {
+            if (Math.abs(distance) < 0.05) {
+                this.velocity = 0.01;
             } else {
-                const distance = this.angle - this.moveToAngle;
-
-                if (distance < 0.02) {
-                    this.moveToVelocity = -0.01;
-                } else {
-                    this.moveToVelocity = -distance / 50;
-                }
-
-                if (this.angle < this.moveToAngle) {
-                    this.moveToVelocity = 0;
-                }
+                this.velocity = distance / 30;
             }
+        } else {
+            this.velocity = 0;
         }
     }
 }

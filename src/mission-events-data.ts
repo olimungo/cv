@@ -1,0 +1,192 @@
+import {
+    MissionEventLabel,
+    MissionEventLabelPosition,
+    TelemetryData,
+} from './mission-events';
+
+export const missionEventsData: Record<
+    MissionEventLabel,
+    {
+        labelPosition: MissionEventLabelPosition;
+        fromAngle: number;
+        toAngle: number;
+        telemetry: TelemetryData;
+    }
+> = {
+    'ENGINE CHILL': {
+        labelPosition: 'down',
+        fromAngle: 270,
+        toAngle: 260,
+        telemetry: {
+            stage1Speed: 0,
+            stage1Altitude: 0,
+            stage1SpeedGauge: 0,
+            stage1AltitudeGauge: 0,
+            stage2Speed: 0,
+            stage2Altitude: 0,
+            stage2SpeedGauge: 0,
+            stage2AltitudeGauge: 0,
+        },
+    },
+    'STRONGBACK\nRETRACT': {
+        labelPosition: 'up',
+        fromAngle: 275,
+        toAngle: 265,
+        telemetry: {
+            stage1Speed: 0,
+            stage1Altitude: 0,
+            stage1SpeedGauge: 0,
+            stage1AltitudeGauge: 0,
+            stage2Speed: 0,
+            stage2Altitude: 0,
+            stage2SpeedGauge: 0,
+            stage2AltitudeGauge: 0,
+        },
+    },
+    STARTUP: {
+        labelPosition: 'down',
+        fromAngle: 282,
+        toAngle: 278,
+        telemetry: {
+            stage1Speed: 0,
+            stage1Altitude: 0,
+            stage1SpeedGauge: 0,
+            stage1AltitudeGauge: 0,
+            stage2Speed: 0,
+            stage2Altitude: 0,
+            stage2SpeedGauge: 0,
+            stage2AltitudeGauge: 0,
+        },
+    },
+    LIFTOFF: {
+        labelPosition: 'up',
+        fromAngle: 284,
+        toAngle: 284,
+        telemetry: {
+            stage1Speed: 454,
+            stage1Altitude: 1.5,
+            stage1SpeedGauge: 5,
+            stage1AltitudeGauge: 2,
+            stage2Speed: 0,
+            stage2Altitude: 0,
+            stage2SpeedGauge: 0,
+            stage2AltitudeGauge: 0,
+        },
+    },
+    'MAX-Q': {
+        labelPosition: 'down',
+        fromAngle: 287,
+        toAngle: 290,
+        telemetry: {
+            stage1Speed: 1320,
+            stage1Altitude: 9.6,
+            stage1SpeedGauge: 15,
+            stage1AltitudeGauge: 4,
+            stage2Speed: 0,
+            stage2Altitude: 0,
+            stage2SpeedGauge: 0,
+            stage2AltitudeGauge: 0,
+        },
+    },
+    MECO: {
+        labelPosition: 'up',
+        fromAngle: 291,
+        toAngle: 297,
+        telemetry: {
+            stage1Speed: 7895,
+            stage1Altitude: 78.9,
+            stage1SpeedGauge: 100,
+            stage1AltitudeGauge: 55,
+            stage2Speed: 8135,
+            stage2Altitude: 79.1,
+            stage2SpeedGauge: 50,
+            stage2AltitudeGauge: 50,
+        },
+    },
+    FAIRING: {
+        labelPosition: 'down',
+        fromAngle: 292,
+        toAngle: 300,
+        telemetry: {
+            stage1Speed: 7838,
+            stage1Altitude: 82.6,
+            stage1SpeedGauge: 95,
+            stage1AltitudeGauge: 60,
+            stage2Speed: 8205,
+            stage2Altitude: 83.7,
+            stage2SpeedGauge: 35,
+            stage2AltitudeGauge: 35,
+        },
+    },
+    ENTRY: {
+        labelPosition: 'up',
+        fromAngle: 300,
+        toAngle: 318,
+        telemetry: {
+            stage1Speed: 5762,
+            stage1Altitude: 45.0,
+            stage1SpeedGauge: 70,
+            stage1AltitudeGauge: 30,
+            stage2Speed: 14850,
+            stage2Altitude: 158,
+            stage2SpeedGauge: 70,
+            stage2AltitudeGauge: 55,
+        },
+    },
+    LANDING: {
+        labelPosition: 'down',
+        fromAngle: 303,
+        toAngle: 323,
+        telemetry: {
+            stage1Speed: 0,
+            stage1Altitude: 0,
+            stage1SpeedGauge: 0,
+            stage1AltitudeGauge: 0,
+            stage2Speed: 25131,
+            stage2Altitude: 152,
+            stage2SpeedGauge: 90,
+            stage2AltitudeGauge: 52,
+        },
+    },
+    SECO: {
+        labelPosition: 'up',
+        fromAngle: 304.4,
+        toAngle: 328,
+        telemetry: {
+            stage1Speed: 0,
+            stage1Altitude: 0,
+            stage1SpeedGauge: 0,
+            stage1AltitudeGauge: 0,
+            stage2Speed: 27191,
+            stage2Altitude: 152,
+            stage2SpeedGauge: 95,
+            stage2AltitudeGauge: 52,
+        },
+    },
+    DEPLOY: {
+        labelPosition: 'down',
+        fromAngle: 320,
+        toAngle: 338,
+        telemetry: {
+            stage1Speed: 0,
+            stage1Altitude: 0,
+            stage1SpeedGauge: 0,
+            stage1AltitudeGauge: 0,
+            stage2Speed: 32159,
+            stage2Altitude: 652,
+            stage2SpeedGauge: 100,
+            stage2AltitudeGauge: 100,
+        },
+    },
+};
+
+export const defaultTelemetryData: TelemetryData = {
+    stage1Speed: 0,
+    stage1Altitude: 0,
+    stage1SpeedGauge: 0,
+    stage1AltitudeGauge: 0,
+    stage2Speed: 0,
+    stage2Altitude: 0,
+    stage2SpeedGauge: 0,
+    stage2AltitudeGauge: 0,
+};
