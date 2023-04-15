@@ -1,10 +1,8 @@
-import { EventLabel } from '.';
+import { MissionEventLabel, MissionEventLabelPosition } from './mission-events';
 import { SetupProps } from './setup-props';
 import { Vector } from './vector';
 
-export type LabelPosition = 'up' | 'down';
-
-export class EventTag {
+export class MissionEvent {
     position = new Vector();
     velocity = new Vector(0.5, 0.5);
     initAngle: number;
@@ -14,8 +12,8 @@ export class EventTag {
     setupProps: SetupProps;
     moveToAngle: number;
     moveToVelocity = 0;
-    label: EventLabel;
-    labelPosition: LabelPosition;
+    label: MissionEventLabel;
+    labelPosition: MissionEventLabelPosition;
     completed = false;
     callbackCompleted: Function;
 
@@ -24,8 +22,8 @@ export class EventTag {
         angle: number,
         anchor: Vector,
         radius: number,
-        label: EventLabel,
-        labelPosition: LabelPosition,
+        label: MissionEventLabel,
+        labelPosition: MissionEventLabelPosition,
         moveToAngle: number,
         callbackCompleted: Function
     ) {

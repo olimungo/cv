@@ -6,3 +6,5 @@ export interface SetupProps {
     centerY: number;
     ctx: CanvasRenderingContext2D;
 }
+
+export class Setup {}
