@@ -37,11 +37,11 @@ export class Timer {
             setupProps.centerY + 50
         );
 
-        ctx.fillStyle = '#999';
+        ctx.fillStyle = '#bbb';
         ctx.textAlign = 'center';
-        ctx.font = 'bold 15px "Exo 2"';
+        ctx.font = '300 15px "Exo 2"';
 
-        ctx.fillText('STARLINK', setupProps.centerX, setupProps.centerY + 80);
+        ctx.fillText('ARTEMIS-3', setupProps.centerX, setupProps.centerY + 80);
 
         ctx.restore();
     }
