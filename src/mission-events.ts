@@ -16,28 +16,30 @@ export type MissionEventLabel =
 
 export type MissionEventLabelPosition = 'up' | 'down';
 
+type MissionEventState = 'contract' | 'expand';
+
 const samples: Record<
     MissionEventLabel,
     {
         labelPosition: MissionEventLabelPosition;
-        angle: number;
-        moveToAngle: number;
+        fromAngle: number;
+        toAngle: number;
     }
 > = {
-    'ENGINE CHILL': { labelPosition: 'down', angle: 270, moveToAngle: 260 },
+    'ENGINE CHILL': { labelPosition: 'down', fromAngle: 270, toAngle: 260 },
     'STRONGBACK\nRETRACT': {
         labelPosition: 'up',
-        angle: 275,
-        moveToAngle: 265,
+        fromAngle: 275,
+        toAngle: 265,
     },
-    STARTUP: { labelPosition: 'down', angle: 282, moveToAngle: 278 },
-    LIFTOFF: { labelPosition: 'up', angle: 284, moveToAngle: 284 },
-    'MAX-Q': { labelPosition: 'down', angle: 287, moveToAngle: 290 },
-    MECO: { labelPosition: 'up', angle: 291, moveToAngle: 297 },
-    FAIRING: { labelPosition: 'down', angle: 292, moveToAngle: 300 },
-    ENTRY: { labelPosition: 'up', angle: 300, moveToAngle: 318 },
-    LANDING: { labelPosition: 'down', angle: 303, moveToAngle: 323 },
-    'SECO-1': { labelPosition: 'up', angle: 304.4, moveToAngle: 328 },
+    STARTUP: { labelPosition: 'down', fromAngle: 282, toAngle: 278 },
+    LIFTOFF: { labelPosition: 'up', fromAngle: 284, toAngle: 284 },
+    'MAX-Q': { labelPosition: 'down', fromAngle: 287, toAngle: 290 },
+    MECO: { labelPosition: 'up', fromAngle: 291, toAngle: 297 },
+    FAIRING: { labelPosition: 'down', fromAngle: 292, toAngle: 300 },
+    ENTRY: { labelPosition: 'up', fromAngle: 300, toAngle: 318 },
+    LANDING: { labelPosition: 'down', fromAngle: 303, toAngle: 323 },
+    'SECO-1': { labelPosition: 'up', fromAngle: 304.4, toAngle: 328 },
 };
 
 export class MissionEvents {
@@ -45,6 +47,7 @@ export class MissionEvents {
     anchor: Vector;
     angle: number;
     missionEvents: MissionEvent[] = [];
+    missionEventsState: MissionEventState = 'contract';
 
     constructor(setupProps: SetupProps, anchor: Vector) {
         this.setupProps = setupProps;
@@ -54,13 +57,12 @@ export class MissionEvents {
             this.missionEvents.push(
                 new MissionEvent(
                     setupProps,
-                    value.angle,
+                    value.fromAngle,
+                    value.toAngle,
                     anchor,
                     setupProps.height + setupProps.centerX,
                     key as MissionEventLabel,
-                    value.labelPosition,
-                    value.moveToAngle,
-                    this.callbackCompleted
+                    value.labelPosition
                 )
             );
         }
@@ -68,6 +70,38 @@ export class MissionEvents {
 
     update(angle: number) {
         this.angle = angle;
+
+        const missionEventsState = this.missionEventsState;
+
+        for (const missionEvent of this.missionEvents) {
+            missionEvent.update(angle);
+
+            if (missionEvent.label === 'LIFTOFF') {
+                if (
+                    missionEvent.completed &&
+                    this.missionEventsState !== 'expand'
+                ) {
+                    this.missionEventsState = 'expand';
+                }
+
+                if (
+                    !missionEvent.completed &&
+                    this.missionEventsState !== 'contract'
+                ) {
+                    this.missionEventsState = 'contract';
+                }
+            }
+        }
+
+        if (missionEventsState !== this.missionEventsState) {
+            for (const missionEvent of this.missionEvents) {
+                if (this.missionEventsState === 'expand') {
+                    missionEvent.expand();
+                } else {
+                    missionEvent.contract();
+                }
+            }
+        }
     }
 
     draw() {
@@ -78,21 +112,15 @@ export class MissionEvents {
         this.setupProps.ctx.translate(-this.anchor.x, -this.anchor.y);
 
         for (const missionEvent of this.missionEvents) {
-            missionEvent.update(this.angle);
             missionEvent.draw();
         }
 
         this.setupProps.ctx.restore();
     }
 
-    private callbackCompleted(
-        eventLabel: MissionEventLabel,
-        completed: boolean
-    ) {
-        if (eventLabel === 'LIFTOFF') {
-            for (const missionEvent of this.missionEvents) {
-                missionEvent.moveTo(completed);
-            }
-        }
+    getMaxAngle(): number {
+        return this.missionEvents.reduce((acc, missionEvent) => {
+            return missionEvent.toAngle > acc ? missionEvent.toAngle : acc;
+        }, 0);
     }
 }

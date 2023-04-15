@@ -27,7 +27,7 @@ if (content) {
                 (content.scrollHeight - content.clientHeight)) *
             100;
 
-        hubAngle = -(34.4 / 100) * completion;
+        hubAngle = -((missionEvents.getMaxAngle() - 270) / 100) * completion;
     };
 }
 
@@ -41,7 +41,7 @@ function renderLoop(timestamp) {
     elapsed += timestamp - previousTimestamp;
     previousTimestamp = timestamp;
 
-    if (elapsed > 50) {
+    if (elapsed > 30) {
         elapsed = 0;
 
         // Updates
