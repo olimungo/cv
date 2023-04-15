@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html,
+.main {
+    height: 100%;
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 1fr 20%;
+}
+
+.content {
+    background-color: blue;
+    overflow: auto;
+    border: solid 3px red;
+}
+
+.hub {
+    background-color: #000;
+}
+
+#hub {
+}
