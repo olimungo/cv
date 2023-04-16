@@ -37,7 +37,7 @@ export class Timer {
             setupProps.centerY + 50
         );
 
-        ctx.fillStyle = '#bbb';
+        ctx.fillStyle = '#ccc';
         ctx.textAlign = 'center';
         ctx.font = '300 15px "Exo 2"';
 

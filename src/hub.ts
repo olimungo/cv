@@ -175,19 +175,21 @@ export class Hub {
 
         this.timer.draw();
 
-        ctx.save();
+        if (this.setupProps.width > 1000) {
+            ctx.save();
 
-        ctx.filter = `opacity(${this.stage1Opacity}%)`;
-        this.stage1Counters.draw();
+            ctx.filter = `opacity(${this.stage1Opacity}%)`;
+            this.stage1Counters.draw();
 
-        ctx.restore();
+            ctx.restore();
 
-        ctx.save();
+            ctx.save();
 
-        ctx.filter = `opacity(${this.stage2Opacity}%)`;
-        this.stage2Counters.draw();
+            ctx.filter = `opacity(${this.stage2Opacity}%)`;
+            this.stage2Counters.draw();
 
-        ctx.restore();
+            ctx.restore();
+        }
 
         ctx.restore();
     }

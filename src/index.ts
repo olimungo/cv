@@ -32,6 +32,10 @@ if (main) {
 
 renderLoop(0);
 
+setTimeout(() => {
+    removeCatchPhrase();
+}, 3000);
+
 //
 //
 //
@@ -144,4 +148,52 @@ function fitWithParent(canvas) {
     canvas.style.height = '100%';
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
+}
+
+function removeCatchPhrase() {
+    const catchPhrase = document.getElementById('catch-phrase');
+
+    if (!catchPhrase) {
+        return;
+    }
+
+    if (catchPhrase.innerText !== '') {
+        setTimeout(() => {
+            const text = catchPhrase.innerText;
+            catchPhrase.innerText = text.substring(0, text.length - 1);
+            typewriterSound();
+            removeCatchPhrase();
+        }, Math.floor(Math.random() * 250) + 300);
+    } else {
+        addCatchPhrase();
+    }
+}
+
+function addCatchPhrase() {
+    const catchPhrase = document.getElementById('catch-phrase');
+    const newCatchPhrase = 'Space enthusiast!';
+
+    if (!catchPhrase) {
+        return;
+    }
+
+    if (catchPhrase.innerText.length !== newCatchPhrase.length) {
+        setTimeout(() => {
+            const text = catchPhrase.textContent || '';
+            const char = newCatchPhrase.substring(text.length, text.length + 1);
+            catchPhrase.textContent += char;
+            typewriterSound();
+            addCatchPhrase();
+        }, Math.floor(Math.random() * 250) + 300);
+    }
+}
+
+function typewriterSound() {
+    const audio = document.querySelector('audio');
+
+    if (audio) {
+        audio.play().catch(() => {
+            /*ignore*/
+        });
+    }
 }
