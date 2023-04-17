@@ -1,13 +1,13 @@
+import { CanvasProps } from '../../utils/canvas';
+import { Vector } from '../../utils/vector';
 import {
     MissionEventLabel,
     MissionEventLabelPosition,
     TelemetryData,
 } from './mission-events';
-import { SetupProps } from './setup-props';
-import { Vector } from './vector';
 
 export class MissionEvent {
-    setupProps: SetupProps;
+    setupProps: CanvasProps;
     fromAngle: number;
     toAngle: number;
     anchor: Vector;
@@ -22,7 +22,7 @@ export class MissionEvent {
     velocity = 0;
 
     constructor(
-        setupProps: SetupProps,
+        setupProps: CanvasProps,
         fromAngle: number,
         toAngle: number,
         anchor: Vector,
@@ -56,7 +56,7 @@ export class MissionEvent {
         }
     }
 
-    draw() {
+    render() {
         const ctx = this.setupProps.ctx;
         const angle = Vector.toRadian(this.angle);
 

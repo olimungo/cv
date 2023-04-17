@@ -1,7 +1,7 @@
+import { CanvasProps } from '../../utils/canvas';
+import { Vector } from '../../utils/vector';
 import { MissionEvent } from './mission-event';
 import { defaultTelemetryData, missionEventsData } from './mission-events-data';
-import { SetupProps } from './setup-props';
-import { Vector } from './vector';
 
 export type MissionEventLabel =
     | 'ENGINE CHILL'
@@ -32,7 +32,7 @@ export interface TelemetryData {
 }
 
 export class MissionEvents {
-    setupProps: SetupProps;
+    setupProps: CanvasProps;
     anchor: Vector;
     angle: number;
     missionEvents: MissionEvent[] = [];
@@ -41,7 +41,7 @@ export class MissionEvents {
     secoCompleted: boolean = false;
     telemetry = defaultTelemetryData;
 
-    constructor(setupProps: SetupProps, anchor: Vector) {
+    constructor(setupProps: CanvasProps, anchor: Vector) {
         this.setupProps = setupProps;
         this.anchor = anchor;
 
@@ -110,7 +110,7 @@ export class MissionEvents {
         }
     }
 
-    draw() {
+    render() {
         this.setupProps.ctx.save();
 
         this.setupProps.ctx.translate(this.anchor.x, this.anchor.y);
@@ -118,7 +118,7 @@ export class MissionEvents {
         this.setupProps.ctx.translate(-this.anchor.x, -this.anchor.y);
 
         for (const missionEvent of this.missionEvents) {
-            missionEvent.draw();
+            missionEvent.render();
         }
 
         this.setupProps.ctx.restore();

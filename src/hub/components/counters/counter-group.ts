@@ -1,9 +1,9 @@
+import { CanvasProps } from '../../utils/canvas';
+import { Vector } from '../../utils/vector';
 import { Counter } from './counter';
-import { SetupProps } from './setup-props';
-import { Vector } from './vector';
 
 export class CounterGroup {
-    setupProps: SetupProps;
+    setupProps: CanvasProps;
     position: Vector;
     groupLabel: string;
 
@@ -14,7 +14,7 @@ export class CounterGroup {
     speedGauge: number;
     altitudeGauge: number;
 
-    constructor(setupProps: SetupProps, position: Vector, groupLabel: string) {
+    constructor(setupProps: CanvasProps, position: Vector, groupLabel: string) {
         this.setupProps = setupProps;
         this.position = position;
         this.groupLabel = groupLabel;
@@ -49,12 +49,12 @@ export class CounterGroup {
         this.altitudeCounter.update(altitudeGauge);
     }
 
-    draw() {
+    render() {
         const setupProps = this.setupProps;
         const ctx = setupProps.ctx;
 
-        this.speedCounter.draw(this.speed + '');
-        this.altitudeCounter.draw(this.altitude + '');
+        this.speedCounter.render(this.speed + '');
+        this.altitudeCounter.render(this.altitude + '');
 
         ctx.save();
 

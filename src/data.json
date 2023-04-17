@@ -1,0 +1,116 @@
+{
+    "sections": {
+        "strongback-retract": {
+            "title": "STRONGBACK RETRACT (birth)",
+            "period": "",
+            "content": [
+                "Born in the early 1970's in Brussels, Belgium.",
+                "On the wall of my childhood bedroom, a poster. A man - Bruce McCandless - in space in a chair. Probably the most iconic space picture."
+            ],
+            "role": "",
+            "skills-acquired": [],
+            "technologies-used": []
+        },
+        "startup": {
+            "title": "STARTUP (scholarship)",
+            "period": "1993",
+            "content": [
+                "Bachelor in IT, Insitut Paul Lambin in Brussels.",
+                "End of study work at the European Commission in DG XII - Section Nouvelles Technologies: management of incoming and outgoing mails."
+            ],
+            "role": "",
+            "skills-acquired": [],
+            "technologies-used": []
+        },
+        "liftoff": {
+            "title": "LIFTOFF (start of professional career)",
+            "period": "1993-1995",
+            "content": [
+                "Career started at the European Commission as a contractual agent.",
+                "Mission: maintaining existing applications and progress on the project initiated during the End of study work."
+            ],
+            "role": "Analyst/Programmer",
+            "skills-acquired": ["Oracle", "Pro*C", "Accell/SQL (4GL)"],
+            "technologies-used": []
+        },
+        "max-q": {
+            "title": "MAX-Q (continuation of professional career)",
+            "period": "1995-1997",
+            "content": [
+                "Working in the private sector as an employee for Canal+ Belgique.",
+                "Missions: developing modules for the digital transformation, maintaining existing applications, collaborating with other branches of the Canal+ group (France and Poland)."
+            ],
+            "role": "Analyst/Programmer",
+            "skills-acquired": [
+                "Oracle*Forms 3",
+                "Oracle Forms 4.5",
+                "BusinessObjects"
+            ],
+            "technologies-used": ["Oracle", "Pro*C"]
+        },
+        "meco": {
+            "title": "MECO (continuation of professional career)",
+            "period": "1995-1997",
+            "content": [
+                "Working in the private sector as a  free-lancer for the Banking sector and the European Commission.",
+                "Missions: database migration, Euro currency migration, adaptations for preventing the 2000-year bug."
+            ],
+            "role": "Analyst/Programmer",
+            "skills-acquired": [
+                "Oracle Pro*Cobol",
+                "Visual Basic",
+                "PowerBuilder"
+            ],
+            "technologies-used": [
+                "Oracle",
+                "Oracle PL/SQL",
+                "Oracle*Forms 3",
+                "Oracle Pro*C"
+            ]
+        },
+        "fairing": {
+            "title": "FAIRING (continuation of professional career)",
+            "period": "2001-2012",
+            "content": [
+                "Back at the European Commission as an Official agent.",
+                "Mission: make Europe a better place.",
+                "My European career started at EuropeAid, aka AIDCO, aka DEVCO, aka INTPA.",
+                "Maintenance and improvement of a financial system used back then to monitor the European budget allocated for sustanaible developement of emerging countries (CRIS). Missions in a few European Delegations around the world to train end-users to use CRIS.",
+                "I also had the opportunity to work for the PMO and DIGIT. Maintenance and improvement of the the sickness insurance IT system (Assmal, in PMO). Rewrite the same IT system from scratch (Assmal2, in DIGIT) in a team of around 10 people"
+            ],
+            "role": "Analyst/Programmer",
+            "skills-acquired": [
+                "Adobe ColdFusion",
+                "Adobe Flex/Flash",
+                "WebLogic",
+                "Java",
+                "JavaScript",
+                "Ant",
+                "ClearCase/ClearQuest",
+                "Atlassian Jira/Confluence",
+                "Scrum (Agile methodology)"
+            ],
+            "technologies-used": ["Oracle", "Oracle PL/SQL", "PowerBuilder"]
+        },
+        "entry": {
+            "title": "ENTRY (continuation of professional career)",
+            "period": "2012-today",
+            "content": [
+                "Second part of my career at the Commission working for COMP and OIB.",
+                "Shhhhhhh... what happens in COMP stays in COMP... but it was mainly about maintaining the existing IT systems. It was my first experience as Project Manager and I was managing a small team of 3 persons.",
+                "I'm in OIB for about 8 years now (as of early 2023). In my portfolio, there are IT systems related to operational or logistics operartions like the Historical Archives of the Commission (digital-born and non-digital documents), Mobility (recover commuting expenses), Catering (organise events making sure that participants will get a coffee, among other), VIPs Transport Service and cars fleet management, business cards. I'm managing a team of 12 persons."
+            ],
+            "role": "Analyst/Programmer",
+            "skills-acquired": [
+                "TypeScript",
+                "Tomcat",
+                "Amazon Web Services (AWS)",
+                "PM2 certification",
+                "PM2 Practioneer",
+                "Agile@EC certificaton",
+                "Kanban (Agile methodology)"
+            ],
+            "technologies-used": ["Adobe ColdFusion", "Oracle", "Oracle PL/SQL"]
+        }
+    }
+}
