@@ -7,7 +7,7 @@ export function Paragraph(props: {
     content: string[];
     className?: string;
 }) {
-    const { className, title, content, period } = { ...props };
+    const { className = '', title, content, period } = { ...props };
 
     return (
         <div className={`${className} m-8 ml-8`}>

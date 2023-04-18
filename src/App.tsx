@@ -1,11 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Card, Hero, Panel, CardSkills, Paragraph } from './components';
+import React, { useEffect, useRef, useState } from 'react';
+import signal from 'signal-js';
+import {
+    Card,
+    Hero,
+    CardSkills,
+    Paragraph,
+    Intro,
+    startAnimation,
+    Panel,
+    GetToKnowMe,
+    Speaker,
+    muteEvent,
+} from './components';
 import data from './data.json';
 
 export function App() {
     const [mainElement, setMainElement] = useState<HTMLElement>();
     const [revealElements, setRevealElement] = useState<Element[]>();
+    const [soundBeep, setSoundBeep] = useState<HTMLAudioElement>();
+    const [imageJamesWebbHref, setImageJamesWebbHref] = useState('');
+    const [imageIssHref, setImageIssHref] = useState('');
+    const [muted, setMuted] = useState(false);
+    const mutedRef = useRef(muted);
+    mutedRef.current = muted;
 
+    // Load assets
+    useEffect(() => {
+        const soundBeepUrl = new URL('./assets/beep.mp3', import.meta.url);
+
+        if (soundBeepUrl) {
+            setSoundBeep(new Audio(soundBeepUrl.href));
+        }
+
+        const imageJamesWebbUrl = new URL(
+            './assets/james-webb.png',
+            import.meta.url
+        );
+
+        if (imageJamesWebbUrl) {
+            setImageJamesWebbHref(imageJamesWebbUrl.href);
+        }
+
+        const imageIssUrl = new URL('./assets/iss.png', import.meta.url);
+
+        if (imageIssUrl) {
+            setImageIssHref(imageIssUrl.href);
+        }
+    }, []);
+
+    // Get sections from the DOM
     useEffect(() => {
         const main = document.getElementById('main');
 
@@ -19,6 +62,15 @@ export function App() {
 
             setRevealElement([...revealsTop, ...revealsLeft, ...revealsRight]);
         }
+    }, []);
+
+    // Check if sound is muted
+    useEffect(() => {
+        signal.on(muteEvent, (event: { muted: boolean }) => {
+            setMuted(event.muted);
+        });
+
+        return () => signal.off(muteEvent);
     }, []);
 
     useEffect(() => {
@@ -45,13 +97,33 @@ export function App() {
         }
     }, [mainElement, revealElements]);
 
+    const startAnimatingCatchPhrase = () => {
+        signal.emit(startAnimation);
+
+        if (soundBeep) {
+            setInterval(() => {
+                if (!mutedRef.current) {
+                    soundBeep.volume = 0.005;
+                    soundBeep.play().catch(() => {
+                        /* ignore */
+                    });
+                }
+            }, 15000);
+        }
+    };
+
     return (
         <div className="flex flex-col pb-60">
+            <Speaker />
+
+            <Intro onClick={startAnimatingCatchPhrase} />
+
             <Hero />
 
-            <div className="mb-16 h-[23rem] "></div>
+            <GetToKnowMe />
 
             <Paragraph
+                className="mt-96"
                 title={data.sections['strongback-retract'].title}
                 period={data.sections['strongback-retract'].period}
                 content={data.sections['strongback-retract'].content}
@@ -79,6 +151,12 @@ export function App() {
                 />
             </Card>
 
+            <img
+                className="mt-32 w-[320px] self-center opacity-25 md:w-[500px]"
+                srcSet={imageIssHref}
+                alt=""
+            />
+
             <Paragraph
                 className="mt-28"
                 title={data.sections['max-q'].title}
@@ -95,6 +173,12 @@ export function App() {
                     }
                 />
             </Card>
+
+            <img
+                className="mt-32 w-[300px] self-center opacity-25 md:w-[400px]"
+                srcSet={imageJamesWebbHref}
+                alt=""
+            />
 
             <Paragraph
                 className="mt-28"
@@ -196,7 +280,9 @@ export function App() {
 
             {/* <div style="margin-bottom: 160rem"></div> */}
 
-            <h1 className="m-8 mt-16 text-xl">To Jupiter and beyond...</h1>
+            <h1 className="my-16 self-center rounded-md  px-5 py-2 text-2xl md:my-32 md:text-4xl">
+                To the Moon and beyond...
+            </h1>
         </div>
     );
 }

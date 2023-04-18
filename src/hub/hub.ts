@@ -38,10 +38,14 @@ export class Hub {
             });
 
             if (hub) {
-                hub.addEventListener('wheel', (event: WheelEvent) => {
-                    main.scrollTop += event.deltaY / 2;
-                    event.preventDefault();
-                });
+                hub.addEventListener(
+                    'wheel',
+                    (event: WheelEvent) => {
+                        main.scrollTop += event.deltaY / 2;
+                        // event.preventDefault();
+                    },
+                    { passive: true }
+                );
             }
         }
     }

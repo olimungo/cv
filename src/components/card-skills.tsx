@@ -11,8 +11,10 @@ export function CardSkills(props: PanelSkillsProps) {
 
     return (
         <div className="text-sm text-fuchsia-100">
-            <div className="text-primary">ROLE</div>
-            <div className="mb-6 ml-2 mt-2">{role}</div>
+            <div className="mb-4">
+                <span className="text-primary">ROLE</span>
+                <span className="ml-2 mt-2 uppercase">{role}</span>
+            </div>
 
             <div className="flex">
                 <div>

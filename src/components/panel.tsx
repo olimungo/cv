@@ -1,11 +1,17 @@
 import React from 'react';
 import { PropsWithChildren } from 'react';
 
-export function Panel(props: PropsWithChildren) {
-    const { children } = { ...props };
+interface PanelProps {
+    className?: string;
+}
+
+export function Panel(props: PropsWithChildren<PanelProps>) {
+    const { className = '', children } = { ...props };
 
     return (
-        <div className="flex items-center justify-center bg-dark-space">
+        <div
+            className={`${className} flex items-center justify-center bg-dark-space`}
+        >
             {children}
         </div>
     );

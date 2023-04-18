@@ -34,9 +34,9 @@ h1 {
     -webkit-box-decoration-break: clone;
 }
 
-.round-button {
+.round-button,
+.round-button-blue {
     position: relative;
-    background: linear-gradient(0.45turn, #542263, #41174e, #34123e);
     border-radius: 3rem;
     display: inline-block;
     text-align: center;
@@ -46,7 +46,16 @@ h1 {
         0 4px 4px rgba(0, 0, 0, 0.04), 0 2px 2px rgba(0, 0, 0, 0.03);
 }
 
-.round-button::after {
+.round-button {
+    background: linear-gradient(0.45turn, #542263, #41174e, #34123e);
+}
+
+.round-button-blue {
+    background: linear-gradient(0.45turn, #251e65, #1f1b5b, #100a4e);
+}
+
+.round-button::after,
+.round-button-blue:after {
     position: absolute;
     top: 0;
     left: 0;
@@ -63,10 +72,22 @@ h1 {
     background: linear-gradient(0.45turn, #5d236e, #4b185a, #3b1347);
 }
 
+.round-button-blue:hover {
+    background: linear-gradient(0.45turn, #2e2673, #27236b, #160f5e);
+}
+
+.round-button:active,
 .round-button:active {
     top: 1px;
     left: 1px;
+}
+
+.round-button:active {
     background: linear-gradient(0.45turn, #67247c, #58196b, #431452);
+}
+
+.round-button-blue:active {
+    background: linear-gradient(0.45turn, #312787, #26217b, #170e71);
 }
 
 .reveal-top {
@@ -105,7 +126,58 @@ h1 {
     opacity: 1;
 }
 
-#canvas,
-#hub {
-    overflow: scroll;
+.zoom-in {
+    transform: scale(2);
+    transition: all 1s ease-out;
+    opacity: 0;
+}
+
+.slide-down {
+    transform: translateY(100%);
+    transition: all 0.5s ease-out;
+}
+
+/*
+//
+*/
+
+.planet {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow:
+    /* Inner shadow */ inset 0 0 14px 0 white,
+        inset -40px -30px 60px 0 purple, inset -40px -30px 70px 0 blue,
+        inset -40px -30px 100px 0 cyan, inset -40px -30px 140px 0 powderblue,
+        /* Outer shadow */ 0 0 20px 0 white, 10px 10px 20px 10px purple,
+        -10px -10px 20px 0 cyan;
+}
+
+.star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(193, 177, 191);
+    border-radius: 50%;
+}
+
+.one {
+    top: 50%;
+    left: -110px;
+    transform-origin: calc(200px + 50%);
+    box-shadow: 0 0 9px 1px rgb(175, 127, 169), 0 0 9px 1px rgb(244, 196, 164);
+
+    animation: orbit 120s linear infinite;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
+    }
 }

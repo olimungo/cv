@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import signal from 'signal-js';
+import { muteEvent } from './speaker';
+
+export const startAnimation = 'startAnimation';
 
 export function Hero() {
-    const [typewriterSound, setTypewriterSound] = useState<HTMLAudioElement>();
+    const [soundTypewriter, setSoundTypewriter] = useState<HTMLAudioElement>();
     const [catchPhrase, setCatchPhrase] = useState<HTMLSpanElement>();
+    const [muted, setMuted] = useState(false);
+    const mutedRef = useRef(muted);
+    mutedRef.current = muted;
 
     useEffect(() => {
-        const audioElement = document.getElementById(
-            'typewriter-sound'
-        ) as HTMLAudioElement;
+        const typewriterUrl = new URL(
+            '../assets/typewriter.mp3',
+            import.meta.url
+        );
 
-        if (audioElement) {
-            setTypewriterSound(audioElement);
+        if (typewriterUrl) {
+            setSoundTypewriter(new Audio(typewriterUrl.href));
         }
 
         const catchPhrase = document.getElementById('catch-phrase');
@@ -21,22 +29,36 @@ export function Hero() {
     }, []);
 
     useEffect(() => {
-        if (typewriterSound && catchPhrase) {
-            setTimeout(() => {
-                removeCatchPhrase(catchPhrase, typewriterSound);
-            }, 3000);
+        if (soundTypewriter && catchPhrase) {
+            signal.on(startAnimation, () => {
+                setTimeout(() => {
+                    removeCatchPhrase(catchPhrase, soundTypewriter);
+                }, 3000);
+            });
+
+            return () => signal.off(startAnimation);
         }
-    }, [typewriterSound, catchPhrase]);
+    }, [catchPhrase, soundTypewriter]);
+
+    // Check if sound is muted
+    useEffect(() => {
+        signal.on(muteEvent, (event: { muted: boolean }) => {
+            setMuted(event.muted);
+        });
+
+        return () => signal.off(muteEvent);
+    }, []);
 
     return (
-        <div className="m-8 ml-12">
-            <h1 className="text-5xl tracking-widest">olimungo</h1>
-            <div className="text-sm tracking-wide text-violet-100">
+        <div className="ml-12 mt-8 h-80 md:ml-24 md:mt-16">
+            <h1 className="text-5xl tracking-widest md:text-6xl">olimungo</h1>
+            <div className="text-sm tracking-wide text-violet-200">
                 SPACE MISSION: POSSIBLE!
             </div>
 
-            <div className="mt-20 text-2xl lg:mt-28">
-                Experienced developer. IT Project Manager.&nbsp;
+            <div className="mt-20 text-3xl md:mt-36 md:text-4xl">
+                Experienced developer. IT&nbsp;Project&nbsp;Manager.
+                <br />
                 <span id="catch-phrase" className="gradient">
                     Food&nbsp;lover.
                 </span>
@@ -57,7 +79,7 @@ function removeCatchPhrase(
         setTimeout(() => {
             const text = catchPhrase.innerText;
             catchPhrase.innerText = text.substring(0, text.length - 1);
-            playTyperwriterSound(typewriterSound);
+            playSoundTyperwriter(typewriterSound);
             removeCatchPhrase(catchPhrase, typewriterSound);
         }, Math.floor(Math.random() * 150) + 200);
     } else {
@@ -80,16 +102,20 @@ function addCatchPhrase(
             const text = catchPhrase.textContent || '';
             const char = newCatchPhrase.substring(text.length, text.length + 1);
             catchPhrase.textContent += char;
-            playTyperwriterSound(typewriterSound);
+
+            playSoundTyperwriter(typewriterSound);
+
             addCatchPhrase(catchPhrase, typewriterSound);
         }, Math.floor(Math.random() * 150) + 200);
     }
 }
 
-function playTyperwriterSound(typewriterSound: HTMLAudioElement) {
-    if (typewriterSound) {
-        // typewriterSound.play().catch(() => {
-        //     /*ignore*/
-        // });
+function playSoundTyperwriter(soundTtypewriter: HTMLAudioElement) {
+    if (soundTtypewriter) {
+        soundTtypewriter.volume = 0.2;
+
+        soundTtypewriter.play().catch(() => {
+            /*ignore*/
+        });
     }
 }

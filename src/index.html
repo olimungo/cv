@@ -21,19 +21,17 @@
     <body>
         <div
             id="main"
-            class="main via-86% h-full overflow-auto bg-gradient-to-b from-gradient-from from-0% via-gradient-via to-gradient-to to-100% text-primary"
+            class="main via-86% h-full overflow-auto overflow-x-hidden bg-gradient-to-b from-gradient-from from-0% via-gradient-via to-gradient-to to-100% text-primary"
         >
             <div id="app"></div>
 
             <div
                 id="canvas"
-                class="fixed bottom-0 h-[15rem] w-full bg-transparent"
+                class="fixed bottom-0 h-[15rem] w-full overflow-hidden bg-transparent"
             >
-                <canvas id="hub"></canvas>
+                <canvas class="overflow-hidden" id="hub"></canvas>
             </div>
         </div>
-
-        <audio id="typewriter-sound" src="./assets/typewriter.mp3"></audio>
 
         <script type="module" src="index.tsx"></script>
     </body>
