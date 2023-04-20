@@ -137,6 +137,11 @@ h1 {
     transition: all 0.5s ease-out;
 }
 
+.white {
+    filter: invert(100%) sepia(66%) saturate(175%) hue-rotate(137deg)
+        brightness(115%) contrast(100%) opacity(0.25);
+}
+
 /*
 //
 */

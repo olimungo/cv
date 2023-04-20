@@ -5,9 +5,9 @@ export function Intro(props: { onClick?: () => void }) {
     const defaultHandler = () => {};
     const { onClick = defaultHandler } = { ...props };
 
-    const [containerClassName, setContainerClassName] = useState('');
-    const [topClassName, setTopClassName] = useState('');
-    const [bottomClassName, setBottomClassName] = useState('');
+    const [containerClass, setContainerClass] = useState('');
+    const [topClass, setTopClass] = useState('');
+    const [bottomClass, setBottomClass] = useState('');
     const [container, setContainer] = useState<HTMLElement>();
     const [topSection, setTopSection] = useState<HTMLElement>();
     const [bottomSection, setBottomSection] = useState<HTMLElement>();
@@ -32,32 +32,29 @@ export function Intro(props: { onClick?: () => void }) {
 
     const handleClick = () => {
         if (container) {
-            setTimeout(() => {
-                setContainerClassName('hidden');
-                onClick();
-            }, 1000);
+            container.inert = true;
         }
 
+        onClick();
+
         if (topSection) {
-            setTopClassName('zoom-in');
+            setTopClass('zoom-in');
         }
 
         if (bottomSection) {
-            setBottomClassName('slide-down');
+            setBottomClass('slide-down');
         }
     };
 
     return (
         <div
             id="container"
-            className={`${containerClassName} fixed z-50 flex h-full w-full flex-col items-center justify-center bg-transparent`}
+            className={`${containerClass} fixed top-0 z-50 flex h-full w-full flex-col items-center justify-center bg-transparent`}
         >
             <div
                 id="top-section"
-                className={`${topClassName} h-full w-full bg-dark-space`}
+                className={`${topClass} h-full w-full bg-dark-space`}
             >
-                {/* <img srcSet={imageUrl.href} /> */}
-
                 <div className="flex h-full items-center justify-center">
                     <div className="planet">
                         <div className="star one"></div>
@@ -67,7 +64,7 @@ export function Intro(props: { onClick?: () => void }) {
 
             <div
                 id="bottom-section"
-                className={`${bottomClassName} h-2/6 w-full bg-dark-space`}
+                className={`${bottomClass} h-2/6 w-full bg-dark-space`}
             >
                 <div className="flex items-center justify-center">
                     <Button color="purple" onClick={handleClick}>

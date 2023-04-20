@@ -32,7 +32,7 @@ export function Hero() {
         if (soundTypewriter && catchPhrase) {
             signal.on(startAnimation, () => {
                 setTimeout(() => {
-                    removeCatchPhrase(catchPhrase, soundTypewriter);
+                    removeCatchPhrase();
                 }, 3000);
             });
 
@@ -49,8 +49,58 @@ export function Hero() {
         return () => signal.off(muteEvent);
     }, []);
 
+    const removeCatchPhrase = () => {
+        if (!catchPhrase) {
+            return;
+        }
+
+        if (catchPhrase.innerText !== '') {
+            setTimeout(() => {
+                const text = catchPhrase.innerText;
+                catchPhrase.innerText = text.substring(0, text.length - 1);
+                playSoundTyperwriter();
+                removeCatchPhrase();
+            }, Math.floor(Math.random() * 150) + 200);
+        } else {
+            addCatchPhrase();
+        }
+    };
+
+    const addCatchPhrase = () => {
+        const newCatchPhrase = 'Space enthusiast!';
+
+        if (!catchPhrase) {
+            return;
+        }
+
+        if (catchPhrase.innerText.length !== newCatchPhrase.length) {
+            setTimeout(() => {
+                const text = catchPhrase.textContent || '';
+                const char = newCatchPhrase.substring(
+                    text.length,
+                    text.length + 1
+                );
+                catchPhrase.textContent += char;
+
+                playSoundTyperwriter();
+
+                addCatchPhrase();
+            }, Math.floor(Math.random() * 150) + 200);
+        }
+    };
+
+    const playSoundTyperwriter = () => {
+        if (soundTypewriter && !mutedRef.current) {
+            soundTypewriter.volume = 0.1;
+
+            soundTypewriter.play().catch(() => {
+                /*ignore*/
+            });
+        }
+    };
+
     return (
-        <div className="ml-12 mt-8 h-80 md:ml-24 md:mt-16">
+        <div className="mt-8 h-80 md:mt-16">
             <h1 className="text-5xl tracking-widest md:text-6xl">olimungo</h1>
             <div className="text-sm tracking-wide text-violet-200">
                 SPACE MISSION: POSSIBLE!
@@ -65,57 +115,4 @@ export function Hero() {
             </div>
         </div>
     );
-}
-
-function removeCatchPhrase(
-    catchPhrase: HTMLSpanElement,
-    typewriterSound: HTMLAudioElement
-) {
-    if (!catchPhrase) {
-        return;
-    }
-
-    if (catchPhrase.innerText !== '') {
-        setTimeout(() => {
-            const text = catchPhrase.innerText;
-            catchPhrase.innerText = text.substring(0, text.length - 1);
-            playSoundTyperwriter(typewriterSound);
-            removeCatchPhrase(catchPhrase, typewriterSound);
-        }, Math.floor(Math.random() * 150) + 200);
-    } else {
-        addCatchPhrase(catchPhrase, typewriterSound);
-    }
-}
-
-function addCatchPhrase(
-    catchPhrase: HTMLSpanElement,
-    typewriterSound: HTMLAudioElement
-) {
-    const newCatchPhrase = 'Space enthusiast!';
-
-    if (!catchPhrase) {
-        return;
-    }
-
-    if (catchPhrase.innerText.length !== newCatchPhrase.length) {
-        setTimeout(() => {
-            const text = catchPhrase.textContent || '';
-            const char = newCatchPhrase.substring(text.length, text.length + 1);
-            catchPhrase.textContent += char;
-
-            playSoundTyperwriter(typewriterSound);
-
-            addCatchPhrase(catchPhrase, typewriterSound);
-        }, Math.floor(Math.random() * 150) + 200);
-    }
-}
-
-function playSoundTyperwriter(soundTtypewriter: HTMLAudioElement) {
-    if (soundTtypewriter) {
-        soundTtypewriter.volume = 0.2;
-
-        soundTtypewriter.play().catch(() => {
-            /*ignore*/
-        });
-    }
 }

@@ -10,7 +10,7 @@ export function Card(props: PropsWithChildren<CardProps>) {
 
     return (
         <div
-            className={`${className} text-md self-center rounded-xl bg-dark-space p-4 shadow-glow`}
+            className={`${className} text-md self-center rounded-md bg-dark-space p-4 shadow-glow`}
         >
             {children}
         </div>

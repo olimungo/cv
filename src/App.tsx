@@ -11,6 +11,7 @@ import {
     GetToKnowMe,
     Speaker,
     muteEvent,
+    CenteredContainer,
 } from './components';
 import data from './data.json';
 
@@ -20,6 +21,7 @@ export function App() {
     const [soundBeep, setSoundBeep] = useState<HTMLAudioElement>();
     const [imageJamesWebbHref, setImageJamesWebbHref] = useState('');
     const [imageIssHref, setImageIssHref] = useState('');
+    const [imagePioneerHref, setImagePioneerHref] = useState('');
     const [muted, setMuted] = useState(false);
     const mutedRef = useRef(muted);
     mutedRef.current = muted;
@@ -45,6 +47,15 @@ export function App() {
 
         if (imageIssUrl) {
             setImageIssHref(imageIssUrl.href);
+        }
+
+        const imagePioneerUrl = new URL(
+            './assets/pioneer.png',
+            import.meta.url
+        );
+
+        if (imagePioneerUrl) {
+            setImagePioneerHref(imagePioneerUrl.href);
         }
     }, []);
 
@@ -98,6 +109,7 @@ export function App() {
     }, [mainElement, revealElements]);
 
     const startAnimatingCatchPhrase = () => {
+        console.log('000');
         signal.emit(startAnimation);
 
         if (soundBeep) {
@@ -114,143 +126,155 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-60">
+            {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
+
             <Speaker />
 
-            <Intro onClick={startAnimatingCatchPhrase} />
+            <CenteredContainer>
+                <Hero />
 
-            <Hero />
-
-            <GetToKnowMe />
-
-            <Paragraph
-                className="mt-96"
-                title={data.sections['strongback-retract'].title}
-                period={data.sections['strongback-retract'].period}
-                content={data.sections['strongback-retract'].content}
-            />
-
-            <Paragraph
-                title={data.sections['startup'].title}
-                period={data.sections['startup'].period}
-                content={data.sections['startup'].content}
-            />
-
-            <Paragraph
-                title={data.sections['liftoff'].title}
-                period={data.sections['liftoff'].period}
-                content={data.sections['liftoff'].content}
-            />
-
-            <Card className="reveal-top mt-12">
-                <CardSkills
-                    role={data.sections['liftoff'].role}
-                    skillsAcquired={data.sections['liftoff']['skills-acquired']}
-                    technologiesUsed={
-                        data.sections['liftoff']['technologies-used']
-                    }
-                />
-            </Card>
+                <GetToKnowMe />
+            </CenteredContainer>
 
             <img
-                className="mt-32 w-[320px] self-center opacity-25 md:w-[500px]"
+                className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
+                srcSet={imagePioneerHref}
+                alt=""
+            />
+
+            <Panel className="py-12">
+                <CenteredContainer>
+                    <Paragraph
+                        title={data.sections['strongback-retract'].title}
+                        period={data.sections['strongback-retract'].period}
+                        content={data.sections['strongback-retract'].content}
+                    />
+                </CenteredContainer>
+            </Panel>
+
+            <CenteredContainer className="py-12">
+                <Paragraph
+                    title={data.sections['startup'].title}
+                    period={data.sections['startup'].period}
+                    content={data.sections['startup'].content}
+                />
+            </CenteredContainer>
+
+            <Panel className="py-12">
+                <CenteredContainer className="flex flex-col md:flex-row">
+                    <Paragraph
+                        title={data.sections['liftoff'].title}
+                        period={data.sections['liftoff'].period}
+                        content={data.sections['liftoff'].content}
+                    />
+
+                    <Card className="reveal-left mt-12 md:mt-0">
+                        <CardSkills
+                            role={data.sections['liftoff'].role}
+                            skillsAcquired={
+                                data.sections['liftoff']['skills-acquired']
+                            }
+                            technologiesUsed={
+                                data.sections['liftoff']['technologies-used']
+                            }
+                        />
+                    </Card>
+                </CenteredContainer>
+            </Panel>
+
+            <img
+                className="white my-16 w-[250px] self-center opacity-25 md:my-32 md:w-[500px]"
                 srcSet={imageIssHref}
                 alt=""
             />
 
-            <Paragraph
-                className="mt-28"
-                title={data.sections['max-q'].title}
-                period={data.sections['max-q'].period}
-                content={data.sections['max-q'].content}
-            />
-
-            <Card className="reveal-left mt-12">
-                <CardSkills
-                    role={data.sections['max-q'].role}
-                    skillsAcquired={data.sections['max-q']['skills-acquired']}
-                    technologiesUsed={
-                        data.sections['max-q']['technologies-used']
-                    }
+            <CenteredContainer className="flex flex-col py-12">
+                <Paragraph
+                    title={data.sections['max-q'].title}
+                    period={data.sections['max-q'].period}
+                    content={data.sections['max-q'].content}
                 />
-            </Card>
+
+                <Card className="reveal-left mt-12">
+                    <CardSkills
+                        role={data.sections['max-q'].role}
+                        skillsAcquired={
+                            data.sections['max-q']['skills-acquired']
+                        }
+                        technologiesUsed={
+                            data.sections['max-q']['technologies-used']
+                        }
+                    />
+                </Card>
+            </CenteredContainer>
 
             <img
-                className="mt-32 w-[300px] self-center opacity-25 md:w-[400px]"
+                className="white my-12 w-[250px] self-center opacity-25 md:my-16 md:w-[400px]"
                 srcSet={imageJamesWebbHref}
                 alt=""
             />
 
-            <Paragraph
-                className="mt-28"
-                title={data.sections['meco'].title}
-                period={data.sections['meco'].period}
-                content={data.sections['meco'].content}
-            />
-
-            <Card className="reveal-right mt-12">
-                <CardSkills
-                    role={data.sections['meco'].role}
-                    skillsAcquired={data.sections['meco']['skills-acquired']}
-                    technologiesUsed={
-                        data.sections['meco']['technologies-used']
-                    }
+            <CenteredContainer className="flex flex-col py-12">
+                <Paragraph
+                    title={data.sections['meco'].title}
+                    period={data.sections['meco'].period}
+                    content={data.sections['meco'].content}
                 />
-            </Card>
 
-            <Paragraph
-                className="mt-28"
-                title={data.sections['fairing'].title}
-                period={data.sections['fairing'].period}
-                content={data.sections['fairing'].content}
-            />
+                <Card className="reveal-top mt-12">
+                    <CardSkills
+                        role={data.sections['meco'].role}
+                        skillsAcquired={
+                            data.sections['meco']['skills-acquired']
+                        }
+                        technologiesUsed={
+                            data.sections['meco']['technologies-used']
+                        }
+                    />
+                </Card>
+            </CenteredContainer>
 
-            <Card className="reveal-top mt-12">
-                <CardSkills
-                    role={data.sections['fairing'].role}
-                    skillsAcquired={data.sections['fairing']['skills-acquired']}
-                    technologiesUsed={
-                        data.sections['fairing']['technologies-used']
-                    }
+            <CenteredContainer className="flex flex-col py-12 md:flex-row">
+                <Paragraph
+                    title={data.sections['fairing'].title}
+                    period={data.sections['fairing'].period}
+                    content={data.sections['fairing'].content}
                 />
-            </Card>
 
-            <Paragraph
-                className="mt-28"
-                title={data.sections['fairing'].title}
-                period={data.sections['fairing'].period}
-                content={data.sections['fairing'].content}
-            />
+                <Card className="reveal-top mt-12 md:ml-10 md:mt-0">
+                    <CardSkills
+                        role={data.sections['fairing'].role}
+                        skillsAcquired={
+                            data.sections['fairing']['skills-acquired']
+                        }
+                        technologiesUsed={
+                            data.sections['fairing']['technologies-used']
+                        }
+                    />
+                </Card>
+            </CenteredContainer>
 
-            <Card className="reveal-left mt-12">
-                <CardSkills
-                    role={data.sections['fairing'].role}
-                    skillsAcquired={data.sections['fairing']['skills-acquired']}
-                    technologiesUsed={
-                        data.sections['fairing']['technologies-used']
-                    }
-                />
-            </Card>
+            <Panel>
+                <CenteredContainer className="flex flex-col py-12 md:flex-row">
+                    <Paragraph
+                        title={data.sections['entry'].title}
+                        period={data.sections['entry'].period}
+                        content={data.sections['entry'].content}
+                    />
 
-            <Paragraph
-                className="mt-28"
-                title={data.sections['entry'].title}
-                period={data.sections['entry'].period}
-                content={data.sections['entry'].content}
-            />
-
-            <Card className="reveal-right mt-12">
-                <CardSkills
-                    role={data.sections['entry'].role}
-                    skillsAcquired={data.sections['entry']['skills-acquired']}
-                    technologiesUsed={
-                        data.sections['entry']['technologies-used']
-                    }
-                />
-            </Card>
-
-            {/* <Panel>
-                <Button>OK</Button>
-            </Panel> */}
+                    <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
+                        <CardSkills
+                            role={data.sections['entry'].role}
+                            skillsAcquired={
+                                data.sections['entry']['skills-acquired']
+                            }
+                            technologiesUsed={
+                                data.sections['entry']['technologies-used']
+                            }
+                        />
+                    </Card>
+                </CenteredContainer>
+            </Panel>
 
             {/* <div className="flex h-96 items-center justify-center bg-dark-space">
                 <div className="round-button mb-3 p-3 text-fuchsia-200">
