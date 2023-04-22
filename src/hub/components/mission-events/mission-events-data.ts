@@ -91,7 +91,7 @@ export const missionEventsData: Record<
     MECO: {
         labelPosition: 'up',
         fromAngle: 291,
-        toAngle: 297,
+        toAngle: 295,
         telemetry: {
             stage1Speed: 7895,
             stage1Altitude: 78.9,
@@ -106,7 +106,7 @@ export const missionEventsData: Record<
     FAIRING: {
         labelPosition: 'down',
         fromAngle: 292,
-        toAngle: 300,
+        toAngle: 296.5,
         telemetry: {
             stage1Speed: 7838,
             stage1Altitude: 82.6,

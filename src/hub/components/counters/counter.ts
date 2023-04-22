@@ -1,15 +1,15 @@
-import { SetupProps } from './setup-props';
-import { Vector } from './vector';
+import { CanvasProps } from '../../utils/canvas';
+import { Vector } from '../../utils/vector';
 
 export class Counter {
-    setupProps: SetupProps;
+    setupProps: CanvasProps;
     position: Vector;
     label: string;
     unit: string;
     gauge: number;
 
     constructor(
-        setupProps: SetupProps,
+        setupProps: CanvasProps,
         position: Vector,
         label: string,
         unit: string
@@ -24,18 +24,23 @@ export class Counter {
         this.gauge = gauge;
     }
 
-    draw(value: string) {
+    render(value: string) {
         const setupProps = this.setupProps;
         const ctx = setupProps.ctx;
 
         ctx.save();
 
+        // Dark background
         ctx.beginPath();
 
         ctx.arc(this.position.x, this.position.y, 60, 0, 2 * Math.PI);
 
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
         ctx.fill();
+
+        // Purple ring
+        ctx.strokeStyle = 'rgba(255, 144, 200, 0.4)';
+        ctx.lineWidth = 4;
 
         ctx.beginPath();
 
@@ -47,9 +52,10 @@ export class Counter {
             Vector.toRadian(40)
         );
 
-        ctx.strokeStyle = 'rgba(255, 0, 0, 0.4)';
-        ctx.lineWidth = 4;
         ctx.stroke();
+
+        // White ring
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
 
         ctx.beginPath();
 
@@ -61,9 +67,10 @@ export class Counter {
             Vector.toRadian(-20)
         );
 
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.lineWidth = 4;
         ctx.stroke();
+
+        // Grey ring
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
 
         ctx.beginPath();
 
@@ -75,10 +82,9 @@ export class Counter {
             Vector.toRadian(-20)
         );
 
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
-        ctx.lineWidth = 4;
         ctx.stroke();
 
+        // Text
         ctx.fillStyle = 'rgba(255, 255, 255, 0.7';
         ctx.textAlign = 'center';
         ctx.font = '300 11px "Exo 2"';

@@ -1,16 +1,16 @@
-import { SetupProps } from './setup-props';
+import { CanvasProps } from '../utils/canvas';
 
 export class Timer {
-    setupProps: SetupProps;
+    setupProps: CanvasProps;
     referenceTime: number;
 
-    constructor(setupProps: SetupProps) {
+    constructor(setupProps: CanvasProps) {
         this.setupProps = setupProps;
     }
 
     update() {}
 
-    draw() {
+    render() {
         const setupProps = this.setupProps;
         const ctx = setupProps.ctx;
         let timerText = 'T + 00:00:00';

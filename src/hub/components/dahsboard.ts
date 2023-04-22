@@ -1,11 +1,11 @@
-import { CounterGroup } from './counter-group';
-import { TelemetryData } from './mission-events';
-import { SetupProps } from './setup-props';
+import { CounterGroup } from './counters/counter-group';
+import { TelemetryData } from './mission-events/mission-events';
 import { Timer } from './timer';
-import { Vector } from './vector';
+import { Vector } from '../utils/vector';
+import { CanvasProps } from '../utils/canvas';
 
-export class Hub {
-    setupProps: SetupProps;
+export class Dashboard {
+    canvasProps: CanvasProps;
     anchor: Vector;
     timer: Timer;
     stage1Counters: CounterGroup;
@@ -15,21 +15,21 @@ export class Hub {
     stage2Opacity = 0;
     stage2OpacityStep = 0;
 
-    constructor(setupProps: SetupProps, anchor: Vector) {
-        this.setupProps = setupProps;
+    constructor(canvasProps: CanvasProps, anchor: Vector) {
+        this.canvasProps = canvasProps;
         this.anchor = anchor;
 
-        this.timer = new Timer(setupProps);
+        this.timer = new Timer(canvasProps);
 
         this.stage1Counters = new CounterGroup(
-            setupProps,
+            canvasProps,
             new Vector(100, 65),
             'STAGE 1 TELEMETRY'
         );
 
         this.stage2Counters = new CounterGroup(
-            setupProps,
-            new Vector(setupProps.width - 230, 65),
+            canvasProps,
+            new Vector(canvasProps.width - 230, 65),
             'STAGE 2 TELEMETRY'
         );
     }
@@ -76,14 +76,14 @@ export class Hub {
         }
     }
 
-    draw() {
-        const setupProps = this.setupProps;
+    render() {
+        const setupProps = this.canvasProps;
         const ctx = setupProps.ctx;
         const anchor = this.anchor;
 
         ctx.save();
 
-        // back grey lightly transparent
+        // Back grey lightly transparent
         ctx.beginPath();
 
         ctx.arc(
@@ -98,7 +98,7 @@ export class Hub {
         ctx.lineWidth = 2;
         ctx.fill();
 
-        // bottom dark
+        // Bottom dark
         ctx.beginPath();
 
         ctx.arc(
@@ -113,7 +113,7 @@ export class Hub {
         ctx.lineWidth = 2;
         ctx.fill();
 
-        // main line
+        // Main line
         ctx.beginPath();
 
         ctx.arc(
@@ -128,7 +128,7 @@ export class Hub {
         ctx.strokeStyle = '#aaa';
         ctx.stroke();
 
-        // overlay grey line
+        // Overlay grey line
         ctx.beginPath();
 
         ctx.arc(
@@ -143,7 +143,7 @@ export class Hub {
         ctx.lineWidth = 3;
         ctx.stroke();
 
-        // overlay grey line caret
+        // Overlay grey line caret
         ctx.beginPath();
 
         ctx.moveTo(
@@ -158,7 +158,7 @@ export class Hub {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        // sub grey line
+        // Sub grey line
         ctx.beginPath();
 
         ctx.arc(
@@ -173,20 +173,20 @@ export class Hub {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        this.timer.draw();
+        this.timer.render();
 
-        if (this.setupProps.width > 1000) {
+        if (this.canvasProps.width > 1000) {
             ctx.save();
 
             ctx.filter = `opacity(${this.stage1Opacity}%)`;
-            this.stage1Counters.draw();
+            this.stage1Counters.render();
 
             ctx.restore();
 
             ctx.save();
 
             ctx.filter = `opacity(${this.stage2Opacity}%)`;
-            this.stage2Counters.draw();
+            this.stage2Counters.render();
 
             ctx.restore();
         }

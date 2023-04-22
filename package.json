@@ -24,6 +24,7 @@
         "parcel": "^2.8.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "signal-js": "^3.0.1",
         "typescript": "^5.0.4"
     }
 }
