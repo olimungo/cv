@@ -92,9 +92,9 @@ h1 {
 
 .reveal-top {
     position: relative;
-    transform: translateY(2rem) scale(0.9);
+    transform: translateY(1rem) scaleX(0.95);
     opacity: 0;
-    transition: all 0.6s ease;
+    transition: all 0.4s ease;
 }
 
 .reveal-top.active {
@@ -104,25 +104,25 @@ h1 {
 
 .reveal-left {
     position: relative;
-    transform: translateX(5rem) scale(0.9);
+    transform: translateX(2rem);
     opacity: 0;
     transition: all 0.6s ease;
 }
 
 .reveal-left.active {
-    transform: translateX(0) scale(1);
+    transform: translateX(0);
     opacity: 1;
 }
 
 .reveal-right {
     position: relative;
-    transform: translateX(-5rem) scale(0.9);
+    transform: translateX(-5rem);
     opacity: 0;
     transition: all 0.6s ease;
 }
 
 .reveal-right.active {
-    transform: translateX(0) scale(1);
+    transform: translateX(0);
     opacity: 1;
 }
 
@@ -185,4 +185,74 @@ h1 {
     100% {
         transform: rotate(405deg);
     }
+}
+
+.progress {
+    background: #230f36cc;
+    border-radius: 25px;
+    padding: 4px;
+    box-shadow: inset 0 1px 2px #9797971a, 0 1px #9979aa54;
+}
+
+.progress-bar {
+    height: 10px;
+    border-radius: 10px;
+    background-image: -webkit-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    background-image: -moz-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    background-image: -o-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    transition: 0.4s linear;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.ten {
+    width: 10%;
+    background-color: #f63a0f;
+}
+
+.twentyfive {
+    width: 25%;
+    background-color: #f27011;
+}
+
+.fifty {
+    width: 50%;
+    background-color: #f2b01e;
+}
+
+.seventyfive {
+    width: 75%;
+    background-color: #f2d31b;
+}
+
+.eighty {
+    width: 80%;
+    background-color: #c0f21b;
+}
+
+.ninety {
+    width: 90%;
+    background-color: #99e01e;
+}
+
+.onehundred {
+    width: 100%;
+    background-color: #55a000;
 }

@@ -28,22 +28,6 @@ export function CardSkills(props: PanelSkillsProps) {
                         );
                     })}
                 </div>
-
-                {technologiesUsed && technologiesUsed.length > 0 && (
-                    <div className="">
-                        <div className="mb-2 text-primary">
-                            TECHNOLOGIES USED
-                        </div>
-
-                        {technologiesUsed.map((element, index) => {
-                            return (
-                                <div key={index} className="ml-2">
-                                    {element}
-                                </div>
-                            );
-                        })}
-                    </div>
-                )}
             </div>
         </div>
     );

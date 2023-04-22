@@ -85,13 +85,13 @@ export function Hero() {
                 playSoundTyperwriter();
 
                 addCatchPhrase();
-            }, Math.floor(Math.random() * 150) + 200);
+            }, Math.floor(Math.random() * 100) + 200);
         }
     };
 
     const playSoundTyperwriter = () => {
         if (soundTypewriter && !mutedRef.current) {
-            soundTypewriter.volume = 0.1;
+            soundTypewriter.volume = 0.2;
 
             soundTypewriter.play().catch(() => {
                 /*ignore*/

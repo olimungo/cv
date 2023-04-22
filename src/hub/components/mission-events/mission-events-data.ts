@@ -30,8 +30,8 @@ export const missionEventsData: Record<
     },
     'STRONGBACK\nRETRACT': {
         labelPosition: 'up',
-        fromAngle: 285,
-        toAngle: 275,
+        fromAngle: 275,
+        toAngle: 265,
         telemetry: {
             stage1Speed: 0,
             stage1Altitude: 0,
@@ -45,8 +45,8 @@ export const missionEventsData: Record<
     },
     STARTUP: {
         labelPosition: 'down',
-        fromAngle: 292,
-        toAngle: 288,
+        fromAngle: 282,
+        toAngle: 278,
         telemetry: {
             stage1Speed: 0,
             stage1Altitude: 0,
@@ -60,8 +60,8 @@ export const missionEventsData: Record<
     },
     LIFTOFF: {
         labelPosition: 'up',
-        fromAngle: 294,
-        toAngle: 294,
+        fromAngle: 284,
+        toAngle: 284,
         telemetry: {
             stage1Speed: 454,
             stage1Altitude: 1.5,
@@ -75,8 +75,8 @@ export const missionEventsData: Record<
     },
     'MAX-Q': {
         labelPosition: 'down',
-        fromAngle: 297,
-        toAngle: 300,
+        fromAngle: 287,
+        toAngle: 290,
         telemetry: {
             stage1Speed: 1320,
             stage1Altitude: 9.6,
@@ -90,8 +90,8 @@ export const missionEventsData: Record<
     },
     MECO: {
         labelPosition: 'up',
-        fromAngle: 301,
-        toAngle: 307,
+        fromAngle: 291,
+        toAngle: 295,
         telemetry: {
             stage1Speed: 7895,
             stage1Altitude: 78.9,
@@ -105,8 +105,8 @@ export const missionEventsData: Record<
     },
     FAIRING: {
         labelPosition: 'down',
-        fromAngle: 302,
-        toAngle: 310,
+        fromAngle: 292,
+        toAngle: 296.5,
         telemetry: {
             stage1Speed: 7838,
             stage1Altitude: 82.6,
@@ -120,8 +120,8 @@ export const missionEventsData: Record<
     },
     ENTRY: {
         labelPosition: 'up',
-        fromAngle: 310,
-        toAngle: 328,
+        fromAngle: 300,
+        toAngle: 318,
         telemetry: {
             stage1Speed: 5762,
             stage1Altitude: 45.0,
@@ -135,8 +135,8 @@ export const missionEventsData: Record<
     },
     LANDING: {
         labelPosition: 'down',
-        fromAngle: 313,
-        toAngle: 333,
+        fromAngle: 303,
+        toAngle: 323,
         telemetry: {
             stage1Speed: 0,
             stage1Altitude: 0,
@@ -150,8 +150,8 @@ export const missionEventsData: Record<
     },
     SECO: {
         labelPosition: 'up',
-        fromAngle: 314.4,
-        toAngle: 338,
+        fromAngle: 304.4,
+        toAngle: 328,
         telemetry: {
             stage1Speed: 0,
             stage1Altitude: 0,
@@ -165,8 +165,8 @@ export const missionEventsData: Record<
     },
     DEPLOY: {
         labelPosition: 'down',
-        fromAngle: 330,
-        toAngle: 348,
+        fromAngle: 320,
+        toAngle: 338,
         telemetry: {
             stage1Speed: 0,
             stage1Altitude: 0,

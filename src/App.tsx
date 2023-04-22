@@ -12,6 +12,7 @@ import {
     Speaker,
     muteEvent,
     CenteredContainer,
+    ProgressBar,
 } from './components';
 import data from './data.json';
 
@@ -91,7 +92,7 @@ export function App() {
                     const windowHeight = window.innerHeight;
                     const elementTop =
                         revealElements[index].getBoundingClientRect().top;
-                    const elementVisible = 300;
+                    const elementVisible = 400;
                     if (elementTop < windowHeight - elementVisible) {
                         revealElements[index].classList.add('active');
                     } else {
@@ -126,7 +127,7 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-60">
-            {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
+            <Intro onClick={startAnimatingCatchPhrase} />
 
             <Speaker />
 
@@ -168,7 +169,7 @@ export function App() {
                         content={data.sections['liftoff'].content}
                     />
 
-                    <Card className="reveal-left mt-12 md:mt-0">
+                    <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
                         <CardSkills
                             role={data.sections['liftoff'].role}
                             skillsAcquired={
@@ -195,7 +196,7 @@ export function App() {
                     content={data.sections['max-q'].content}
                 />
 
-                <Card className="reveal-left mt-12">
+                <Card className="reveal-right mt-12">
                     <CardSkills
                         role={data.sections['max-q'].role}
                         skillsAcquired={
@@ -241,7 +242,7 @@ export function App() {
                     content={data.sections['fairing'].content}
                 />
 
-                <Card className="reveal-top mt-12 md:ml-10 md:mt-0">
+                <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
                     <CardSkills
                         role={data.sections['fairing'].role}
                         skillsAcquired={
@@ -276,33 +277,65 @@ export function App() {
                 </CenteredContainer>
             </Panel>
 
-            {/* <div className="flex h-96 items-center justify-center bg-dark-space">
-                <div className="round-button mb-3 p-3 text-fuchsia-200">
-                    ACCEPT GDPR
+            <Panel className="mt-12 flex-col items-center py-12">
+                <div className="mb-10 text-2xl uppercase text-fuchsia-200">
+                    Recap skills
                 </div>
-            </div> */}
 
-            {/* <div className="text-md mx-56 my-20 rounded-md bg-slate-900 p-5 p-5 shadow-glow">
-                <div className="flex">
-                    <div>
-                        <div className="">SKILLS ACQUIRED</div>
-                        <div className="ml-5 mt-2 text-violet-50">Python</div>
-                        <div className="ml-5 text-violet-50">
-                            Micropython for IoT
-                        </div>
-                        <div className="ml-5 text-violet-50">Rust</div>
-                        <div className="ml-5 text-violet-50">React</div>
-                        <div className="ml-5 text-violet-50">HTML canvas</div>
-                        <div className="ml-5 text-violet-50">TailwindCSS</div>
+                <CenteredContainer className="flex justify-center">
+                    <div className="flex-col">
+                        <ProgressBar label="HTML" value="ten" />
+                        <ProgressBar label="SQL" value="twentyfive" />
+                        <ProgressBar label="Oracle" value="fifty" />
+                        <ProgressBar label="Java" value="seventyfive" />
+                        <ProgressBar
+                            label="JavaScript/TypeScript"
+                            value="eighty"
+                        />
+                        <ProgressBar label="Rust" value="ninety" />
+                        <ProgressBar label="Flash/Flex" value="onehundred" />
                     </div>
+
+                    <div className="ml-20 flex-col">
+                        <ProgressBar label="HTML" value="ten" />
+                        <ProgressBar label="SQL" value="twentyfive" />
+                        <ProgressBar label="Oracle" value="fifty" />
+                        <ProgressBar label="Java" value="seventyfive" />
+                        <ProgressBar
+                            label="JavaScript/TypeScript"
+                            value="eighty"
+                        />
+                        <ProgressBar label="Rust" value="ninety" />
+                        <ProgressBar label="Flash/Flex" value="onehundred" />
+                    </div>
+                </CenteredContainer>
+            </Panel>
+
+            <CenteredContainer className="py-12 text-lg">
+                <div className="mb-10 text-center text-2xl uppercase text-fuchsia-200">
+                    Languages
                 </div>
-            </div> */}
 
-            {/* <div className="absolute right-[-3rem] top-52">
-                    <img src="./illo-cpu-new.webp" alt="" width="600" />
-                </div> */}
+                <div className="mt-12 flex-col items-center py-12">
+                    <div>French</div>
+                    <div>Italian</div>
+                    <div>English</div>
+                    <div>Dutch</div>
+                </div>
+            </CenteredContainer>
 
-            {/* <div style="margin-bottom: 160rem"></div> */}
+            <Panel className="mt-12 flex-col items-center py-12">
+                <div className="mb-10 text-2xl uppercase text-fuchsia-200">
+                    Personal projects
+                </div>
+
+                <CenteredContainer className="text-lg">
+                    <div>Github</div>
+                    <div>Asteroids</div>
+                    <div>Game of life</div>
+                    <div>Planning Poker</div>
+                </CenteredContainer>
+            </Panel>
 
             <h1 className="my-16 self-center rounded-md  px-5 py-2 text-2xl md:my-32 md:text-4xl">
                 To the Moon and beyond...

@@ -7,5 +7,6 @@ export * from './hero';
 export * from './intro';
 export * from './panel';
 export * from './paragraph';
+export * from './progress-bar';
 export * from './speaker';
 export * from './tag';
