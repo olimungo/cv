@@ -13,12 +13,15 @@ import {
     speakerEventMuted,
     CenteredContainer,
     ProgressBar,
-    SkewedPanel,
-    Button,
     IntroCareerPanel,
     BachelorCareerPanel,
     StartCareerPanel,
     Connector,
+    PrivateSectorCareerPanel,
+    TrueQuestion,
+    BankingSectorCareerPanel,
+    EcFirstPartCareerPanel,
+    EcSecondPartCareerPanel,
 } from './components';
 import data from './data.json';
 import { missionEventCompleted } from './hub/components/mission-events/mission-event';
@@ -179,47 +182,25 @@ export function App() {
 
             <StartCareerPanel />
 
+            <Connector />
+
+            <PrivateSectorCareerPanel />
+
             <img
                 className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
                 srcSet="assets/pioneer.png"
                 alt=""
             />
 
-            <SkewedPanel className="py-12">
-                <CenteredContainer className="flex flex-col justify-center text-xl text-fuchsia-100 md:flex-row md:text-2xl">
-                    <i>
-                        The true question is not "Have we ever been to the
-                        Moon?"
-                        <br />
-                        ... but more "What color is the flag?"
-                    </i>
-                </CenteredContainer>
-            </SkewedPanel>
+            <TrueQuestion />
 
             <img
-                className="white my-16 w-[250px] self-center opacity-25 md:my-32 md:w-[500px]"
+                className="white my-12 w-[250px] self-center opacity-25 md:my-40 md:w-[500px]"
                 srcSet="assets/iss.png"
                 alt=""
             />
 
-            <CenteredContainer className="flex flex-col py-12">
-                <Paragraph
-                    period={data.sections['fairing'].period}
-                    content={data.sections['fairing'].content}
-                />
-
-                <Card className="reveal-right mt-12">
-                    <CardSkills
-                        role={data.sections['fairing'].role}
-                        skillsAcquired={
-                            data.sections['fairing']['skills-acquired']
-                        }
-                        technologiesUsed={
-                            data.sections['fairing']['technologies-used']
-                        }
-                    />
-                </Card>
-            </CenteredContainer>
+            <BankingSectorCareerPanel />
 
             <img
                 className="white my-12 w-[250px] self-center opacity-25 md:my-16 md:w-[400px]"
@@ -227,64 +208,13 @@ export function App() {
                 alt=""
             />
 
-            <CenteredContainer className="flex flex-col py-12">
-                <Paragraph
-                    period={data.sections['entry'].period}
-                    content={data.sections['entry'].content}
-                />
+            <EcFirstPartCareerPanel />
 
-                <Card className="reveal-top mt-12">
-                    <CardSkills
-                        role={data.sections['entry'].role}
-                        skillsAcquired={
-                            data.sections['entry']['skills-acquired']
-                        }
-                        technologiesUsed={
-                            data.sections['entry']['technologies-used']
-                        }
-                    />
-                </Card>
-            </CenteredContainer>
+            <Connector />
 
-            <CenteredContainer className="flex flex-col py-12 md:flex-row">
-                <Paragraph
-                    period={data.sections['landing'].period}
-                    content={data.sections['landing'].content}
-                />
+            <EcSecondPartCareerPanel />
 
-                <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
-                    <CardSkills
-                        role={data.sections['landing'].role}
-                        skillsAcquired={
-                            data.sections['landing']['skills-acquired']
-                        }
-                        technologiesUsed={
-                            data.sections['landing']['technologies-used']
-                        }
-                    />
-                </Card>
-            </CenteredContainer>
-
-            <Panel>
-                <CenteredContainer className="flex flex-col py-12 md:flex-row">
-                    <Paragraph
-                        period={data.sections['seco'].period}
-                        content={data.sections['seco'].content}
-                    />
-
-                    <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
-                        <CardSkills
-                            role={data.sections['seco'].role}
-                            skillsAcquired={
-                                data.sections['seco']['skills-acquired']
-                            }
-                            technologiesUsed={
-                                data.sections['seco']['technologies-used']
-                            }
-                        />
-                    </Card>
-                </CenteredContainer>
-            </Panel>
+            <Connector />
 
             <Panel className="mt-12 flex-col items-center py-12">
                 <div className="mb-10 text-2xl uppercase text-fuchsia-300">

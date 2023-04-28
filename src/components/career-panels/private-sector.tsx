@@ -6,7 +6,7 @@ import { Panel } from '../panel';
 import { Card } from '../card';
 import { CardSkills } from '../card-skills';
 
-export function StartCareerPanel(props: { className?: string }) {
+export function PrivateSectorCareerPanel(props: { className?: string }) {
     const { className = '' } = { ...props };
 
     return (
@@ -15,23 +15,27 @@ export function StartCareerPanel(props: { className?: string }) {
                 <CenteredContainer className="flex flex-col items-center md:flex-row">
                     <div className="text-md text-fuchsia-100 md:text-2xl">
                         <div className="mb-5">
-                            My career started at the European Commission as a
-                            contractual agent.
-                            <Tag label="1993-1995" className="ml-3" />
+                            Then I switched to the private sector as an employee
+                            for CANAL+ Belgique.
+                            <Tag label="1995-1997" className="ml-3" />
                         </div>
 
                         <div className="mb-5">
-                            My job was to maintain existing applications.
+                            I had to develop modules for the digital
+                            transformation, maintain existing applications and
+                            collaborate with other branches of the CANAL+ group
+                            (France and Poland).
                         </div>
                     </div>
 
-                    <Card className="reveal-left mt-12 shrink-0 md:ml-10 md:mt-0">
+                    <Card className="reveal-left mt-12 shrink-0 md:ml-10 md:mt-0 md:w-min xl:w-auto">
                         <CardSkills
                             role="Analyst/Software developer"
                             skillsAcquired={[
-                                'Oracle RDBMS',
-                                'Oracle Pro*C',
-                                'Accell/SQL (4GL)',
+                                'Oracle*Forms 3',
+                                'Oracle Forms 4.5',
+                                'Oracle PL/SQL',
+                                'BusinessObjects',
                             ]}
                         />
                     </Card>

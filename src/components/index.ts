@@ -13,3 +13,4 @@ export * from './progress-bar';
 export * from './skewed-panel';
 export * from './speaker';
 export * from './tag';
+export * from './true-question';
