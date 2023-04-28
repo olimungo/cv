@@ -33,6 +33,11 @@ export function Intro(props: { onClick?: () => void }) {
     const handleClick = () => {
         if (container) {
             container.inert = true;
+
+            setTimeout(() => {
+                setTopClass('hidden');
+                setBottomClass('hidden');
+            }, 1500);
         }
 
         onClick();
@@ -64,12 +69,17 @@ export function Intro(props: { onClick?: () => void }) {
 
             <div
                 id="bottom-section"
-                className={`${bottomClass} h-2/6 w-full bg-dark-space`}
+                className={`${bottomClass} flex h-2/6 w-full flex-col items-center bg-dark-space`}
             >
                 <div className="flex items-center justify-center">
                     <Button color="purple" onClick={handleClick}>
                         START MISSION
                     </Button>
+                </div>
+
+                <div className="mt-16 max-w-xs text-center text-xs text-fuchsia-200 md:max-w-2xl md:text-base">
+                    This site is totally reactive but the user experience is
+                    improved on large displays
                 </div>
             </div>
         </div>

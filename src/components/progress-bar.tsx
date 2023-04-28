@@ -19,7 +19,7 @@ export function ProgressBar(props: { label?: string; value: ProgressValue }) {
                     <div className={`progress-bar ${value}`}></div>
                 </div>
             </div>
-            <div className="ml-3 text-fuchsia-200">{label}</div>
+            <div className="ml-3 text-fuchsia-50">{label}</div>
         </div>
     );
 }

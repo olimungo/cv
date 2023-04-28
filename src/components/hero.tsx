@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import signal from 'signal-js';
-import { muteEvent } from './speaker';
+import { speakerEventMuted } from './speaker';
 
-export const startAnimation = 'startAnimation';
+export const startHeroAnimation = 'startAnimation';
 
 export function Hero() {
     const [soundTypewriter, setSoundTypewriter] = useState<HTMLAudioElement>();
@@ -13,7 +13,7 @@ export function Hero() {
 
     useEffect(() => {
         const typewriterUrl = new URL(
-            '../assets/typewriter.mp3',
+            '../../static/assets/typewriter.mp3',
             import.meta.url
         );
 
@@ -30,23 +30,21 @@ export function Hero() {
 
     useEffect(() => {
         if (soundTypewriter && catchPhrase) {
-            signal.on(startAnimation, () => {
-                setTimeout(() => {
-                    removeCatchPhrase();
-                }, 3000);
+            signal.on(startHeroAnimation, () => {
+                removeCatchPhrase();
             });
 
-            return () => signal.off(startAnimation);
+            return () => signal.off(startHeroAnimation);
         }
     }, [catchPhrase, soundTypewriter]);
 
     // Check if sound is muted
     useEffect(() => {
-        signal.on(muteEvent, (event: { muted: boolean }) => {
+        signal.on(speakerEventMuted, (event: { muted: boolean }) => {
             setMuted(event.muted);
         });
 
-        return () => signal.off(muteEvent);
+        return () => signal.off(speakerEventMuted);
     }, []);
 
     const removeCatchPhrase = () => {
@@ -60,7 +58,7 @@ export function Hero() {
                 catchPhrase.innerText = text.substring(0, text.length - 1);
                 playSoundTyperwriter();
                 removeCatchPhrase();
-            }, Math.floor(Math.random() * 150) + 200);
+            }, Math.floor(Math.random() * 200) + 200);
         } else {
             addCatchPhrase();
         }

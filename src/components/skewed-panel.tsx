@@ -5,11 +5,13 @@ interface PanelProps {
     className?: string;
 }
 
-export function Panel(props: PropsWithChildren<PanelProps>) {
+export function SkewedPanel(props: PropsWithChildren<PanelProps>) {
     const { className = '', children } = { ...props };
 
     return (
-        <div className={`${className} flex justify-center bg-light-space`}>
+        <div
+            className={`${className} diagonal flex w-full justify-center bg-dark-space p-12 md:p-24`}
+        >
             {children}
         </div>
     );

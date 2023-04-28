@@ -1,39 +1,39 @@
 {
     "sections": {
-        "strongback-retract": {
-            "title": "STRONGBACK RETRACT (birth)",
+        "liftoff": {
+            "title": "LIFTOFF (birth)",
             "period": "",
             "content": [
                 "I'm born in the early 1970's in Brussels, Belgium.",
-                "On the wall of my childhood bedroom, a poster of a man - Bruce McCandless - floating around in a chair, just above the Earth. Probably the most iconic space picture."
+                "On the wall of my childhood bedroom, a poster of a man - <i>Bruce McCandless</i> - floating around in a chair. To me, one of the most iconic space picture."
             ],
             "role": "",
             "skills-acquired": [],
             "technologies-used": []
         },
-        "startup": {
-            "title": "STARTUP (scholarship)",
+        "max-q": {
+            "title": "MAX-Q (scholarship)",
             "period": "1993",
             "content": [
                 "Bachelor in IT, Insitut Paul Lambin in Brussels.",
-                "End of study work at the European Commission in DG XII - Section Nouvelles Technologies: management of incoming and outgoing mails."
+                "End of study work at the European Commission in DG XII - Research and Development."
             ],
             "role": "",
             "skills-acquired": [],
             "technologies-used": []
         },
-        "liftoff": {
-            "title": "LIFTOFF (start of professional career)",
+        "meco": {
+            "title": "MECO (start of professional career)",
             "period": "1993-1995",
             "content": [
-                "Career started at the European Commission as a contractual agent.",
-                "Mission: maintaining existing applications and progress on the project initiated during the End of study work."
+                "My career started at the European Commission as a contractual agent.",
+                "My job was to maintain existing applications."
             ],
             "role": "Analyst/Programmer",
             "skills-acquired": ["Oracle", "Pro*C", "Accell/SQL (4GL)"],
             "technologies-used": []
         },
-        "max-q": {
+        "fairing": {
             "title": "MAX-Q (continuation of professional career)",
             "period": "1995-1997",
             "content": [
@@ -48,8 +48,8 @@
             ],
             "technologies-used": ["Oracle", "Pro*C"]
         },
-        "meco": {
-            "title": "MECO (continuation of professional career)",
+        "entry": {
+            "title": "ENTRY (continuation of professional career)",
             "period": "1995-1997",
             "content": [
                 "Working in the private sector as a  free-lancer for the Banking sector and the European Commission.",
@@ -68,8 +68,8 @@
                 "Oracle Pro*C"
             ]
         },
-        "fairing": {
-            "title": "FAIRING (continuation of professional career)",
+        "landing": {
+            "title": "LANDING (continuation of professional career)",
             "period": "2001-2012",
             "content": [
                 "Back at the European Commission as an Official agent.",
@@ -88,12 +88,14 @@
                 "Ant",
                 "ClearCase/ClearQuest",
                 "Atlassian Jira/Confluence",
+                "Scrum (Agile methodology)",
+                "Scrum (Agile methodology)",
                 "Scrum (Agile methodology)"
             ],
             "technologies-used": ["Oracle", "Oracle PL/SQL", "PowerBuilder"]
         },
-        "entry": {
-            "title": "ENTRY (continuation of professional career)",
+        "seco": {
+            "title": "SECO (continuation of professional career)",
             "period": "2012-today",
             "content": [
                 "Second part of my career at the Commission working for COMP and OIB.",

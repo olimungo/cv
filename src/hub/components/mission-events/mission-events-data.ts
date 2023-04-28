@@ -106,7 +106,7 @@ export const missionEventsData: Record<
     FAIRING: {
         labelPosition: 'down',
         fromAngle: 292,
-        toAngle: 296.5,
+        toAngle: 297.5,
         telemetry: {
             stage1Speed: 7838,
             stage1Altitude: 82.6,

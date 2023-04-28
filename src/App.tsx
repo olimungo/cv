@@ -6,57 +6,42 @@ import {
     CardSkills,
     Paragraph,
     Intro,
-    startAnimation,
+    startHeroAnimation,
     Panel,
     GetToKnowMe,
     Speaker,
-    muteEvent,
+    speakerEventMuted,
     CenteredContainer,
     ProgressBar,
+    SkewedPanel,
+    Button,
+    IntroCareerPanel,
+    BachelorCareerPanel,
+    StartCareerPanel,
+    Connector,
 } from './components';
 import data from './data.json';
+import { missionEventCompleted } from './hub/components/mission-events/mission-event';
+import { MissionEventLabel } from './hub/components/mission-events/mission-events';
 
 export function App() {
+    const [waitForIt, setWaitForIt] = useState(true);
     const [mainElement, setMainElement] = useState<HTMLElement>();
     const [revealElements, setRevealElement] = useState<Element[]>();
     const [soundBeep, setSoundBeep] = useState<HTMLAudioElement>();
-    const [imageJamesWebbHref, setImageJamesWebbHref] = useState('');
-    const [imageIssHref, setImageIssHref] = useState('');
-    const [imagePioneerHref, setImagePioneerHref] = useState('');
     const [muted, setMuted] = useState(false);
     const mutedRef = useRef(muted);
     mutedRef.current = muted;
 
     // Load assets
     useEffect(() => {
-        const soundBeepUrl = new URL('./assets/beep.mp3', import.meta.url);
+        const soundBeepUrl = new URL(
+            '../static/assets/beep.mp3',
+            import.meta.url
+        );
 
         if (soundBeepUrl) {
             setSoundBeep(new Audio(soundBeepUrl.href));
-        }
-
-        const imageJamesWebbUrl = new URL(
-            './assets/james-webb.png',
-            import.meta.url
-        );
-
-        if (imageJamesWebbUrl) {
-            setImageJamesWebbHref(imageJamesWebbUrl.href);
-        }
-
-        const imageIssUrl = new URL('./assets/iss.png', import.meta.url);
-
-        if (imageIssUrl) {
-            setImageIssHref(imageIssUrl.href);
-        }
-
-        const imagePioneerUrl = new URL(
-            './assets/pioneer.png',
-            import.meta.url
-        );
-
-        if (imagePioneerUrl) {
-            setImagePioneerHref(imagePioneerUrl.href);
         }
     }, []);
 
@@ -74,15 +59,53 @@ export function App() {
 
             setRevealElement([...revealsTop, ...revealsLeft, ...revealsRight]);
         }
+
+        const firstPanel = document.getElementById('first-panel');
+
+        if (firstPanel) {
+            const windowHeight = window.innerHeight;
+
+            // Make sure that the first panel is not visible independently of the
+            // devices' height
+            firstPanel.style.marginTop =
+                windowHeight - firstPanel.offsetTop + 300 + 'px';
+        }
     }, []);
 
     // Check if sound is muted
     useEffect(() => {
-        signal.on(muteEvent, (event: { muted: boolean }) => {
+        signal.on(speakerEventMuted, (event: { muted: boolean }) => {
             setMuted(event.muted);
         });
 
-        return () => signal.off(muteEvent);
+        return () => signal.off(speakerEventMuted);
+    }, []);
+
+    // Check mission events for completion
+    useEffect(() => {
+        let timeoutLiftoff;
+
+        signal.on(
+            missionEventCompleted,
+            (event: { label: MissionEventLabel; completed: boolean }) => {
+                if (event.label === 'LIFTOFF') {
+                    const rocket = document.getElementById('rocket');
+
+                    if (rocket) {
+                        if (event.completed) {
+                            timeoutLiftoff = setTimeout(() => {
+                                rocket.classList.add('active');
+                            }, 1500);
+                        } else {
+                            clearTimeout(timeoutLiftoff);
+                            rocket.classList.remove('active');
+                        }
+                    }
+                }
+            }
+        );
+
+        return () => signal.off(missionEventCompleted);
     }, []);
 
     useEffect(() => {
@@ -93,6 +116,7 @@ export function App() {
                     const elementTop =
                         revealElements[index].getBoundingClientRect().top;
                     const elementVisible = 400;
+
                     if (elementTop < windowHeight - elementVisible) {
                         revealElements[index].classList.add('active');
                     } else {
@@ -110,8 +134,9 @@ export function App() {
     }, [mainElement, revealElements]);
 
     const startAnimatingCatchPhrase = () => {
-        console.log('000');
-        signal.emit(startAnimation);
+        setTimeout(() => {
+            signal.emit(startHeroAnimation);
+        }, 3000);
 
         if (soundBeep) {
             setInterval(() => {
@@ -127,7 +152,7 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-60">
-            <Intro onClick={startAnimatingCatchPhrase} />
+            {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
 
             <Speaker />
 
@@ -137,112 +162,53 @@ export function App() {
                 <GetToKnowMe />
             </CenteredContainer>
 
+            <div id="first-panel">
+                <IntroCareerPanel />
+            </div>
+
             <img
-                className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
-                srcSet={imagePioneerHref}
+                id="rocket"
+                className="liftoff mt-20 w-[200px] self-center opacity-60 md:w-[300px]"
+                srcSet="assets/ariane-6.png"
                 alt=""
             />
 
-            <Panel className="py-12">
-                <CenteredContainer>
-                    <Paragraph
-                        title={data.sections['strongback-retract'].title}
-                        period={data.sections['strongback-retract'].period}
-                        content={data.sections['strongback-retract'].content}
-                    />
+            <BachelorCareerPanel />
+
+            <Connector />
+
+            <StartCareerPanel />
+
+            <img
+                className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
+                srcSet="assets/pioneer.png"
+                alt=""
+            />
+
+            <SkewedPanel className="py-12">
+                <CenteredContainer className="flex flex-col justify-center text-xl text-fuchsia-100 md:flex-row md:text-2xl">
+                    <i>
+                        The true question is not "Have we ever been to the
+                        Moon?"
+                        <br />
+                        ... but more "What color is the flag?"
+                    </i>
                 </CenteredContainer>
-            </Panel>
-
-            <CenteredContainer className="py-12">
-                <Paragraph
-                    title={data.sections['startup'].title}
-                    period={data.sections['startup'].period}
-                    content={data.sections['startup'].content}
-                />
-            </CenteredContainer>
-
-            <Panel className="py-12">
-                <CenteredContainer className="flex flex-col md:flex-row">
-                    <Paragraph
-                        title={data.sections['liftoff'].title}
-                        period={data.sections['liftoff'].period}
-                        content={data.sections['liftoff'].content}
-                    />
-
-                    <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
-                        <CardSkills
-                            role={data.sections['liftoff'].role}
-                            skillsAcquired={
-                                data.sections['liftoff']['skills-acquired']
-                            }
-                            technologiesUsed={
-                                data.sections['liftoff']['technologies-used']
-                            }
-                        />
-                    </Card>
-                </CenteredContainer>
-            </Panel>
+            </SkewedPanel>
 
             <img
                 className="white my-16 w-[250px] self-center opacity-25 md:my-32 md:w-[500px]"
-                srcSet={imageIssHref}
+                srcSet="assets/iss.png"
                 alt=""
             />
 
             <CenteredContainer className="flex flex-col py-12">
                 <Paragraph
-                    title={data.sections['max-q'].title}
-                    period={data.sections['max-q'].period}
-                    content={data.sections['max-q'].content}
-                />
-
-                <Card className="reveal-right mt-12">
-                    <CardSkills
-                        role={data.sections['max-q'].role}
-                        skillsAcquired={
-                            data.sections['max-q']['skills-acquired']
-                        }
-                        technologiesUsed={
-                            data.sections['max-q']['technologies-used']
-                        }
-                    />
-                </Card>
-            </CenteredContainer>
-
-            <img
-                className="white my-12 w-[250px] self-center opacity-25 md:my-16 md:w-[400px]"
-                srcSet={imageJamesWebbHref}
-                alt=""
-            />
-
-            <CenteredContainer className="flex flex-col py-12">
-                <Paragraph
-                    title={data.sections['meco'].title}
-                    period={data.sections['meco'].period}
-                    content={data.sections['meco'].content}
-                />
-
-                <Card className="reveal-top mt-12">
-                    <CardSkills
-                        role={data.sections['meco'].role}
-                        skillsAcquired={
-                            data.sections['meco']['skills-acquired']
-                        }
-                        technologiesUsed={
-                            data.sections['meco']['technologies-used']
-                        }
-                    />
-                </Card>
-            </CenteredContainer>
-
-            <CenteredContainer className="flex flex-col py-12 md:flex-row">
-                <Paragraph
-                    title={data.sections['fairing'].title}
                     period={data.sections['fairing'].period}
                     content={data.sections['fairing'].content}
                 />
 
-                <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
+                <Card className="reveal-right mt-12">
                     <CardSkills
                         role={data.sections['fairing'].role}
                         skillsAcquired={
@@ -255,22 +221,65 @@ export function App() {
                 </Card>
             </CenteredContainer>
 
+            <img
+                className="white my-12 w-[250px] self-center opacity-25 md:my-16 md:w-[400px]"
+                srcSet="assets/james-webb.png"
+                alt=""
+            />
+
+            <CenteredContainer className="flex flex-col py-12">
+                <Paragraph
+                    period={data.sections['entry'].period}
+                    content={data.sections['entry'].content}
+                />
+
+                <Card className="reveal-top mt-12">
+                    <CardSkills
+                        role={data.sections['entry'].role}
+                        skillsAcquired={
+                            data.sections['entry']['skills-acquired']
+                        }
+                        technologiesUsed={
+                            data.sections['entry']['technologies-used']
+                        }
+                    />
+                </Card>
+            </CenteredContainer>
+
+            <CenteredContainer className="flex flex-col py-12 md:flex-row">
+                <Paragraph
+                    period={data.sections['landing'].period}
+                    content={data.sections['landing'].content}
+                />
+
+                <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
+                    <CardSkills
+                        role={data.sections['landing'].role}
+                        skillsAcquired={
+                            data.sections['landing']['skills-acquired']
+                        }
+                        technologiesUsed={
+                            data.sections['landing']['technologies-used']
+                        }
+                    />
+                </Card>
+            </CenteredContainer>
+
             <Panel>
                 <CenteredContainer className="flex flex-col py-12 md:flex-row">
                     <Paragraph
-                        title={data.sections['entry'].title}
-                        period={data.sections['entry'].period}
-                        content={data.sections['entry'].content}
+                        period={data.sections['seco'].period}
+                        content={data.sections['seco'].content}
                     />
 
                     <Card className="reveal-left mt-12 md:ml-10 md:mt-0">
                         <CardSkills
-                            role={data.sections['entry'].role}
+                            role={data.sections['seco'].role}
                             skillsAcquired={
-                                data.sections['entry']['skills-acquired']
+                                data.sections['seco']['skills-acquired']
                             }
                             technologiesUsed={
-                                data.sections['entry']['technologies-used']
+                                data.sections['seco']['technologies-used']
                             }
                         />
                     </Card>
@@ -278,7 +287,7 @@ export function App() {
             </Panel>
 
             <Panel className="mt-12 flex-col items-center py-12">
-                <div className="mb-10 text-2xl uppercase text-fuchsia-200">
+                <div className="mb-10 text-2xl uppercase text-fuchsia-300">
                     Recap skills
                 </div>
 
@@ -308,6 +317,8 @@ export function App() {
                         <ProgressBar label="Rust" value="ninety" />
                         <ProgressBar label="Flash/Flex" value="onehundred" />
                     </div>
+
+                    <div>Senior Assistant</div>
                 </CenteredContainer>
             </Panel>
 
