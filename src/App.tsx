@@ -67,7 +67,7 @@ export function App() {
             // Make sure that the first panel is not visible independently of the
             // devices' height
             firstPanel.style.marginTop =
-                windowHeight - firstPanel.offsetTop + 300 + 'px';
+                windowHeight - firstPanel.offsetTop + 50 + 'px';
         }
     }, []);
 
@@ -151,22 +151,20 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-72">
-            {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
+            <Intro onClick={startAnimatingCatchPhrase} />
 
             <Speaker />
 
             <Hero />
 
             <div id="first-panel">
-                <div className="mt-96"></div>
                 <IntroCareerPanel />
             </div>
 
             <img
                 id="rocket"
-                className="liftoff mt-20 w-[200px] self-center opacity-60 md:w-[300px]"
-                srcSet="assets/ariane-6.png"
-                alt=""
+                className="liftoff mt-96 w-[200px] self-center opacity-60 md:w-[300px]"
+                srcSet="assets/ariane-6.webp"
             />
 
             <BachelorCareerPanel />
@@ -181,8 +179,7 @@ export function App() {
 
             <img
                 className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
-                srcSet="assets/pioneer.png"
-                alt=""
+                srcSet="assets/pioneer.webp"
             />
 
             <TrueQuestion />
@@ -190,8 +187,7 @@ export function App() {
             <div className="self-center opacity-20">
                 <img
                     className="white reveal-top my-12 w-[250px] md:my-40 md:w-[500px]"
-                    srcSet="assets/iss.png"
-                    alt=""
+                    srcSet="assets/iss.webp"
                 />
             </div>
 
@@ -200,8 +196,7 @@ export function App() {
             <div className="self-center opacity-20">
                 <img
                     className="white reveal-top my-12 w-[250px] md:my-16 md:w-[400px]"
-                    srcSet="assets/james-webb.png"
-                    alt=""
+                    srcSet="assets/james-webb.webp"
                 />
             </div>
 

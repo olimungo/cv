@@ -3,6 +3,7 @@ import { CenteredContainer } from '../centered-container';
 import { Panel } from '../panel';
 import { Card } from '../card';
 import { CardSkills } from '../card-skills';
+import { RaisedCard } from '../raised-card';
 
 export function EcThirdPartCareerPanel(props: { className?: string }) {
     const { className = '' } = props;
@@ -17,11 +18,26 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
                             In my portfolio, there are IT systems related to
                             operational and logistics operations
                             <div className="py-8 pl-8 md:pl-16">
-                                <Domain label="Historical Archives of the Commission" />
-                                <Domain label="Mobility (to recover commuting expenses)" />
-                                <Domain label="Catering (to order food and drinks for professional events)" />
-                                <Domain label="VIPs Transport Service and cars fleet management" />
-                                <Domain label="Business cards" />
+                                <Domain
+                                    image="folder"
+                                    label="Historical Archives of the Commission"
+                                />
+                                <Domain
+                                    image="bike"
+                                    label="Mobility (to recover commuting expenses)"
+                                />
+                                <Domain
+                                    image="cutlery"
+                                    label="Catering (to order food and drinks for professional events)"
+                                />
+                                <Domain
+                                    image="car-key"
+                                    label="VIPs Transport Service and cars fleet management"
+                                />
+                                <Domain
+                                    image="business-cards"
+                                    label="Business cards"
+                                />
                             </div>
                             My role is supported by a dedicated team of 12
                             professionals who work with me to ensure that these
@@ -56,12 +72,21 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
     );
 }
 
-function Domain(props: { label: string }) {
-    const { label } = props;
+function Domain(props: { label: string; image?: string }) {
+    const { label, image = 'folder' } = props;
 
     return (
-        <div className="reveal-top mb-3 table rounded-md bg-dark-space px-6 py-4 md:mb-5 md:text-lg">
-            {label}
-        </div>
+        <RaisedCard className="reveal-top mb-3 table rounded-md bg-dark-space px-6 py-4 md:mb-5 md:text-lg">
+            <div className="flex items-center">
+                <div className="mr-5 rounded-full border p-2 md:p-3">
+                    <img
+                        className="purple w-8"
+                        srcSet={`assets/${image}.png`}
+                    />
+                </div>
+
+                <div>{label}</div>
+            </div>
+        </RaisedCard>
     );
 }

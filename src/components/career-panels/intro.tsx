@@ -10,8 +10,16 @@ export function IntroCareerPanel(props: { className?: string }) {
             <SkewedPanel>
                 <CenteredContainer className="flex flex-col items-center md:flex-row">
                     <div className="text-md text-fuchsia-100 md:text-2xl">
-                        <div className="mb-5">
-                            I'm born in the early 1970's in Brussels, Belgium.
+                        <div className="mb-5 flex">
+                            <img
+                                className="pink relative bottom-1 mr-2 h-8 md:bottom-2 md:mr-4 md:h-16"
+                                srcSet="assets/quote.png"
+                            />
+
+                            <div>
+                                I'm born in the early 1970's in Brussels,
+                                Belgium.
+                            </div>
                         </div>
 
                         <div className="mb-5">
@@ -23,7 +31,7 @@ export function IntroCareerPanel(props: { className?: string }) {
 
                     <img
                         className="reveal-left mt-12 w-[150px] rounded-full md:ml-16 md:mt-0 md:w-[500px]"
-                        srcSet="assets/mc-candless.png"
+                        srcSet="assets/mc-candless.webp"
                         alt=""
                     />
                 </CenteredContainer>

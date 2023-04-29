@@ -101,7 +101,7 @@ export function Hero() {
 
     return (
         <CenteredContainer>
-            <div className="mt-8 h-80 md:mt-16">
+            <div className="mt-8 md:mt-16">
                 <h1 className="text-5xl tracking-widest md:text-6xl">
                     olimungo
                 </h1>
@@ -109,7 +109,7 @@ export function Hero() {
                     SPACE MISSION: POSSIBLE!
                 </div>
 
-                <div className="mt-20 text-3xl md:mt-36 md:text-4xl">
+                <div className="mt-12 text-3xl md:mt-36 md:text-4xl">
                     Experienced developer. IT&nbsp;Project&nbsp;Manager.
                     <br />
                     <span id="catch-phrase" className="gradient">

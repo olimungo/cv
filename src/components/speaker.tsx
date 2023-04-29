@@ -13,8 +13,8 @@ export function Speaker() {
 
     return (
         <img
-            className="fixed right-6 top-6 z-50 w-6 opacity-70 md:right-12 md:top-10 md:w-8"
-            srcSet={muted ? 'assets/speaker-mute.svg' : 'assets/speaker.svg'}
+            className="pink fixed right-5 top-6 z-10 w-8 opacity-75 md:right-8 md:top-10 md:w-10"
+            srcSet={muted ? 'assets/speaker-muted.png' : 'assets/speaker.png'}
             onClick={mute}
         />
     );

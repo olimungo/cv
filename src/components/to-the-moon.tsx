@@ -9,7 +9,7 @@ export function ToTheMoon(props: { className?: string }) {
         >
             <img
                 className="w-[350px] opacity-20 md:w-[600px]"
-                srcSet="assets/moon.png"
+                srcSet="assets/moon.webp"
             />
 
             <h1 className="absolute bottom-12 rounded-md text-xl tracking-wider text-fuchsia-200 md:bottom-24 md:text-4xl">

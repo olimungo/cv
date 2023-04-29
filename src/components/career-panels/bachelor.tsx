@@ -11,8 +11,8 @@ export function BachelorCareerPanel(props: { className?: string }) {
             <Panel className="w-full p-12">
                 <CenteredContainer className="flex flex-col-reverse items-center md:flex-row">
                     <img
-                        className="reveal-right mt-5 w-[15rem] shadow-glow md:mr-16 md:mt-0 md:w-[22rem]"
-                        srcSet="assets/armstrong-number.png"
+                        className="reveal-right mt-5 w-[200px] shadow-glow md:mr-16 md:mt-0 md:w-[350px]"
+                        srcSet="assets/armstrong-number.webp"
                     />
 
                     <div className="text-md text-fuchsia-100 md:text-2xl">

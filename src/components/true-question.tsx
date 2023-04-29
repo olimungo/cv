@@ -7,7 +7,11 @@ export function TrueQuestion(props: { className?: string }) {
 
     return (
         <SkewedPanel className="py-12">
-            <CenteredContainer className="flex flex-col justify-center text-xl text-fuchsia-100 md:flex-row md:text-2xl">
+            <CenteredContainer className="flex justify-center text-xl text-fuchsia-100 md:text-2xl">
+                <img
+                    className="pink relative bottom-1 mr-2 h-8 md:bottom-2 md:mr-4 md:h-16"
+                    srcSet="assets/quote.png"
+                />
                 <i>
                     The true question is not "Have we ever been to the Moon?"
                     <br />

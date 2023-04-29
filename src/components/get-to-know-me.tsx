@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 export function GetToKnowMe() {
     return (
-        <div className="mt-36 flex justify-center text-sm opacity-75 md:text-lg">
+        <div className="mt-24 flex justify-center text-sm opacity-75 md:mt-44 md:text-lg">
             <div className="flex rounded-md border-2 border-fuchsia-200">
                 <div className="bold bg-fuchsia-200 px-3 py-2 text-dark-space">
                     <div className="flex h-full items-center">
