@@ -7,7 +7,7 @@ import { Card } from '../card';
 import { CardSkills } from '../card-skills';
 
 export function PrivateSectorCareerPanel(props: { className?: string }) {
-    const { className = '' } = { ...props };
+    const { className = '' } = props;
 
     return (
         <div className={`${className} flex justify-center`}>

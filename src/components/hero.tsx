@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import signal from 'signal-js';
 import { speakerEventMuted } from './speaker';
+import { GetToKnowMe } from './get-to-know-me';
+import { CenteredContainer } from './centered-container';
 
 export const startHeroAnimation = 'startAnimation';
 
@@ -98,19 +100,25 @@ export function Hero() {
     };
 
     return (
-        <div className="mt-8 h-80 md:mt-16">
-            <h1 className="text-5xl tracking-widest md:text-6xl">olimungo</h1>
-            <div className="text-sm tracking-wide text-violet-200">
-                SPACE MISSION: POSSIBLE!
+        <CenteredContainer>
+            <div className="mt-8 h-80 md:mt-16">
+                <h1 className="text-5xl tracking-widest md:text-6xl">
+                    olimungo
+                </h1>
+                <div className="text-sm tracking-wide text-violet-200">
+                    SPACE MISSION: POSSIBLE!
+                </div>
+
+                <div className="mt-20 text-3xl md:mt-36 md:text-4xl">
+                    Experienced developer. IT&nbsp;Project&nbsp;Manager.
+                    <br />
+                    <span id="catch-phrase" className="gradient">
+                        Food&nbsp;lover.
+                    </span>
+                </div>
             </div>
 
-            <div className="mt-20 text-3xl md:mt-36 md:text-4xl">
-                Experienced developer. IT&nbsp;Project&nbsp;Manager.
-                <br />
-                <span id="catch-phrase" className="gradient">
-                    Food&nbsp;lover.
-                </span>
-            </div>
-        </div>
+            <GetToKnowMe />
+        </CenteredContainer>
     );
 }

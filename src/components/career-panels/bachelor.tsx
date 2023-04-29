@@ -4,14 +4,14 @@ import { Tag } from '../tag';
 import { Panel } from '../panel';
 
 export function BachelorCareerPanel(props: { className?: string }) {
-    const { className = '' } = { ...props };
+    const { className = '' } = props;
 
     return (
         <div className={`${className} flex justify-center`}>
             <Panel className="w-full p-12">
                 <CenteredContainer className="flex flex-col-reverse items-center md:flex-row">
                     <img
-                        className="reveal-right w-[15rem] shadow-glow md:mr-28 md:w-[22rem]"
+                        className="reveal-right mt-5 w-[15rem] shadow-glow md:mr-16 md:mt-0 md:w-[22rem]"
                         srcSet="assets/armstrong-number.png"
                     />
 

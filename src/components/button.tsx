@@ -9,12 +9,7 @@ interface ButtonProps {
 
 export function Button(props: PropsWithChildren<ButtonProps>) {
     const defaultHandler = () => {};
-    const {
-        className = '',
-        children,
-        color,
-        onClick = defaultHandler,
-    } = { ...props };
+    const { className = '', children, color, onClick = defaultHandler } = props;
 
     const [internalClassName, setInternalClassName] = useState('round-button');
 

@@ -3,7 +3,7 @@ import { SkewedPanel } from '../skewed-panel';
 import { CenteredContainer } from '../centered-container';
 
 export function IntroCareerPanel(props: { className?: string }) {
-    const { className = '' } = { ...props };
+    const { className = '' } = props;
 
     return (
         <div className={`${className} flex justify-center`}>

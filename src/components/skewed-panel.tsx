@@ -6,7 +6,7 @@ interface PanelProps {
 }
 
 export function SkewedPanel(props: PropsWithChildren<PanelProps>) {
-    const { className = '', children } = { ...props };
+    const { className = '', children } = props;
 
     return (
         <div

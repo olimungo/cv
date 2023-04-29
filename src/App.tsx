@@ -1,18 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import signal from 'signal-js';
 import {
-    Card,
     Hero,
-    CardSkills,
-    Paragraph,
     Intro,
     startHeroAnimation,
-    Panel,
-    GetToKnowMe,
     Speaker,
     speakerEventMuted,
-    CenteredContainer,
-    ProgressBar,
     IntroCareerPanel,
     BachelorCareerPanel,
     StartCareerPanel,
@@ -22,13 +15,16 @@ import {
     BankingSectorCareerPanel,
     EcFirstPartCareerPanel,
     EcSecondPartCareerPanel,
+    EcThirdPartCareerPanel,
+    RecapSkills,
+    Languages,
+    PersonalProjects,
+    ToTheMoon,
 } from './components';
-import data from './data.json';
 import { missionEventCompleted } from './hub/components/mission-events/mission-event';
 import { MissionEventLabel } from './hub/components/mission-events/mission-events';
 
 export function App() {
-    const [waitForIt, setWaitForIt] = useState(true);
     const [mainElement, setMainElement] = useState<HTMLElement>();
     const [revealElements, setRevealElement] = useState<Element[]>();
     const [soundBeep, setSoundBeep] = useState<HTMLAudioElement>();
@@ -154,18 +150,15 @@ export function App() {
     };
 
     return (
-        <div className="flex flex-col pb-60">
+        <div className="flex flex-col pb-72">
             {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
 
             <Speaker />
 
-            <CenteredContainer>
-                <Hero />
-
-                <GetToKnowMe />
-            </CenteredContainer>
+            <Hero />
 
             <div id="first-panel">
+                <div className="mt-96"></div>
                 <IntroCareerPanel />
             </div>
 
@@ -194,19 +187,23 @@ export function App() {
 
             <TrueQuestion />
 
-            <img
-                className="white my-12 w-[250px] self-center opacity-25 md:my-40 md:w-[500px]"
-                srcSet="assets/iss.png"
-                alt=""
-            />
+            <div className="self-center opacity-20">
+                <img
+                    className="white reveal-top my-12 w-[250px] md:my-40 md:w-[500px]"
+                    srcSet="assets/iss.png"
+                    alt=""
+                />
+            </div>
 
             <BankingSectorCareerPanel />
 
-            <img
-                className="white my-12 w-[250px] self-center opacity-25 md:my-16 md:w-[400px]"
-                srcSet="assets/james-webb.png"
-                alt=""
-            />
+            <div className="self-center opacity-20">
+                <img
+                    className="white reveal-top my-12 w-[250px] md:my-16 md:w-[400px]"
+                    srcSet="assets/james-webb.png"
+                    alt=""
+                />
+            </div>
 
             <EcFirstPartCareerPanel />
 
@@ -216,71 +213,21 @@ export function App() {
 
             <Connector />
 
-            <Panel className="mt-12 flex-col items-center py-12">
-                <div className="mb-10 text-2xl uppercase text-fuchsia-300">
-                    Recap skills
-                </div>
+            <EcThirdPartCareerPanel />
 
-                <CenteredContainer className="flex justify-center">
-                    <div className="flex-col">
-                        <ProgressBar label="HTML" value="ten" />
-                        <ProgressBar label="SQL" value="twentyfive" />
-                        <ProgressBar label="Oracle" value="fifty" />
-                        <ProgressBar label="Java" value="seventyfive" />
-                        <ProgressBar
-                            label="JavaScript/TypeScript"
-                            value="eighty"
-                        />
-                        <ProgressBar label="Rust" value="ninety" />
-                        <ProgressBar label="Flash/Flex" value="onehundred" />
-                    </div>
+            <Connector />
 
-                    <div className="ml-20 flex-col">
-                        <ProgressBar label="HTML" value="ten" />
-                        <ProgressBar label="SQL" value="twentyfive" />
-                        <ProgressBar label="Oracle" value="fifty" />
-                        <ProgressBar label="Java" value="seventyfive" />
-                        <ProgressBar
-                            label="JavaScript/TypeScript"
-                            value="eighty"
-                        />
-                        <ProgressBar label="Rust" value="ninety" />
-                        <ProgressBar label="Flash/Flex" value="onehundred" />
-                    </div>
+            <PersonalProjects />
 
-                    <div>Senior Assistant</div>
-                </CenteredContainer>
-            </Panel>
+            <Connector />
 
-            <CenteredContainer className="py-12 text-lg">
-                <div className="mb-10 text-center text-2xl uppercase text-fuchsia-200">
-                    Languages
-                </div>
+            <RecapSkills />
 
-                <div className="mt-12 flex-col items-center py-12">
-                    <div>French</div>
-                    <div>Italian</div>
-                    <div>English</div>
-                    <div>Dutch</div>
-                </div>
-            </CenteredContainer>
+            <Connector />
 
-            <Panel className="mt-12 flex-col items-center py-12">
-                <div className="mb-10 text-2xl uppercase text-fuchsia-200">
-                    Personal projects
-                </div>
+            <Languages />
 
-                <CenteredContainer className="text-lg">
-                    <div>Github</div>
-                    <div>Asteroids</div>
-                    <div>Game of life</div>
-                    <div>Planning Poker</div>
-                </CenteredContainer>
-            </Panel>
-
-            <h1 className="my-16 self-center rounded-md  px-5 py-2 text-2xl md:my-32 md:text-4xl">
-                To the Moon and beyond...
-            </h1>
+            <ToTheMoon />
         </div>
     );
 }

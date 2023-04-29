@@ -6,7 +6,7 @@ import { Card } from '../card';
 import { CardSkills } from '../card-skills';
 
 export function EcFirstPartCareerPanel(props: { className?: string }) {
-    const { className = '' } = { ...props };
+    const { className = '' } = props;
 
     return (
         <div className={`${className} flex justify-center`}>
@@ -31,7 +31,7 @@ export function EcFirstPartCareerPanel(props: { className?: string }) {
 
                         <div className="mb-5">
                             I also had the opportunity to work for the PMO and
-                            DIGIT where my assignments were to maintain and
+                            DG DIGIT where my assignments were to maintain and
                             improve the sickness insurance IT system: Assmal.
                             Then, the decision was taken to rewrite it from
                             scratch using new technologies. It was my first
@@ -50,8 +50,9 @@ export function EcFirstPartCareerPanel(props: { className?: string }) {
                                 'Java',
                                 'JavaScript',
                                 'Ant',
-                                'ClearCase/ClearQuest',
-                                'Atlassian Jira/Confluence',
+                                'IBM ClearCase/ClearQuest',
+                                'Jira/Confluence',
+                                'Bitbucket/Bamboo',
                                 'Scrum (Agile methodology)',
                             ]}
                         />

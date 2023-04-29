@@ -14,7 +14,7 @@ export function Tag(props: {
         type = 'rounded-xl',
         color = 'ternary',
         label,
-    } = { ...props };
+    } = props;
 
     return (
         <span

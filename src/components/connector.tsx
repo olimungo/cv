@@ -1,11 +1,11 @@
 import React from 'react';
 
 export function Connector(props: { className?: string }) {
-    const { className = '' } = { ...props };
+    const { className = '' } = props;
 
     return (
         <div
-            className={`${className} my-10 flex flex-col items-center opacity-50 md:my-20`}
+            className={`${className} my-4 flex flex-col items-center opacity-50 md:my-8`}
         >
             <Dot />
             <Line />

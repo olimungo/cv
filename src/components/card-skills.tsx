@@ -5,16 +5,10 @@ export interface PanelSkillsProps {
     className?: string;
     role: string;
     skillsAcquired: string[];
-    technologiesUsed?: string[];
 }
 
 export function CardSkills(props: PanelSkillsProps) {
-    const {
-        className = '',
-        role,
-        skillsAcquired,
-        technologiesUsed,
-    } = { ...props };
+    const { className = '', role, skillsAcquired } = props;
 
     return (
         <div className={`${className} text-xs text-secondary md:text-base`}>

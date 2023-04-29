@@ -3,7 +3,7 @@ import { Button } from './button';
 
 export function Intro(props: { onClick?: () => void }) {
     const defaultHandler = () => {};
-    const { onClick = defaultHandler } = { ...props };
+    const { onClick = defaultHandler } = props;
 
     const [containerClass, setContainerClass] = useState('');
     const [topClass, setTopClass] = useState('');

@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 export function Card(props: PropsWithChildren<CardProps>) {
-    const { className = '', children } = { ...props };
+    const { className = '', children } = props;
 
     return (
         <div
