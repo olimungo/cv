@@ -10,7 +10,7 @@ export function SkewedPanel(props: PropsWithChildren<PanelProps>) {
 
     return (
         <div
-            className={`${className} diagonal flex w-full justify-center bg-dark-space p-12 md:p-24`}
+            className={`${className} diagonal flex w-full justify-center bg-dark-space p-3 sm:p-12 md:p-24`}
         >
             {children}
         </div>

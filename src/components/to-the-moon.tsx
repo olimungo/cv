@@ -8,7 +8,7 @@ export function ToTheMoon(props: { className?: string }) {
             className={`${className} reveal-top relative mt-36 flex justify-center`}
         >
             <img
-                className="w-[350px] opacity-20 md:w-[600px]"
+                className="w-[300px] opacity-20 md:w-[600px]"
                 srcSet="assets/moon.webp"
             />
 

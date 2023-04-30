@@ -9,7 +9,7 @@ export function PersonalProjects(props: { className?: string }) {
     const { className = '' } = props;
 
     return (
-        <SkewedPanel className={`${className} flex-col items-center md:py-12`}>
+        <SkewedPanel className={`${className} flex-col items-center py-16`}>
             <div className="gradient-soft text-2xl uppercase text-fuchsia-300">
                 PERSONAL PROJECTS
             </div>
@@ -27,12 +27,12 @@ export function PersonalProjects(props: { className?: string }) {
                         alt=""
                     />
 
-                    <div className="text-fuchsia-200 md:text-xl">
+                    <div className="ml-3 mr-1 text-fuchsia-200 md:text-xl">
                         Personal projects hosted on GitHub
                     </div>
 
                     <img
-                        className="pink relative top-[1px] ml-2 h-3 -rotate-90"
+                        className="pink relative top-[1px] h-3 -rotate-90"
                         srcSet="assets/chevron.png"
                     />
                 </div>
@@ -86,16 +86,16 @@ function CardElement(props: {
 }) {
     const { title, description, url } = props;
     return (
-        <RaisedCard className="reveal-top my-4 flex items-center justify-center px-2 py-2 md:my-8 md:px-4 md:py-4">
+        <RaisedCard className="reveal-top my-4 flex items-center justify-center p-2 md:my-8 md:p-6">
             <Button
                 className="h-min w-5/12 md:w-3/12"
                 color="purple"
                 onClick={() => window.open(url, '_blank')}
             >
-                <div className="text-xs md:text-xl">{title}</div>
+                <div className="text-xs uppercase md:text-base">{title}</div>
 
                 <img
-                    className="pink relative top-[2px] ml-2 h-1 -rotate-90 md:h-2"
+                    className="pink relative ml-2 h-2 -rotate-90 md:top-[1px] md:h-2"
                     srcSet="assets/chevron.png"
                 />
             </Button>

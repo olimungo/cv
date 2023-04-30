@@ -100,7 +100,7 @@ export function Hero() {
     };
 
     return (
-        <CenteredContainer>
+        <CenteredContainer className="mx-6 sm:mx-24 md:mx-0">
             <div className="mt-8 md:mt-16">
                 <h1 className="text-5xl tracking-widest md:text-6xl">
                     olimungo

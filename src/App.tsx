@@ -151,7 +151,7 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-72">
-            {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
+            <Intro onClick={startAnimatingCatchPhrase} />
 
             <Speaker />
 
@@ -161,15 +161,15 @@ export function App() {
                 <IntroCareerPanel />
             </div>
 
-            <img
-                id="rocket"
-                className="liftoff mt-96 w-[200px] self-center opacity-60 md:w-[300px]"
-                srcSet="assets/ariane-6.webp"
-            />
+            <Connector />
 
             <BachelorCareerPanel />
 
-            <Connector />
+            <img
+                id="rocket"
+                className="liftoff mt-32 w-[200px] self-center opacity-60 md:w-[300px]"
+                srcSet="assets/ariane-6.webp"
+            />
 
             <StartCareerPanel />
 

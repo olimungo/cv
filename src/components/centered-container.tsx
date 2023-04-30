@@ -12,7 +12,8 @@ export function CenteredContainer(
     return (
         <div className="flex justify-center">
             <div
-                className={`${className} w-full max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl`}
+                // className={`${className} w-full max-w-md sm:max-w-2xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl`}
+                className={`${className} w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl`}
             >
                 {children}
             </div>
