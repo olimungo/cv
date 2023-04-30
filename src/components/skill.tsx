@@ -12,7 +12,7 @@ export function Skill(props: {
 
     return (
         <div className={`${className} flex items-center`}>
-            <div className="my-3 w-24 md:w-52">
+            <div className="my-3 w-36 md:w-52">
                 <div className="progress">
                     <div
                         className={`progress-bar ${

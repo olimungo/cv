@@ -151,7 +151,7 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-72">
-            <Intro onClick={startAnimatingCatchPhrase} />
+            {/* <Intro onClick={startAnimatingCatchPhrase} /> */}
 
             <Speaker />
 
@@ -177,10 +177,12 @@ export function App() {
 
             <PrivateSectorCareerPanel />
 
-            <img
-                className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
-                srcSet="assets/pioneer.webp"
-            />
+            <div className="self-center opacity-50">
+                <img
+                    className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
+                    srcSet="assets/pioneer.webp"
+                />
+            </div>
 
             <TrueQuestion />
 

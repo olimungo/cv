@@ -21,7 +21,7 @@ export function Button(props: PropsWithChildren<ButtonProps>) {
 
     return (
         <button
-            className={`${className} ${internalClassName} px-5 py-2 text-fuchsia-200`}
+            className={`${className} ${internalClassName} px-3 py-1 text-fuchsia-200 md:px-5 md:py-2`}
             onClick={onClick}
         >
             <div className="flex items-center justify-center">{children}</div>

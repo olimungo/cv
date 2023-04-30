@@ -9,20 +9,20 @@ export function PersonalProjects(props: { className?: string }) {
     const { className = '' } = props;
 
     return (
-        <SkewedPanel className={`${className} flex-col items-center py-12`}>
+        <SkewedPanel className={`${className} flex-col items-center md:py-12`}>
             <div className="gradient-soft text-2xl uppercase text-fuchsia-300">
                 PERSONAL PROJECTS
             </div>
 
             <button
-                className="m-20 rounded-lg border border-fuchsia-200 px-5 py-3 shadow-2xl hover:bg-slate-900 active:relative active:left-[1px] active:top-[1px] active:bg-slate-800"
+                className="my-12 rounded-lg border border-fuchsia-200 px-3 py-1 shadow-2xl hover:bg-slate-900 active:relative active:left-[1px] active:top-[1px] active:bg-slate-800 md:my-20 md:px-5 md:py-3"
                 onClick={() =>
                     window.open('https://github.com/olimungo', '_blank')
                 }
             >
                 <div className="flex items-center">
                     <img
-                        className="mr-3 w-[2rem] md:w-[3rem]"
+                        className="w-10 md:w-16"
                         srcSet="assets/github.svg"
                         alt=""
                     />
@@ -86,21 +86,23 @@ function CardElement(props: {
 }) {
     const { title, description, url } = props;
     return (
-        <RaisedCard className="reveal-top my-8 flex items-center justify-center p-5 px-6 py-4">
+        <RaisedCard className="reveal-top my-4 flex items-center justify-center px-2 py-2 md:my-8 md:px-4 md:py-4">
             <Button
-                className="h-min w-3/12"
+                className="h-min w-5/12 md:w-3/12"
                 color="purple"
                 onClick={() => window.open(url, '_blank')}
             >
-                <div className="text-sm md:text-xl">{title}</div>
+                <div className="text-xs md:text-xl">{title}</div>
 
                 <img
-                    className="pink relative top-[2px] ml-2 h-2 -rotate-90 md:h-2"
+                    className="pink relative top-[2px] ml-2 h-1 -rotate-90 md:h-2"
                     srcSet="assets/chevron.png"
                 />
             </Button>
 
-            <div className="ml-5 w-9/12 text-left">{description}</div>
+            <div className="ml-3 w-7/12 text-left text-xs md:ml-5 md:w-9/12 md:text-lg">
+                {description}
+            </div>
         </RaisedCard>
     );
 }

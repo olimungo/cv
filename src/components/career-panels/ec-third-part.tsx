@@ -19,7 +19,7 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
                             operational and logistics operations
                             <div className="py-8 pl-8 md:pl-16">
                                 <Domain
-                                    image="folder"
+                                    image="document"
                                     label="Historical Archives of the Commission"
                                 />
                                 <Domain
@@ -78,14 +78,16 @@ function Domain(props: { label: string; image?: string }) {
     return (
         <RaisedCard className="reveal-top mb-3 table rounded-md bg-dark-space px-6 py-4 md:mb-5 md:text-lg">
             <div className="flex items-center">
-                <div className="mr-5 rounded-full border p-2 md:p-3">
-                    <img
-                        className="purple w-8"
-                        srcSet={`assets/${image}.png`}
-                    />
+                <div className="mr-5">
+                    <div className="h-12 w-12 rounded-full border p-3 md:h-14 md:w-14">
+                        <img
+                            className="purple"
+                            srcSet={`assets/${image}.webp`}
+                        />
+                    </div>
                 </div>
 
-                <div>{label}</div>
+                <div className="text-left">{label}</div>
             </div>
         </RaisedCard>
     );
