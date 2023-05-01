@@ -1,7 +1,12 @@
+import signal from 'signal-js';
 import { Dashboard } from './components/dahsboard';
-import { MissionEvents } from './components/mission-events/mission-events';
+import {
+    MissionEventLabel,
+    MissionEvents,
+} from './components/mission-events/mission-events';
 import { CanvasProps, getCanvasProps } from './utils/canvas';
 import { Vector } from './utils/vector';
+import { missionEventCompleted } from './components/mission-events/mission-event';
 
 export class Hub {
     canvasProps: CanvasProps;
@@ -48,47 +53,58 @@ export class Hub {
                 );
             }
         }
+
+        signal.on(
+            missionEventCompleted,
+            (event: { label: MissionEventLabel; completed: boolean }) => {
+                switch (event.label) {
+                    case 'LIFTOFF':
+                        if (event.completed) {
+                            this.dashboard.startTimer();
+                        } else {
+                            this.dashboard.resetTimer();
+                        }
+
+                        break;
+                    case 'MECO':
+                        if (event.completed) {
+                            this.dashboard.displayStage2();
+                        } else {
+                            this.dashboard.hideStage2();
+                        }
+
+                        break;
+                    case 'SECO':
+                        if (event.completed) {
+                            this.dashboard.hideStage1();
+                        } else {
+                            this.dashboard.displayStage1();
+                        }
+
+                        break;
+                }
+            }
+        );
     }
 
     render() {
         // Updates
-        const prevMissionEventsState = this.missionEvents.missionEventsState;
-        const prevMecoCompleted = this.missionEvents.mecoCompleted;
-        const prevSecoCompleted = this.missionEvents.secoCompleted;
-
         this.missionEvents.update(this.angle);
-        if (this.missionEvents.missionEventsState !== prevMissionEventsState) {
-            if (this.missionEvents.missionEventsState === 'contract') {
-                this.dashboard.resetTimer();
-            } else {
-                this.dashboard.startTimer();
-            }
-        }
-        if (this.missionEvents.mecoCompleted !== prevMecoCompleted) {
-            if (this.missionEvents.mecoCompleted) {
-                this.dashboard.displayStage2();
-            } else {
-                this.dashboard.hideStage2();
-            }
-        }
-        if (this.missionEvents.secoCompleted !== prevSecoCompleted) {
-            if (this.missionEvents.secoCompleted) {
-                this.dashboard.hideStage1();
-            } else {
-                this.dashboard.displayStage1();
-            }
-        }
         this.dashboard.update(this.missionEvents.telemetry);
+
         // Draws
         this.canvasProps.ctx.save();
+
         this.canvasProps.ctx.clearRect(
             0,
             0,
             this.canvasProps.width,
             this.canvasProps.height
         );
+
         this.dashboard.render();
         this.missionEvents.render();
+
         this.canvasProps.ctx.restore();
     }
 }

@@ -1,29 +1,33 @@
 import React from 'react';
+import { Tag } from './tag';
 
 export interface PanelSkillsProps {
+    className?: string;
     role: string;
     skillsAcquired: string[];
-    technologiesUsed?: string[];
 }
 
 export function CardSkills(props: PanelSkillsProps) {
-    const { role, skillsAcquired, technologiesUsed } = { ...props };
+    const { className = '', role, skillsAcquired } = props;
 
     return (
-        <div className="text-sm text-fuchsia-100">
-            <div className="mb-4">
-                <span className="text-primary">ROLE</span>
-                <span className="ml-2 mt-2 uppercase">{role}</span>
+        <div className={`${className} text-xs text-secondary md:text-base`}>
+            <div className="bg-accent-secondary p-4 py-2">
+                <span className="uppercase">{role}</span>
             </div>
 
-            <div className="flex">
-                <div>
-                    <div className="mb-2 text-primary">SKILLS ACQUIRED</div>
+            <div className="p-5 leading-none">
+                <div className="text-primary">SKILLS ACQUIRED</div>
 
+                <div className="mt-6 flex flex-wrap gap-x-2 gap-y-3">
                     {skillsAcquired.map((element, index) => {
                         return (
-                            <div key={index} className="ml-2">
-                                {element}
+                            <div key={index}>
+                                <Tag
+                                    label={element}
+                                    type="rounded"
+                                    color="accent"
+                                />
                             </div>
                         );
                     })}

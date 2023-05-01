@@ -1,3 +1,4 @@
+import signal from 'signal-js';
 import { CanvasProps } from '../../utils/canvas';
 import { Vector } from '../../utils/vector';
 import {
@@ -5,6 +6,8 @@ import {
     MissionEventLabelPosition,
     TelemetryData,
 } from './mission-events';
+
+export const missionEventCompleted = 'mission-event-completed';
 
 export class MissionEvent {
     setupProps: CanvasProps;
@@ -49,10 +52,19 @@ export class MissionEvent {
 
         this.angle += this.velocity;
 
+        const prevCompleted = this.completed;
+
         if (this.angle + hubAngle <= 270) {
             this.completed = true;
         } else {
             this.completed = false;
+        }
+
+        if (this.completed !== prevCompleted) {
+            signal.emit(missionEventCompleted, {
+                label: this.label,
+                completed: this.completed,
+            });
         }
     }
 

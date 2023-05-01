@@ -3,9 +3,8 @@ import { Button } from './button';
 
 export function Intro(props: { onClick?: () => void }) {
     const defaultHandler = () => {};
-    const { onClick = defaultHandler } = { ...props };
+    const { onClick = defaultHandler } = props;
 
-    const [containerClass, setContainerClass] = useState('');
     const [topClass, setTopClass] = useState('');
     const [bottomClass, setBottomClass] = useState('');
     const [container, setContainer] = useState<HTMLElement>();
@@ -33,6 +32,11 @@ export function Intro(props: { onClick?: () => void }) {
     const handleClick = () => {
         if (container) {
             container.inert = true;
+
+            setTimeout(() => {
+                setTopClass('hidden');
+                setBottomClass('hidden');
+            }, 1500);
         }
 
         onClick();
@@ -49,7 +53,7 @@ export function Intro(props: { onClick?: () => void }) {
     return (
         <div
             id="container"
-            className={`${containerClass} fixed top-0 z-50 flex h-full w-full flex-col items-center justify-center bg-transparent`}
+            className={`fixed top-0 z-50 flex h-full w-full flex-col items-center justify-center bg-transparent`}
         >
             <div
                 id="top-section"
@@ -64,12 +68,17 @@ export function Intro(props: { onClick?: () => void }) {
 
             <div
                 id="bottom-section"
-                className={`${bottomClass} h-2/6 w-full bg-dark-space`}
+                className={`${bottomClass} flex h-2/6 w-full flex-col items-center bg-dark-space`}
             >
                 <div className="flex items-center justify-center">
                     <Button color="purple" onClick={handleClick}>
                         START MISSION
                     </Button>
+                </div>
+
+                <div className="mt-16 max-w-xs text-center text-xs text-fuchsia-200 md:max-w-2xl md:text-base">
+                    This site is totally reactive but the user experience is
+                    improved on large displays
                 </div>
             </div>
         </div>

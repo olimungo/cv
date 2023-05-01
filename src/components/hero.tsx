@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import signal from 'signal-js';
-import { muteEvent } from './speaker';
+import { speakerEventMuted } from './speaker';
+import { GetToKnowMe } from './get-to-know-me';
+import { CenteredContainer } from './centered-container';
 
-export const startAnimation = 'startAnimation';
+export const startHeroAnimation = 'startAnimation';
 
 export function Hero() {
     const [soundTypewriter, setSoundTypewriter] = useState<HTMLAudioElement>();
@@ -12,13 +14,12 @@ export function Hero() {
     mutedRef.current = muted;
 
     useEffect(() => {
-        const typewriterUrl = new URL(
-            '../assets/typewriter.mp3',
-            import.meta.url
-        );
+        const typewriter = document.getElementById(
+            'typewriter'
+        ) as HTMLAudioElement;
 
-        if (typewriterUrl) {
-            setSoundTypewriter(new Audio(typewriterUrl.href));
+        if (typewriter) {
+            setSoundTypewriter(typewriter);
         }
 
         const catchPhrase = document.getElementById('catch-phrase');
@@ -30,23 +31,21 @@ export function Hero() {
 
     useEffect(() => {
         if (soundTypewriter && catchPhrase) {
-            signal.on(startAnimation, () => {
-                setTimeout(() => {
-                    removeCatchPhrase();
-                }, 3000);
+            signal.on(startHeroAnimation, () => {
+                removeCatchPhrase();
             });
 
-            return () => signal.off(startAnimation);
+            return () => signal.off(startHeroAnimation);
         }
     }, [catchPhrase, soundTypewriter]);
 
     // Check if sound is muted
     useEffect(() => {
-        signal.on(muteEvent, (event: { muted: boolean }) => {
+        signal.on(speakerEventMuted, (event: { muted: boolean }) => {
             setMuted(event.muted);
         });
 
-        return () => signal.off(muteEvent);
+        return () => signal.off(speakerEventMuted);
     }, []);
 
     const removeCatchPhrase = () => {
@@ -60,7 +59,7 @@ export function Hero() {
                 catchPhrase.innerText = text.substring(0, text.length - 1);
                 playSoundTyperwriter();
                 removeCatchPhrase();
-            }, Math.floor(Math.random() * 150) + 200);
+            }, Math.floor(Math.random() * 200) + 200);
         } else {
             addCatchPhrase();
         }
@@ -100,19 +99,29 @@ export function Hero() {
     };
 
     return (
-        <div className="mt-8 h-80 md:mt-16">
-            <h1 className="text-5xl tracking-widest md:text-6xl">olimungo</h1>
-            <div className="text-sm tracking-wide text-violet-200">
-                SPACE MISSION: POSSIBLE!
+        <CenteredContainer className="mx-6 sm:mx-24 md:mx-0">
+            <audio id="typewriter" src="assets/typewriter.mp3" />
+
+            <div className="mt-8 md:mt-16">
+                <h1 className="text-5xl tracking-widest md:text-6xl">
+                    olimungo
+                </h1>
+                <div className="text-sm tracking-wide text-violet-200">
+                    SPACE MISSION: POSSIBLE!
+                </div>
+
+                <div className="mt-12 text-3xl md:mt-36 md:text-4xl">
+                    <div>
+                        Experienced developer. IT&nbsp;Project&nbsp;Manager.
+                    </div>
+
+                    <div id="catch-phrase" className="gradient inline-block">
+                        Food&nbsp;lover.
+                    </div>
+                </div>
             </div>
 
-            <div className="mt-20 text-3xl md:mt-36 md:text-4xl">
-                Experienced developer. IT&nbsp;Project&nbsp;Manager.
-                <br />
-                <span id="catch-phrase" className="gradient">
-                    Food&nbsp;lover.
-                </span>
-            </div>
-        </div>
+            <GetToKnowMe />
+        </CenteredContainer>
     );
 }
