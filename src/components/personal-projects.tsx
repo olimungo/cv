@@ -43,7 +43,7 @@ export function PersonalProjects(props: { className?: string }) {
                     title="Asteroids"
                     description="A reboot of the famous video game from 1979.
                     3 implementations: in Java, TypeScript and Rust."
-                    url="https://github.com/olimungo/asteroids"
+                    url="https://olimungo.github.io/asteroids/"
                 />
 
                 <CardElement
@@ -51,7 +51,7 @@ export function PersonalProjects(props: { className?: string }) {
                     description="An implementation of John Conway's game of life for
                     comparing Rust and JavaScript performances in the
                     browser."
-                    url="https://github.com/olimungo/wasm-game-of-life"
+                    url="https://game-of-life-9a203.web.app/"
                 />
 
                 <CardElement
@@ -59,14 +59,14 @@ export function PersonalProjects(props: { className?: string }) {
                     description="For helping developers to etimate stories during a
                     Sprint planning, implemented with React and using the
                     Firebase service for hosting the data."
-                    url="https://github.com/olimungo/planning-poker-v3"
+                    url="https://planning-poker-af648.web.app/"
                 />
 
                 <CardElement
                     title="Moviepolis"
                     description="Use case for searching movies from the themoviedb.org
                     database, implemented with React."
-                    url="https://github.com/olimungo/moviepolis"
+                    url="https://moviepolis-647c7.web.app/"
                 />
 
                 <CardElement

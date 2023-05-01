@@ -12,14 +12,14 @@ export function GetToKnowMe() {
 
                 <div className="flex items-center px-3 py-2">
                     <img
-                        className="inline w-6 animate-ping"
+                        className="inline w-4 animate-ping md:w-6"
                         srcSet="assets/chevrons.svg"
                     />
 
                     <div className="mx-1 text-fuchsia-200">SCROLL DOWN</div>
 
                     <img
-                        className="inline w-6 animate-ping"
+                        className="inline w-4 animate-ping md:w-6"
                         srcSet="assets/chevrons.svg"
                     />
                 </div>

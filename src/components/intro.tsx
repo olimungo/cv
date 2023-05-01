@@ -5,7 +5,6 @@ export function Intro(props: { onClick?: () => void }) {
     const defaultHandler = () => {};
     const { onClick = defaultHandler } = props;
 
-    const [containerClass, setContainerClass] = useState('');
     const [topClass, setTopClass] = useState('');
     const [bottomClass, setBottomClass] = useState('');
     const [container, setContainer] = useState<HTMLElement>();
@@ -54,7 +53,7 @@ export function Intro(props: { onClick?: () => void }) {
     return (
         <div
             id="container"
-            className={`${containerClass} fixed top-0 z-50 flex h-full w-full flex-col items-center justify-center bg-transparent`}
+            className={`fixed top-0 z-50 flex h-full w-full flex-col items-center justify-center bg-transparent`}
         >
             <div
                 id="top-section"

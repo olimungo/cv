@@ -34,13 +34,10 @@ export function App() {
 
     // Load assets
     useEffect(() => {
-        const soundBeepUrl = new URL(
-            '../static/assets/beep.mp3',
-            import.meta.url
-        );
+        const beep = document.getElementById('beep') as HTMLAudioElement;
 
-        if (soundBeepUrl) {
-            setSoundBeep(new Audio(soundBeepUrl.href));
+        if (beep) {
+            setSoundBeep(beep);
         }
     }, []);
 
@@ -82,8 +79,6 @@ export function App() {
 
     // Check mission events for completion
     useEffect(() => {
-        let timeoutLiftoff;
-
         signal.on(
             missionEventCompleted,
             (event: { label: MissionEventLabel; completed: boolean }) => {
@@ -92,11 +87,20 @@ export function App() {
 
                     if (rocket) {
                         if (event.completed) {
-                            timeoutLiftoff = setTimeout(() => {
-                                rocket.classList.add('active');
-                            }, 1500);
+                            rocket.classList.add('active');
                         } else {
-                            clearTimeout(timeoutLiftoff);
+                            rocket.classList.remove('active');
+                        }
+                    }
+                }
+
+                if (event.label === 'STARTUP') {
+                    const rocket = document.getElementById('move-shake-rocket');
+
+                    if (rocket) {
+                        if (event.completed) {
+                            rocket.classList.add('active');
+                        } else {
                             rocket.classList.remove('active');
                         }
                     }
@@ -135,7 +139,7 @@ export function App() {
     const startAnimatingCatchPhrase = () => {
         setTimeout(() => {
             signal.emit(startHeroAnimation);
-        }, 3000);
+        }, 2000);
 
         if (soundBeep) {
             setInterval(() => {
@@ -151,6 +155,8 @@ export function App() {
 
     return (
         <div className="flex flex-col pb-72">
+            <audio id="beep" src="assets/beep.mp3" />
+
             <Intro onClick={startAnimatingCatchPhrase} />
 
             <Speaker />
@@ -165,11 +171,13 @@ export function App() {
 
             <BachelorCareerPanel />
 
-            <img
-                id="rocket"
-                className="liftoff mt-32 w-[200px] self-center opacity-60 md:w-[300px]"
-                srcSet="assets/ariane-6.webp"
-            />
+            <div id="move-shake-rocket" className="move-shake self-center">
+                <img
+                    id="rocket"
+                    className="liftoff mt-32 w-[200px] opacity-60 md:w-[300px]"
+                    srcSet="assets/ariane-6.webp"
+                />
+            </div>
 
             <StartCareerPanel />
 

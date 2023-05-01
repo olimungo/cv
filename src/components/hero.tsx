@@ -14,13 +14,12 @@ export function Hero() {
     mutedRef.current = muted;
 
     useEffect(() => {
-        const typewriterUrl = new URL(
-            '../../static/assets/typewriter.mp3',
-            import.meta.url
-        );
+        const typewriter = document.getElementById(
+            'typewriter'
+        ) as HTMLAudioElement;
 
-        if (typewriterUrl) {
-            setSoundTypewriter(new Audio(typewriterUrl.href));
+        if (typewriter) {
+            setSoundTypewriter(typewriter);
         }
 
         const catchPhrase = document.getElementById('catch-phrase');
@@ -101,6 +100,8 @@ export function Hero() {
 
     return (
         <CenteredContainer className="mx-6 sm:mx-24 md:mx-0">
+            <audio id="typewriter" src="assets/typewriter.mp3" />
+
             <div className="mt-8 md:mt-16">
                 <h1 className="text-5xl tracking-widest md:text-6xl">
                     olimungo
@@ -110,11 +111,13 @@ export function Hero() {
                 </div>
 
                 <div className="mt-12 text-3xl md:mt-36 md:text-4xl">
-                    Experienced developer. IT&nbsp;Project&nbsp;Manager.
-                    <br />
-                    <span id="catch-phrase" className="gradient">
+                    <div>
+                        Experienced developer. IT&nbsp;Project&nbsp;Manager.
+                    </div>
+
+                    <div id="catch-phrase" className="gradient inline-block">
                         Food&nbsp;lover.
-                    </span>
+                    </div>
                 </div>
             </div>
 
