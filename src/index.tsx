@@ -8,9 +8,10 @@ const root = createRoot(app!);
 root.render(<App />);
 
 // Hub
-const hub = new Hub();
+let hub = new Hub();
 let previousTimestamp = 0;
 let elapsed = 0;
+let delayHub = 0;
 
 renderLoop(0);
 
@@ -26,3 +27,12 @@ function renderLoop(timestamp) {
 
     requestAnimationFrame(renderLoop);
 }
+
+onresize = () => {
+    clearTimeout(delayHub);
+
+    delayHub = setTimeout(() => {
+        hub = new Hub();
+        hub.calcAngle();
+    }, 50);
+};
