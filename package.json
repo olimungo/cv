@@ -5,7 +5,10 @@
     "source": "src/index.html",
     "scripts": {
         "start": "parcel --open",
-        "build": "parcel build --public-url ./ --no-source-maps",
+        "build": "npm run build:front && npm run build:docker && npm run clean:docker",
+        "build:front": "rm -rf docker/dist && parcel build --dist-dir docker/dist --public-url ./ --no-source-maps",
+        "build:docker": "docker build -t olimungo/cv:1.0 docker",
+        "clean:docker": "docker system prune -f",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],

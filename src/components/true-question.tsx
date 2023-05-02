@@ -11,6 +11,7 @@ export function TrueQuestion(props: { className?: string }) {
                 <img
                     className="pink relative bottom-1 mr-2 h-8 md:bottom-2 md:mr-4 md:h-16"
                     srcSet="assets/quote.png"
+                    alt="icon double-quote"
                 />
                 <i>
                     The true question is not "Have we ever been to the Moon?"

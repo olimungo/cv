@@ -83,6 +83,7 @@ function Domain(props: { label: string; image?: string }) {
                         <img
                             className="purple"
                             srcSet={`assets/${image}.webp`}
+                            alt={`icon ${image}`}
                         />
                     </div>
                 </div>

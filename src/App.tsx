@@ -176,6 +176,7 @@ export function App() {
                     id="rocket"
                     className="liftoff mt-32 w-[200px] opacity-60 md:w-[300px]"
                     srcSet="assets/ariane-6.webp"
+                    alt="illustration of the Ariane 6 space rocket"
                 />
             </div>
 
@@ -189,6 +190,7 @@ export function App() {
                 <img
                     className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
                     srcSet="assets/pioneer.webp"
+                    alt="illustration on the Pioneer plaque"
                 />
             </div>
 
@@ -198,6 +200,7 @@ export function App() {
                 <img
                     className="white reveal-top my-12 w-[250px] md:my-40 md:w-[500px]"
                     srcSet="assets/iss.webp"
+                    alt="illustration of the Internation Space Station"
                 />
             </div>
 
@@ -207,6 +210,7 @@ export function App() {
                 <img
                     className="white reveal-top my-12 w-[250px] md:my-16 md:w-[400px]"
                     srcSet="assets/james-webb.webp"
+                    alt="illustration of the James Webb telescope"
                 />
             </div>
 
