@@ -81,7 +81,7 @@ export function Hero() {
                 }, 150);
 
                 signal.emit(playTypewriterSound);
-            }, Math.floor(Math.random() * 100) + 100);
+            }, Math.floor(Math.random() * 150) + 150);
         } else {
             addCatchPhrase();
         }
@@ -108,7 +108,7 @@ export function Hero() {
                     catchPhrase.textContent += char;
                     addCatchPhrase();
                 }, 150);
-            }, Math.floor(Math.random() * 100) + 100);
+            }, Math.floor(Math.random() * 150) + 150);
         }
     };
 

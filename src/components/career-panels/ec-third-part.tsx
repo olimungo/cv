@@ -17,7 +17,7 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
                             I'm in OIB for about 8 years now (as of mid-2023).
                             In my portfolio, there are IT systems related to
                             operational and logistics operations
-                            <div className="py-8 pl-8 md:pl-16">
+                            <div className="py-8">
                                 <Domain
                                     image="document"
                                     label="Historical Archives of the Commission"
