@@ -24,7 +24,7 @@ export function PersonalProjects(props: { className?: string }) {
                     <img
                         className="w-10 md:w-16"
                         srcSet="assets/github.svg"
-                        alt=""
+                        alt="icon github"
                     />
 
                     <div className="ml-3 mr-1 text-fuchsia-200 md:text-xl">
@@ -34,6 +34,7 @@ export function PersonalProjects(props: { className?: string }) {
                     <img
                         className="pink relative top-[1px] h-3 -rotate-90"
                         srcSet="assets/chevron.png"
+                        alt="icon chevron right"
                     />
                 </div>
             </button>
@@ -97,6 +98,7 @@ function CardElement(props: {
                 <img
                     className="pink relative ml-2 h-2 -rotate-90 md:top-[1px] md:h-2"
                     srcSet="assets/chevron.png"
+                    alt="icon chevron right"
                 />
             </Button>
 

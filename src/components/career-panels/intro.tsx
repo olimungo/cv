@@ -14,6 +14,7 @@ export function IntroCareerPanel(props: { className?: string }) {
                             <img
                                 className="pink relative bottom-1 mr-2 h-8 md:bottom-2 md:mr-4 md:h-16"
                                 srcSet="assets/quote.png"
+                                alt="icon double-quote"
                             />
 
                             <div>
@@ -32,7 +33,7 @@ export function IntroCareerPanel(props: { className?: string }) {
                     <img
                         className="reveal-left mt-12 w-[150px] rounded-full md:ml-16 md:mt-0 md:w-[500px]"
                         srcSet="assets/mc-candless.webp"
-                        alt=""
+                        alt="illustration of an astronaut in space (Bruce McCandless II)"
                     />
                 </CenteredContainer>
             </SkewedPanel>

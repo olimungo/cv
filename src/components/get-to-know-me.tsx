@@ -14,6 +14,7 @@ export function GetToKnowMe() {
                     <img
                         className="inline w-4 animate-ping md:w-6"
                         srcSet="assets/chevrons.svg"
+                        alt="icon chevron down"
                     />
 
                     <div className="mx-1 text-fuchsia-200">SCROLL DOWN</div>
@@ -21,6 +22,7 @@ export function GetToKnowMe() {
                     <img
                         className="inline w-4 animate-ping md:w-6"
                         srcSet="assets/chevrons.svg"
+                        alt="icon chevron down"
                     />
                 </div>
             </div>
