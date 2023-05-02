@@ -143,7 +143,7 @@ export function App() {
 
         if (soundBeep) {
             setInterval(() => {
-                if (!mutedRef.current) {
+                if (!mutedRef.current && !document.hidden) {
                     soundBeep.volume = 0.005;
                     soundBeep.play().catch(() => {
                         /* ignore */

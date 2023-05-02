@@ -5,13 +5,15 @@ import { GetToKnowMe } from './get-to-know-me';
 import { CenteredContainer } from './centered-container';
 
 export const startHeroAnimation = 'startAnimation';
+const playTypewriterSound = 'playTypewriterSound';
 
 export function Hero() {
     const [soundTypewriter1, setSoundTypewriter1] =
         useState<HTMLAudioElement>();
     const [soundTypewriter2, setSoundTypewriter2] =
         useState<HTMLAudioElement>();
-    const [alternateTypewriter, setAlternateTypewriter] = useState(false);
+    const [soundTypewriter3, setSoundTypewriter3] =
+        useState<HTMLAudioElement>();
     const [catchPhrase, setCatchPhrase] = useState<HTMLSpanElement>();
     const [muted, setMuted] = useState(false);
     const mutedRef = useRef(muted);
@@ -24,6 +26,9 @@ export function Hero() {
         const typewriter2 = document.getElementById(
             'typewriter-2'
         ) as HTMLAudioElement;
+        const typewriter3 = document.getElementById(
+            'typewriter-3'
+        ) as HTMLAudioElement;
 
         if (typewriter1) {
             setSoundTypewriter1(typewriter1);
@@ -31,6 +36,10 @@ export function Hero() {
 
         if (typewriter2) {
             setSoundTypewriter2(typewriter2);
+        }
+
+        if (typewriter3) {
+            setSoundTypewriter3(typewriter3);
         }
 
         const catchPhrase = document.getElementById('catch-phrase');
@@ -65,18 +74,16 @@ export function Hero() {
         }
 
         if (catchPhrase.innerText !== '') {
-            setAlternateTypewriter(!alternateTypewriter);
-
             setTimeout(() => {
                 const text = catchPhrase.innerText;
-                catchPhrase.innerText = text.substring(0, text.length - 1);
 
-                playSoundTyperwriter(
-                    alternateTypewriter ? soundTypewriter1 : soundTypewriter2
-                );
+                setTimeout(() => {
+                    catchPhrase.innerText = text.substring(0, text.length - 1);
+                    removeCatchPhrase();
+                }, 150);
 
-                removeCatchPhrase();
-            }, Math.floor(Math.random() * 200) + 200);
+                signal.emit(playTypewriterSound);
+            }, Math.floor(Math.random() * 100) + 100);
         } else {
             addCatchPhrase();
         }
@@ -90,43 +97,68 @@ export function Hero() {
         }
 
         if (catchPhrase.innerText.length !== newCatchPhrase.length) {
-            setAlternateTypewriter(!alternateTypewriter);
-
             setTimeout(() => {
                 const text = catchPhrase.textContent || '';
                 const char = newCatchPhrase.substring(
                     text.length,
                     text.length + 1
                 );
-                catchPhrase.textContent += char;
 
-                playSoundTyperwriter(
-                    alternateTypewriter ? soundTypewriter1 : soundTypewriter2
-                );
+                signal.emit(playTypewriterSound);
 
-                addCatchPhrase();
-            }, Math.floor(Math.random() * 100) + 200);
+                setTimeout(() => {
+                    catchPhrase.textContent += char;
+                    addCatchPhrase();
+                }, 150);
+            }, Math.floor(Math.random() * 100) + 100);
         }
     };
 
-    const playSoundTyperwriter = (
-        soundTypewriter: HTMLAudioElement | undefined
-    ) => {
-        if (soundTypewriter && !mutedRef.current) {
-            soundTypewriter.volume = 0.25;
+    useEffect(() => {
+        if (
+            soundTypewriter1 &&
+            soundTypewriter2 &&
+            soundTypewriter3 &&
+            !mutedRef.current
+        ) {
+            soundTypewriter1.volume = 0.2;
+            soundTypewriter2.volume = 0.2;
+            soundTypewriter3.volume = 0.2;
 
-            console.log(soundTypewriter.id);
+            let alternateTypewriter = 0;
 
-            soundTypewriter.play().catch(() => {
-                /*ignore*/
+            signal.on('playTypewriterSound', () => {
+                if (!document.hidden) {
+                    if (alternateTypewriter === 0) {
+                        soundTypewriter1.play().catch(() => {
+                            /*ignore*/
+                        });
+
+                        alternateTypewriter++;
+                    } else if (alternateTypewriter === 1) {
+                        soundTypewriter2.play().catch(() => {
+                            /*ignore*/
+                        });
+                        alternateTypewriter++;
+                    } else {
+                        soundTypewriter3.play().catch(() => {
+                            /*ignore*/
+                        });
+
+                        alternateTypewriter = 0;
+                    }
+                }
             });
+
+            return () => signal.off(playTypewriterSound);
         }
-    };
+    }, [soundTypewriter1, soundTypewriter2, mutedRef]);
 
     return (
         <CenteredContainer className="mx-6 sm:mx-24 md:mx-0">
             <audio id="typewriter-1" src="assets/typewriter.mp3" />
             <audio id="typewriter-2" src="assets/typewriter.mp3" />
+            <audio id="typewriter-3" src="assets/typewriter.mp3" />
 
             <div className="mt-8 md:mt-16">
                 <h1 className="text-5xl tracking-widest md:text-6xl">
