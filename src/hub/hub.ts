@@ -14,6 +14,7 @@ export class Hub {
     angle = 0;
     dashboard: Dashboard;
     missionEvents: MissionEvents;
+    main: HTMLElement | null;
 
     constructor() {
         this.canvasProps = getCanvasProps();
@@ -31,15 +32,11 @@ export class Hub {
         const main = document.getElementById('main');
         const hub = document.getElementById('hub');
 
+        this.main = main;
+
         if (main) {
             main.addEventListener('scroll', () => {
-                const completion =
-                    (main.scrollTop / (main.scrollHeight - main.clientHeight)) *
-                    100;
-
-                this.angle =
-                    -((this.missionEvents.getMaxAngle() + 0.01 - 270) / 100) *
-                    completion;
+                this.calcAngle();
             });
 
             if (hub) {
@@ -86,6 +83,19 @@ export class Hub {
             }
         );
     }
+
+    calcAngle = () => {
+        if (this.main) {
+            const completion =
+                (this.main.scrollTop /
+                    (this.main.scrollHeight - this.main.clientHeight)) *
+                100;
+
+            this.angle =
+                -((this.missionEvents.getMaxAngle() + 0.01 - 270) / 100) *
+                completion;
+        }
+    };
 
     render() {
         // Updates

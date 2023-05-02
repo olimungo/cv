@@ -32,15 +32,6 @@ export function App() {
     const mutedRef = useRef(muted);
     mutedRef.current = muted;
 
-    // Load assets
-    useEffect(() => {
-        const beep = document.getElementById('beep') as HTMLAudioElement;
-
-        if (beep) {
-            setSoundBeep(beep);
-        }
-    }, []);
-
     // Get sections from the DOM
     useEffect(() => {
         const main = document.getElementById('main');
@@ -56,15 +47,12 @@ export function App() {
             setRevealElement([...revealsTop, ...revealsLeft, ...revealsRight]);
         }
 
-        const firstPanel = document.getElementById('first-panel');
+        setMarginTopFirstPanel();
 
-        if (firstPanel) {
-            const windowHeight = window.innerHeight;
+        const beep = document.getElementById('beep') as HTMLAudioElement;
 
-            // Make sure that the first panel is not visible independently of the
-            // devices' height
-            firstPanel.style.marginTop =
-                windowHeight - firstPanel.offsetTop + 50 + 'px';
+        if (beep) {
+            setSoundBeep(beep);
         }
     }, []);
 
@@ -128,13 +116,38 @@ export function App() {
                 }
             };
 
+            let delaySet = 0;
+
+            const onresize = () => {
+                clearTimeout(delaySet);
+
+                delaySet = setTimeout(() => {
+                    setMarginTopFirstPanel();
+                }, 100);
+            };
+
             mainElement.addEventListener('scroll', onscroll);
+            window.addEventListener('resize', onresize);
 
             return () => {
                 mainElement.removeEventListener('scroll', onscroll);
+                window.removeEventListener('resize', onresize);
             };
         }
     }, [mainElement, revealElements]);
+
+    const setMarginTopFirstPanel = () => {
+        const introCareerPanel = document.getElementById('intro-career-panel');
+        const hero = document.getElementById('hero');
+
+        if (introCareerPanel && hero) {
+            const windowHeight = window.innerHeight;
+            // Make sure that the first panel is not visible, independently of the
+            // devices' height
+            introCareerPanel.style.marginTop =
+                windowHeight - hero.clientHeight + 50 + 'px';
+        }
+    };
 
     const startAnimatingCatchPhrase = () => {
         setTimeout(() => {
@@ -161,9 +174,11 @@ export function App() {
 
             <Speaker />
 
-            <Hero />
+            <div id="hero">
+                <Hero />
+            </div>
 
-            <div id="first-panel">
+            <div id="intro-career-panel">
                 <IntroCareerPanel />
             </div>
 

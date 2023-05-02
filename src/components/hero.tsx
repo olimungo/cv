@@ -6,6 +6,7 @@ import { CenteredContainer } from './centered-container';
 
 export const startHeroAnimation = 'startAnimation';
 const playTypewriterSound = 'playTypewriterSound';
+let globalMuted = false;
 
 export function Hero() {
     const [soundTypewriter1, setSoundTypewriter1] =
@@ -15,9 +16,6 @@ export function Hero() {
     const [soundTypewriter3, setSoundTypewriter3] =
         useState<HTMLAudioElement>();
     const [catchPhrase, setCatchPhrase] = useState<HTMLSpanElement>();
-    const [muted, setMuted] = useState(false);
-    const mutedRef = useRef(muted);
-    mutedRef.current = muted;
 
     useEffect(() => {
         const typewriter1 = document.getElementById(
@@ -62,7 +60,7 @@ export function Hero() {
     // Check if sound is muted
     useEffect(() => {
         signal.on(speakerEventMuted, (event: { muted: boolean }) => {
-            setMuted(event.muted);
+            globalMuted = event.muted;
         });
 
         return () => signal.off(speakerEventMuted);
@@ -115,20 +113,15 @@ export function Hero() {
     };
 
     useEffect(() => {
-        if (
-            soundTypewriter1 &&
-            soundTypewriter2 &&
-            soundTypewriter3 &&
-            !mutedRef.current
-        ) {
+        if (soundTypewriter1 && soundTypewriter2 && soundTypewriter3) {
             soundTypewriter1.volume = 0.2;
             soundTypewriter2.volume = 0.2;
             soundTypewriter3.volume = 0.2;
 
             let alternateTypewriter = 0;
 
-            signal.on('playTypewriterSound', () => {
-                if (!document.hidden) {
+            signal.on(playTypewriterSound, (event) => {
+                if (!document.hidden && !globalMuted) {
                     if (alternateTypewriter === 0) {
                         soundTypewriter1.play().catch(() => {
                             /*ignore*/
@@ -152,7 +145,7 @@ export function Hero() {
 
             return () => signal.off(playTypewriterSound);
         }
-    }, [soundTypewriter1, soundTypewriter2, mutedRef]);
+    }, [soundTypewriter1, soundTypewriter2]);
 
     return (
         <CenteredContainer className="mx-6 sm:mx-24 md:mx-0">
