@@ -87,9 +87,11 @@ function CardElement(props: {
 }) {
     const { title, description, url } = props;
     return (
-        <RaisedCard className="reveal-top my-4 flex items-center justify-center p-2 md:my-8 md:p-6">
+        <RaisedCard className="reveal-top m-4 items-center justify-center p-4 md:m-8 md:p-6">
+            <div className="text-left text-xs md:text-lg">{description}</div>
+
             <Button
-                className="h-min w-5/12 md:w-3/12"
+                className="mt-4 h-min md:mt-8"
                 color="purple"
                 onClick={() => window.open(url, '_blank')}
             >
@@ -101,10 +103,6 @@ function CardElement(props: {
                     alt="icon chevron right"
                 />
             </Button>
-
-            <div className="ml-3 w-7/12 text-left text-xs md:ml-5 md:w-9/12 md:text-lg">
-                {description}
-            </div>
         </RaisedCard>
     );
 }

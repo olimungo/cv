@@ -21,6 +21,10 @@ h1 {
     font-size: 5rem;
 }
 
+.gradient-app {
+    background: linear-gradient(#1a0820, #381543 30%, #9b4db2);
+}
+
 .gradient {
     color: var(--color-done-fg);
     background: linear-gradient(260deg, #8f27c7 0%, #9773ff 50%, #efceff 80%),
@@ -49,7 +53,7 @@ h1 {
 }
 
 .round-button {
-    background: linear-gradient(0.45turn, #542263, #41174e, #34123e);
+    background: linear-gradient(0.45turn, #6f3780, #5f2b71, #461e53);
 }
 
 .round-button-blue {
@@ -126,6 +130,50 @@ h1 {
     z-index: -1;
     background: #17153f;
     transform: skewY(-5deg);
+}
+
+.flip-container {
+    position: relative;
+}
+
+.flip-item {
+    position: absolute;
+    animation: flip 15s infinite ease-in;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(1.3rem);
+}
+
+.flip-item:nth-child(1) {
+    animation-delay: 3s;
+}
+
+.flip-item:nth-child(2) {
+    animation-delay: 8s;
+}
+
+.flip-item:nth-child(3) {
+    animation-delay: 13s;
+}
+
+@keyframes flip {
+    0% {
+        transform: translateY(1.3rem);
+        opacity: 0;
+    }
+    1% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+    33% {
+        opacity: 1;
+    }
+    33.5% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0rem);
+    }
 }
 
 .liftoff {

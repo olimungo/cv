@@ -9,7 +9,7 @@ export function Connector(props: { className?: string }) {
         >
             <Dot />
             <Line />
-            <Dot />
+            <BigDot />
             <Line />
             <Dot />
         </div>
@@ -18,15 +18,21 @@ export function Connector(props: { className?: string }) {
 
 function Dot() {
     return (
-        <div className="h-4 w-4 rounded-full border-2 border-ternary md:h-6 md:w-6 md:border-4"></div>
+        <div className="h-4 w-4 rounded-full border-2 border-primary md:h-6 md:w-6 md:border-4"></div>
+    );
+}
+
+function BigDot() {
+    return (
+        <div className="h-6 w-6 rounded-full border-2 border-primary md:h-8 md:w-8 md:border-4"></div>
     );
 }
 
 function Line() {
     return (
         <div>
-            <div className="h-4 border-r-2 border-ternary md:h-6 md:border-r-4"></div>
-            <div className="h-4 border-l-2 border-ternary md:h-6 md:border-l-4"></div>
+            <div className="h-4 border-r-2 border-primary md:h-6 md:border-r-4"></div>
+            <div className="h-4 border-l-2 border-primary md:h-6 md:border-l-4"></div>
         </div>
     );
 }

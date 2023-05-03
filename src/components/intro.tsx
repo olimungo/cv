@@ -57,7 +57,7 @@ export function Intro(props: { onClick?: () => void }) {
         >
             <div
                 id="top-section"
-                className={`${topClass} h-full w-full bg-dark-space`}
+                className={`${topClass} h-4/6 w-full bg-dark-space`}
             >
                 <div className="flex h-full items-center justify-center">
                     <div className="planet">
@@ -76,7 +76,7 @@ export function Intro(props: { onClick?: () => void }) {
                     </Button>
                 </div>
 
-                <div className="mt-16 max-w-xs text-center text-xs text-fuchsia-200 md:max-w-2xl md:text-base">
+                <div className="mt-16 max-w-xs text-center text-base text-fuchsia-100 md:max-w-2xl md:text-lg">
                     This site is totally reactive but the user experience is
                     improved on large displays
                 </div>

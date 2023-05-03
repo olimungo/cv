@@ -152,7 +152,7 @@ export function App() {
     const startAnimatingCatchPhrase = () => {
         setTimeout(() => {
             signal.emit(startHeroAnimation);
-        }, 2000);
+        }, 3000);
 
         if (soundBeep) {
             setInterval(() => {

@@ -157,7 +157,7 @@ export function Hero() {
                 <h1 className="text-5xl tracking-widest md:text-6xl">
                     olimungo
                 </h1>
-                <div className="text-sm tracking-wide text-violet-200">
+                <div className="text-sm tracking-wide text-violet-100">
                     SPACE MISSION: POSSIBLE!
                 </div>
 

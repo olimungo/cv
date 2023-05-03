@@ -76,7 +76,7 @@ function Domain(props: { label: string; image?: string }) {
     const { label, image = 'folder' } = props;
 
     return (
-        <RaisedCard className="reveal-top mb-3 table rounded-md bg-dark-space px-6 py-4 md:mb-5 md:text-lg">
+        <RaisedCard className="reveal-top mb-3 table w-full rounded-md bg-dark-space px-6 py-4 md:mb-5 md:text-lg">
             <div className="flex items-center">
                 <div className="mr-5">
                     <div className="h-12 w-12 rounded-full border p-3 md:h-14 md:w-14">
