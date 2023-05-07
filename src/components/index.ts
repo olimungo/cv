@@ -12,6 +12,7 @@ export * from './panel';
 export * from './personal-projects';
 export * from './raised-card';
 export * from './recap-skills';
+export * from './rocket';
 export * from './skewed-panel';
 export * from './skill';
 export * from './speaker';

@@ -114,9 +114,9 @@ export function Hero() {
 
     useEffect(() => {
         if (soundTypewriter1 && soundTypewriter2 && soundTypewriter3) {
-            soundTypewriter1.volume = 0.2;
-            soundTypewriter2.volume = 0.2;
-            soundTypewriter3.volume = 0.2;
+            soundTypewriter1.volume = 0.15;
+            soundTypewriter2.volume = 0.15;
+            soundTypewriter3.volume = 0.15;
 
             let alternateTypewriter = 0;
 

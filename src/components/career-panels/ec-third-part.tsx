@@ -44,8 +44,28 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
                             systems operate efficiently and effectively.
                         </div>
 
-                        <div className="">
-                            I'm a Senior Assistant since 2019.
+                        <div>I'm a Senior Assistant since 2019.</div>
+
+                        <div className="mt-5">
+                            I hold the EC Project Management Methodology (PM
+                            <sup>2</sup>) certification and have recently
+                            obtained the PM
+                            <sup>2</sup> Practitioner certification. These
+                            certifications have equipped me with the knowledge
+                            and skills to effectively manage projects, from
+                            drafting Business Cases and Project Charters to
+                            developing Project Handbooks.
+                        </div>
+
+                        <div className="mt-5">
+                            In addition, I have contributed to the elaboration
+                            of the budget and planning for the IT Master Plan,
+                            ensuring that projects are aligned with
+                            organizational goals and objectives. I also have
+                            experience leading interviews when recruiting new
+                            team members, which has allowed me to develop strong
+                            interpersonal skills and the ability to assess
+                            candidates effectively.
                         </div>
                     </div>
 

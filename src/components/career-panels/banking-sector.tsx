@@ -1,7 +1,6 @@
 import React from 'react';
 import { CenteredContainer } from '../centered-container';
 import { Tag } from '../tag';
-import { Button } from '../button';
 import { Panel } from '../panel';
 import { Card } from '../card';
 import { CardSkills } from '../card-skills';
@@ -16,7 +15,8 @@ export function BankingSectorCareerPanel(props: { className?: string }) {
                     <div className="text-fuchsia-100">
                         <div className="mb-5">
                             During the next years, I worked as a free-lancer for
-                            the Banking sector and the European Commission.
+                            the Banking sector (Banksys and Europay) and the
+                            European Commission.
                             <Tag label="1997-2001" className="ml-3" />
                         </div>
 

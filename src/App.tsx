@@ -20,6 +20,7 @@ import {
     Languages,
     PersonalProjects,
     ToTheMoon,
+    Rocket,
 } from './components';
 import { missionEventCompleted } from './hub/components/mission-events/mission-event';
 import { MissionEventLabel } from './hub/components/mission-events/mission-events';
@@ -191,14 +192,7 @@ export function App() {
 
             <BachelorCareerPanel />
 
-            <div id="move-shake-rocket" className="move-shake self-center">
-                <img
-                    id="rocket"
-                    className="liftoff mt-32 w-[200px] opacity-60 md:w-[300px]"
-                    srcSet="assets/ariane-6.webp"
-                    alt="illustration of the Ariane 6 space rocket"
-                />
-            </div>
+            <Rocket />
 
             <StartCareerPanel />
 
