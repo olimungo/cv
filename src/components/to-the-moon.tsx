@@ -13,7 +13,7 @@ export function ToTheMoon(props: { className?: string }) {
                 alt="illustration of the moon"
             />
 
-            <h1 className="absolute bottom-12 px-6 py-1 text-2xl tracking-widest text-fuchsia-100 opacity-80 md:bottom-20 md:text-5xl">
+            <h1 className="absolute bottom-12 px-6 py-1 text-3xl tracking-widest text-fuchsia-100 opacity-80 md:bottom-20 md:text-5xl">
                 Back to the Moon!
             </h1>
         </div>

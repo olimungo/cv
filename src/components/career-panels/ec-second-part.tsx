@@ -8,9 +8,9 @@ export function EcSecondPartCareerPanel(props: { className?: string }) {
 
     return (
         <div className={`${className} flex justify-center`}>
-            <Panel className="w-full p-12">
+            <Panel className="w-full p-12 text-lg md:text-2xl">
                 <CenteredContainer className="flex flex-col items-center">
-                    <div className="text-md text-fuchsia-100 md:text-2xl">
+                    <div className="text-fuchsia-100">
                         <div className="mb-5">
                             The second part of my career at the Commission has
                             been focused on working for DG COMP and OIB.

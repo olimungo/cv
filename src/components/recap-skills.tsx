@@ -12,7 +12,7 @@ export function RecapSkills(props: { className?: string }) {
                 Recap relevant skills
             </div>
 
-            <CenteredContainer className="flex flex-col justify-center md:flex-row md:gap-x-12">
+            <CenteredContainer className="flex flex-col justify-center md:gap-x-12 lg:flex-row">
                 <div>
                     <Skill label="Oracle RDBMS" value={75} />
                     <Skill label="Oracle PL/SQL" value={75} />

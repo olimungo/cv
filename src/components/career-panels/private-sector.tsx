@@ -11,9 +11,9 @@ export function PrivateSectorCareerPanel(props: { className?: string }) {
 
     return (
         <div className={`${className} flex justify-center`}>
-            <Panel className="w-full p-12">
+            <Panel className="w-full p-12 text-lg md:text-2xl">
                 <CenteredContainer className="flex flex-col items-center md:flex-row">
-                    <div className="text-md text-fuchsia-100 md:text-2xl">
+                    <div className="text-fuchsia-100">
                         <div className="mb-5">
                             Then I switched to the private sector as an employee
                             for CANAL+ Belgique.
@@ -28,7 +28,7 @@ export function PrivateSectorCareerPanel(props: { className?: string }) {
                         </div>
                     </div>
 
-                    <Card className="reveal-left mt-12 shrink-0 md:ml-10 md:mt-0 md:w-min xl:w-auto">
+                    <Card className="reveal-left mt-12 w-72 shrink-0 md:ml-10 md:mt-0">
                         <CardSkills
                             role="Analyst/Software developer"
                             skillsAcquired={[

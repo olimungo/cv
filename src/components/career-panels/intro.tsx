@@ -9,10 +9,10 @@ export function IntroCareerPanel(props: { className?: string }) {
         <div className={`${className} flex justify-center`}>
             <SkewedPanel>
                 <CenteredContainer className="flex flex-col items-center md:flex-row">
-                    <div className="text-md text-fuchsia-100 md:text-2xl">
+                    <div className="text-lg text-fuchsia-100 md:text-2xl">
                         <div className="mb-5 flex">
                             <img
-                                className="pink relative bottom-1 mr-2 h-8 md:bottom-2 md:mr-4 md:h-16"
+                                className="pink relative bottom-1 mr-3 h-8 md:bottom-2 md:mr-4 md:h-16"
                                 srcSet="assets/quote.png"
                                 alt="icon double-quote"
                             />

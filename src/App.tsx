@@ -99,19 +99,19 @@ export function App() {
         return () => signal.off(missionEventCompleted);
     }, []);
 
+    // Animate elements on the page
     useEffect(() => {
         if (mainElement && revealElements) {
             const onscroll = () => {
-                for (let index = 0; index < revealElements.length; index++) {
+                for (const element of revealElements) {
                     const windowHeight = window.innerHeight;
-                    const elementTop =
-                        revealElements[index].getBoundingClientRect().top;
+                    const elementTop = element.getBoundingClientRect().top;
                     const elementVisible = 400;
 
                     if (elementTop < windowHeight - elementVisible) {
-                        revealElements[index].classList.add('active');
+                        element.classList.add('active');
                     } else {
-                        revealElements[index].classList.remove('active');
+                        element.classList.remove('active');
                     }
                 }
             };
@@ -150,6 +150,11 @@ export function App() {
     };
 
     const startAnimatingCatchPhrase = () => {
+        const flipItems = document.getElementsByClassName('flip-item');
+
+        for (const item of flipItems) {
+            item.classList.add('active');
+        }
         setTimeout(() => {
             signal.emit(startHeroAnimation);
         }, 3000);

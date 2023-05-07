@@ -13,7 +13,7 @@ export function Speaker() {
 
     return (
         <img
-            className="pink fixed right-5 top-6 z-10 w-8 opacity-75 md:right-8 md:top-10 md:w-10"
+            className="pink fixed right-5 top-4 z-10 w-8 rounded-md opacity-75  md:right-8 md:top-8 md:w-11"
             srcSet={muted ? 'assets/speaker-muted.png' : 'assets/speaker.png'}
             onClick={mute}
             alt="icon for muting the sound"

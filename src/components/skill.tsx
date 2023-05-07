@@ -26,7 +26,7 @@ export function Skill(props: {
             </div>
 
             <div
-                className="ml-5 text-sm text-fuchsia-50 md:text-base"
+                className="ml-5 text-base text-fuchsia-50 md:text-xl"
                 dangerouslySetInnerHTML={{ __html: label }}
             ></div>
         </div>

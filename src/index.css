@@ -15,6 +15,7 @@ html,
 main {
     height: 100vh;
     font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
 }
 
 h1 {
@@ -138,22 +139,32 @@ h1 {
 
 .flip-item {
     position: absolute;
-    animation: flip 15s infinite ease-in;
     margin: auto;
     opacity: 0;
-    transform: translateY(1.3rem);
 }
 
-.flip-item:nth-child(1) {
-    animation-delay: 3s;
+.flip-item.active:nth-child(1) {
+    animation: flip 7s ease-in 2s forwards;
 }
 
-.flip-item:nth-child(2) {
-    animation-delay: 8s;
+.flip-item.active:nth-child(2) {
+    animation: flip 7s ease-in 8.05s forwards;
 }
 
-.flip-item:nth-child(3) {
-    animation-delay: 13s;
+.flip-item.active:nth-child(3) {
+    animation: flip-3 3s ease-in 14.1s forwards;
+}
+
+@keyframes flip-3 {
+    0% {
+        transform: translateY(1.3rem);
+        opacity: 0;
+    }
+    3%,
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
 }
 
 @keyframes flip {
@@ -161,18 +172,15 @@ h1 {
         transform: translateY(1.3rem);
         opacity: 0;
     }
-    1% {
+    1.25%,
+    85% {
         transform: translateY(0rem);
         opacity: 1;
     }
-    33% {
-        opacity: 1;
-    }
-    33.5% {
-        opacity: 0;
-    }
+    88%,
     100% {
-        transform: translateY(0rem);
+        transform: translateY(-1.3rem);
+        opacity: 0;
     }
 }
 

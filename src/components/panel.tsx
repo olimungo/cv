@@ -9,7 +9,7 @@ export function Panel(props: PropsWithChildren<PanelProps>) {
     const { className = '', children } = props;
 
     return (
-        <div className={`${className} flex justify-center bg-light-space`}>
+        <div className={`${className} flex justify-center bg-dark-space`}>
             {children}
         </div>
     );

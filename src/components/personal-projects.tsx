@@ -87,15 +87,15 @@ function CardElement(props: {
 }) {
     const { title, description, url } = props;
     return (
-        <RaisedCard className="reveal-top m-4 items-center justify-center p-4 md:m-8 md:p-6">
-            <div className="text-left text-xs md:text-lg">{description}</div>
+        <RaisedCard className="reveal-top my-9 items-center justify-center p-4 md:my-12 md:p-6">
+            <div className="text-left text-sm md:text-lg">{description}</div>
 
             <Button
                 className="mt-4 h-min md:mt-8"
                 color="purple"
                 onClick={() => window.open(url, '_blank')}
             >
-                <div className="text-xs uppercase md:text-base">{title}</div>
+                <div className="text-sm uppercase md:text-base">{title}</div>
 
                 <img
                     className="pink relative ml-2 h-2 -rotate-90 md:top-[1px] md:h-2"

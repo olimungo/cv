@@ -10,9 +10,9 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
 
     return (
         <div className={`${className} flex justify-center`}>
-            <Panel className="w-full p-12">
+            <Panel className="w-full p-12 text-lg md:text-2xl">
                 <CenteredContainer className="flex flex-col items-center">
-                    <div className="text-md text-fuchsia-100 md:text-2xl">
+                    <div className="text-fuchsia-100">
                         <div className="mb-5">
                             I'm in OIB for about 8 years now (as of mid-2023).
                             In my portfolio, there are IT systems related to
@@ -76,7 +76,7 @@ function Domain(props: { label: string; image?: string }) {
     const { label, image = 'folder' } = props;
 
     return (
-        <RaisedCard className="reveal-top mb-3 table w-full rounded-md bg-dark-space px-6 py-4 md:mb-5 md:text-lg">
+        <RaisedCard className="reveal-top mb-9 table w-full rounded-md px-6 py-4 md:mb-12 md:text-lg">
             <div className="flex items-center">
                 <div className="mr-5">
                     <div className="h-12 w-12 rounded-full border p-3 md:h-14 md:w-14">
