@@ -192,6 +192,10 @@ export function App() {
 
             <BachelorCareerPanel />
 
+            <div className="relative">
+                <div className="big-planet"></div>
+            </div>
+
             <Rocket />
 
             <StartCareerPanel />

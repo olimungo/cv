@@ -154,10 +154,10 @@ export function Hero() {
             <audio id="typewriter-3" src="assets/typewriter.mp3" />
 
             <div className="mt-8 md:mt-16">
-                <h1 className="text-5xl tracking-widest md:text-6xl">
+                <h1 className="text-5xl font-medium tracking-widest md:text-6xl">
                     olimungo
                 </h1>
-                <div className="text-sm tracking-wide text-violet-100">
+                <div className="text-md font-light tracking-wide text-violet-100">
                     SPACE MISSION: POSSIBLE!
                 </div>
 

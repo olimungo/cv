@@ -10,7 +10,7 @@ export function Rocket(props: { className?: string }) {
     return (
         <div
             id="move-shake-rocket"
-            className={`${className} move-shake flex flex-col self-center`}
+            className={`${className} move-shake mt-80 flex flex-col self-center`}
         >
             <div id="rocket" className="liftoff">
                 <img
