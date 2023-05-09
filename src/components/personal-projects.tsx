@@ -47,7 +47,7 @@ export function PersonalProjects(props: { className?: string }) {
                     </button>
                 </div>
 
-                <div className="md:mx-40">
+                <div className="mx-4 md:mx-28 lg:mx-44">
                     <CardElement
                         title="Asteroids"
                         description="A reboot of the famous video game from 1979.
@@ -97,21 +97,25 @@ function CardElement(props: {
     const { title, description, url } = props;
     return (
         <RaisedCard className="reveal-top my-9 items-center justify-center rounded-2xl p-8 md:my-12 md:rounded-3xl">
-            <div className="">{title}</div>
+            <div className="mb-8 text-left text-lg uppercase text-fuchsia-200 md:mb-16 md:text-xl">
+                {title}
+            </div>
 
             <div className="mb-4 text-left text-base md:text-xl">
                 {description}
             </div>
 
             <Button
-                className="mt-4 h-min md:mt-8"
+                className="mt-4 h-min md:mt-12"
                 color="purple"
                 onClick={() => window.open(url, '_blank')}
             >
-                <div className="text-sm uppercase md:text-base">{title}</div>
+                <div className="text-sm uppercase md:text-base">
+                    GO TO WEB SITE
+                </div>
 
                 <img
-                    className="pink relative ml-2 h-2 -rotate-90 md:top-[1px] md:h-2"
+                    className="pink relative ml-4 h-2 -rotate-90 md:top-[1px] md:h-2"
                     srcSet="assets/chevron.png"
                     alt="icon chevron right"
                 />
