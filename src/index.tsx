@@ -13,18 +13,10 @@ let previousTimestamp = 0;
 let elapsed = 0;
 let delayHub = 0;
 
-renderLoop(0);
+renderLoop();
 
-function renderLoop(timestamp) {
-    elapsed += timestamp - previousTimestamp;
-    previousTimestamp = timestamp;
-
-    if (elapsed > 30) {
-        elapsed = 0;
-
-        hub.render();
-    }
-
+function renderLoop() {
+    hub.render();
     requestAnimationFrame(renderLoop);
 }
 

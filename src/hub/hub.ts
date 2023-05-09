@@ -1,5 +1,5 @@
 import signal from 'signal-js';
-import { Dashboard } from './components/dahsboard';
+import { Dashboard } from './components/dashboard';
 import {
     MissionEventLabel,
     MissionEvents,

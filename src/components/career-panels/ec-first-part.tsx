@@ -34,9 +34,10 @@ export function EcFirstPartCareerPanel(props: { className?: string }) {
                             DG DIGIT where my assignments were to maintain and
                             improve the sickness insurance IT system: Assmal.
                             Then, the decision was taken to rewrite it from
-                            scratch using new technologies. It was my first
-                            experience working with a team of around 10 people.
-                            Surprisingly, the new project was called Assmal2.
+                            scratch using new technologies. Surprisingly, the
+                            new project was called Assmal2. It was my first
+                            experience working with a team of around 10 people,
+                            which I enjoyed a lot.
                         </div>
                     </div>
 

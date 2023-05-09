@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useState } from 'react';
+import React from 'react';
 
 type Type = 'rounded' | 'rounded-xl';
 type Color = 'ternary' | 'primary' | 'accent';

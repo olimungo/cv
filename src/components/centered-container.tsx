@@ -1,4 +1,4 @@
-import React, { Children, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 interface CenteredContainerProps {
     className?: string;

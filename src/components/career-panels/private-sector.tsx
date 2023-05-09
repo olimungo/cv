@@ -1,7 +1,6 @@
 import React from 'react';
 import { CenteredContainer } from '../centered-container';
 import { Tag } from '../tag';
-import { Button } from '../button';
 import { Panel } from '../panel';
 import { Card } from '../card';
 import { CardSkills } from '../card-skills';

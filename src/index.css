@@ -18,6 +18,12 @@ main {
     font-weight: 300;
 }
 
+/* body {
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+} */
+
 h1 {
     font-size: 5rem;
 }
@@ -123,6 +129,20 @@ h1 {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
+}
+
+.gradient-blur {
+    backdrop-filter: blur(5px);
+    mask: linear-gradient(transparent, black 30%);
+
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
 }
 
 .round-button,

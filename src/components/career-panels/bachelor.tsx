@@ -18,7 +18,7 @@ export function BachelorCareerPanel(props: { className?: string }) {
 
                     <div className="text-fuchsia-100">
                         <div className="mb-5">
-                            Bachelor in IT, Insitut Paul Lambin in Brussels.
+                            Bachelor in IT, Institut Paul Lambin in Brussels.
                             <Tag label="1993" className="ml-3" />
                         </div>
 

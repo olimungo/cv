@@ -13,17 +13,19 @@ export function EcSecondPartCareerPanel(props: { className?: string }) {
                     <div className="text-fuchsia-100">
                         <div className="mb-5">
                             The second part of my career at the Commission has
-                            been focused on working for DG COMP and OIB.
+                            been focused on working for DG COMP and OIB. Since
+                            then, my role changed from Senior software developer
+                            to IT Project Manager.
                             <Tag label="2012-today" className="ml-3" />
                         </div>
 
                         <div className="mb-5">
-                            During my time at DG COMP, I worked as an IT Project
-                            Manager, primarily focused on maintaining existing
-                            IT systems. Due to the nature of this work,
-                            confidentiality was of utmost importance, and I am
-                            proud to say that I strictly adhered to the
-                            professional code of conduct and ethics.
+                            During my time at DG COMP, my job was primarily
+                            focused on maintaining existing IT systems managing
+                            a team of 3 persons. Due to the nature of this work,
+                            confidentiality was of utmost importance and I
+                            strictly adhered to the professional code of conduct
+                            and ethics.
                         </div>
                     </div>
                 </CenteredContainer>

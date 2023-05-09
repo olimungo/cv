@@ -146,7 +146,7 @@ export function App() {
             // Make sure that the first panel is not visible, independently of the
             // devices' height
             introCareerPanel.style.marginTop =
-                windowHeight - hero.clientHeight + 50 + 'px';
+                windowHeight - hero.clientHeight + 90 + 'px';
         }
     };
 

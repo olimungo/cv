@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import signal from 'signal-js';
 import { speakerEventMuted } from './speaker';
 import { GetToKnowMe } from './get-to-know-me';

@@ -94,7 +94,7 @@ export class Dashboard {
             2 * Math.PI
         );
 
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
         ctx.lineWidth = 2;
         ctx.fill();
 
@@ -109,7 +109,7 @@ export class Dashboard {
             2 * Math.PI
         );
 
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
         ctx.lineWidth = 2;
         ctx.fill();
 

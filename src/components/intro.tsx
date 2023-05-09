@@ -72,7 +72,13 @@ export function Intro(props: { onClick?: () => void }) {
             >
                 <div className="flex items-center justify-center">
                     <Button color="purple" onClick={handleClick}>
-                        START MISSION
+                        <div>START MISSION</div>
+
+                        <img
+                            className="white relative ml-2 h-2 -rotate-90 md:top-[1px] md:h-2"
+                            srcSet="assets/chevron.png"
+                            alt="icon chevron right"
+                        />
                     </Button>
                 </div>
 
