@@ -97,12 +97,11 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
                         </div>
 
                         <div className="mt-5">
-                            Over the last 6 years, my team managed to migrate 4
-                            systems that were based on the ColdFusion technology
-                            to a modern corporate stack based on Angular for the
-                            front-end, and Java on Tomcat for the back-end. On
-                            top of that, we had to continue to maintain existing
-                            apps.
+                            Over the last 6 years, the team managed to migrate 4
+                            systems from ColdFusion to a modern corporate stack
+                            based on Angular for the front-end, and Java on
+                            Tomcat for the back-end. On top of that, we had to
+                            continue to maintain existing apps.
                         </div>
 
                         <div className="mt-5">

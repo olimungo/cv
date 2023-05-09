@@ -152,10 +152,21 @@ export function App() {
 
     const startAnimatingCatchPhrase = () => {
         const flipItems = document.getElementsByClassName('flip-item');
+        const hub = document.getElementById('hub');
+        const content = document.getElementById('content');
+
+        if (hub) {
+            hub.classList.remove('invisible');
+        }
+
+        if (content) {
+            content.classList.remove('invisible');
+        }
 
         for (const item of flipItems) {
             item.classList.add('active');
         }
+
         setTimeout(() => {
             signal.emit(startHeroAnimation);
         }, 3000);
@@ -178,83 +189,85 @@ export function App() {
 
             <Intro onClick={startAnimatingCatchPhrase} />
 
-            <Speaker />
+            <div id="content" className="invisible flex flex-col">
+                <Speaker />
 
-            <div id="hero">
-                <Hero />
+                <div id="hero">
+                    <Hero />
+                </div>
+
+                <div id="intro-career-panel">
+                    <IntroCareerPanel />
+                </div>
+
+                <Connector />
+
+                <BachelorCareerPanel />
+
+                <div className="relative">
+                    <div className="big-planet"></div>
+                </div>
+
+                <Rocket />
+
+                <StartCareerPanel />
+
+                <Connector />
+
+                <PrivateSectorCareerPanel />
+
+                <div className="self-center opacity-50">
+                    <img
+                        className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
+                        srcSet="assets/pioneer.webp"
+                        alt="illustration on the Pioneer plaque"
+                    />
+                </div>
+
+                <TrueQuestion />
+
+                <div className="self-center opacity-20">
+                    <img
+                        className="white reveal-top my-12 w-[250px] md:my-40 md:w-[500px]"
+                        srcSet="assets/iss.webp"
+                        alt="illustration of the Internation Space Station"
+                    />
+                </div>
+
+                <BankingSectorCareerPanel />
+
+                <div className="self-center opacity-20">
+                    <img
+                        className="white reveal-top my-12 w-[250px] md:my-16 md:w-[400px]"
+                        srcSet="assets/james-webb.webp"
+                        alt="illustration of the James Webb telescope"
+                    />
+                </div>
+
+                <EcFirstPartCareerPanel />
+
+                <Connector />
+
+                <EcSecondPartCareerPanel />
+
+                <Connector />
+
+                <EcThirdPartCareerPanel />
+
+                <Connector />
+
+                <PersonalProjects />
+
+                <Connector />
+
+                <RecapSkills />
+
+                <Connector />
+
+                <Languages />
+
+                <ToTheMoon />
             </div>
-
-            <div id="intro-career-panel">
-                <IntroCareerPanel />
-            </div>
-
-            <Connector />
-
-            <BachelorCareerPanel />
-
-            <div className="relative">
-                <div className="big-planet"></div>
-            </div>
-
-            <Rocket />
-
-            <StartCareerPanel />
-
-            <Connector />
-
-            <PrivateSectorCareerPanel />
-
-            <div className="self-center opacity-50">
-                <img
-                    className="white reveal-top my-12 w-[300px] self-center md:my-40 md:w-[800px]"
-                    srcSet="assets/pioneer.webp"
-                    alt="illustration on the Pioneer plaque"
-                />
-            </div>
-
-            <TrueQuestion />
-
-            <div className="self-center opacity-20">
-                <img
-                    className="white reveal-top my-12 w-[250px] md:my-40 md:w-[500px]"
-                    srcSet="assets/iss.webp"
-                    alt="illustration of the Internation Space Station"
-                />
-            </div>
-
-            <BankingSectorCareerPanel />
-
-            <div className="self-center opacity-20">
-                <img
-                    className="white reveal-top my-12 w-[250px] md:my-16 md:w-[400px]"
-                    srcSet="assets/james-webb.webp"
-                    alt="illustration of the James Webb telescope"
-                />
-            </div>
-
-            <EcFirstPartCareerPanel />
-
-            <Connector />
-
-            <EcSecondPartCareerPanel />
-
-            <Connector />
-
-            <EcThirdPartCareerPanel />
-
-            <Connector />
-
-            <PersonalProjects />
-
-            <Connector />
-
-            <RecapSkills />
-
-            <Connector />
-
-            <Languages />
-
-            <ToTheMoon />
         </div>
     );
 }
