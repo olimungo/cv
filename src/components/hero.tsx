@@ -163,7 +163,7 @@ export function Hero() {
 
                 <div className="mt-12 text-3xl md:mt-36 md:text-4xl">
                     <div>
-                        Experienced developer. IT&nbsp;Project&nbsp;Manager.
+                        IT&nbsp;Project&nbsp;Manager. Experienced developer.
                     </div>
 
                     <div id="catch-phrase" className="gradient inline-block">
