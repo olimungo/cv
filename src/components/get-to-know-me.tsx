@@ -2,7 +2,7 @@ import React from 'react';
 
 export function GetToKnowMe() {
     return (
-        <div className="flip-container mt-24 flex justify-center text-2xl font-bold tracking-wide text-fuchsia-200 md:mt-44 md:text-3xl">
+        <div className="flip-container mt-36 flex justify-center text-2xl font-bold tracking-wide text-fuchsia-200 sm:mt-36 md:mt-28 md:text-3xl lg:mt-40">
             <div className="flip-item">WAIT FOR IT!</div>
 
             <div className="flip-item">GET TO KNOW ME</div>

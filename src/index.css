@@ -419,8 +419,9 @@ h1 {
 
 .big-planet {
     --size: 1500px;
+    --top: 1.15;
     position: absolute;
-    top: calc(50% - calc(var(--size) / 1.2));
+    top: calc(50% - calc(var(--size) / var(--top)));
     left: calc(50% - calc(var(--size) / 2));
     width: var(--size);
     height: var(--size);

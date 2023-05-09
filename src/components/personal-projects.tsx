@@ -97,6 +97,8 @@ function CardElement(props: {
     const { title, description, url } = props;
     return (
         <RaisedCard className="reveal-top my-9 items-center justify-center rounded-2xl p-8 md:my-12 md:rounded-3xl">
+            <div className="">{title}</div>
+
             <div className="mb-4 text-left text-base md:text-xl">
                 {description}
             </div>
