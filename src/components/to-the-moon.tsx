@@ -5,17 +5,13 @@ export function ToTheMoon(props: { className?: string }) {
 
     return (
         <div
-            className={`${className} reveal-top relative mt-36 flex justify-center`}
+            className={`${className} relative flex h-[40rem] flex-col items-center overflow-hidden bg-gradient-to-b from-dark-space to-slate-950 md:h-[50rem]`}
         >
-            <img
-                className="w-[300px] opacity-20 md:w-[600px]"
-                srcSet="assets/moon.webp"
-                alt="illustration of the moon"
-            />
+            <div className="absolute top-64 text-3xl font-medium text-fuchsia-200 opacity-50 md:top-72 md:text-5xl">
+                Get in touch...
+            </div>
 
-            <h1 className="absolute bottom-12 px-6 py-1 text-3xl font-medium tracking-widest text-fuchsia-100 opacity-80 md:bottom-20 md:text-5xl">
-                Back to the Moon!
-            </h1>
+            <div className="planet two"></div>
         </div>
     );
 }

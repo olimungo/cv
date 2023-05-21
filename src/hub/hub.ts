@@ -30,25 +30,12 @@ export class Hub {
         this.missionEvents = new MissionEvents(this.canvasProps, this.anchor);
 
         const main = document.getElementById('main');
-        const hub = document.getElementById('hub');
-
         this.main = main;
 
         if (main) {
             main.addEventListener('scroll', () => {
                 this.calcAngle();
             });
-
-            if (hub) {
-                hub.addEventListener(
-                    'wheel',
-                    (event: WheelEvent) => {
-                        main.scrollTop += event.deltaY / 2;
-                        // event.preventDefault();
-                    },
-                    { passive: true }
-                );
-            }
         }
 
         signal.on(

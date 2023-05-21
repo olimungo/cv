@@ -184,7 +184,7 @@ export function App() {
     };
 
     return (
-        <div className="flex flex-col pb-72">
+        <div className="flex flex-col">
             <audio id="beep" src="assets/beep.mp3" />
 
             <Intro onClick={startAnimatingCatchPhrase} />

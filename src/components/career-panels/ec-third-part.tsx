@@ -89,7 +89,7 @@ export function EcThirdPartCareerPanel(props: { className?: string }) {
                             In addition, I have contributed to the elaboration
                             of the budget and planning for the IT Master Plan,
                             ensuring that projects are aligned with
-                            organizational goals and objectives. I also have
+                            organisational goals and objectives. I also have
                             experience leading interviews when recruiting new
                             team members, which has allowed me to develop strong
                             interpersonal skills and the ability to assess
