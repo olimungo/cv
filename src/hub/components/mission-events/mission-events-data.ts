@@ -60,8 +60,8 @@ export const missionEventsData: Record<
     },
     LIFTOFF: {
         labelPosition: 'up',
-        fromAngle: 282,
-        toAngle: 282,
+        fromAngle: 281.3,
+        toAngle: 281.3,
         telemetry: {
             stage1Speed: 454,
             stage1Altitude: 1.5,

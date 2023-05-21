@@ -403,8 +403,68 @@ h1 {
     left: -110px;
     transform-origin: calc(200px + 50%);
     box-shadow: 0 0 9px 1px rgb(175, 127, 169), 0 0 9px 1px rgb(244, 196, 164);
-
     animation: orbit 120s linear infinite;
+}
+
+.two {
+    --size: 190rem;
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    bottom: -330%;
+    opacity: 0.7;
+    filter: blur(2px);
+    background-color: rgb(255, 197, 239);
+    box-shadow:
+    /* Inner shadow */ inset 0 0 14px 0 white,
+        inset calc(var(--size) / 10 * -2) calc(var(--size) / 20 * -3)
+            calc(var(--size) / 20 * 6) 0 purple,
+        inset calc(var(--size) / 10 * -2) calc(var(--size) / 20 * -3)
+            calc(var(--size) / 20 * 7) 0 blue,
+        inset calc(var(--size) / 10 * -2) calc(var(--size) / 20 * -3)
+            calc(var(--size) / 2) 0 cyan,
+        inset calc(var(--size) / 10 * -2) calc(var(--size) / 20 * -3)
+            calc(var(--size) / 20 * 14) 0 powderblue,
+        /* Outer shadow */ 0 0 calc(var(--size) / 20) 0 white,
+        calc(var(--size) / 20) calc(var(--size) / 20) calc(var(--size) / 10)
+            calc(var(--size) / 20) purple,
+        calc(var(--size) / -20) calc(var(--size) / -20) calc(var(--size) / 10) 0
+            cyan;
+}
+
+@media (max-width: 1024px) {
+    .two {
+        --size: 90rem;
+        bottom: -130%;
+    }
+}
+
+@media (max-width: 819px) {
+    .two {
+        --size: 70rem;
+        bottom: -110%;
+    }
+}
+
+@media (max-width: 768px) {
+    .two {
+        --size: 70rem;
+        bottom: -95%;
+    }
+}
+
+@media (max-width: 600px) {
+    .two {
+        --size: 60rem;
+        bottom: -99%;
+    }
+}
+
+@media (max-width: 400px) {
+    .two {
+        --size: 50rem;
+        bottom: -75%;
+    }
 }
 
 @keyframes orbit {
