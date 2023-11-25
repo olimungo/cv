@@ -17,7 +17,7 @@ export function BankingSectorCareerPanel(props: { className?: string }) {
                             During the next years, I worked as a free-lancer for
                             the Banking sector (Banksys and Europay) and the
                             European Commission.
-                            <Tag label="1997-2001" className="ml-3" />
+                            <Tag label="1997-2000" className="ml-3" />
                         </div>
 
                         <div className="mb-5">
