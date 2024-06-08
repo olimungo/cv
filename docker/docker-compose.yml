@@ -1,11 +1,8 @@
 version: '2'
 services:
     cv:
-        image: olimungo/cv:1.0
+        image: olimungo/cv:1.1
         container_name: cv
         restart: always
         ports:
             - '80:80'
-            - '443:443'
-        volumes:
-            - /etc/letsencrypt:/etc/letsencrypt
